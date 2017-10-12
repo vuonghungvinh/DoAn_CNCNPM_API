@@ -15,7 +15,7 @@ php artisan key:generate
 ## Build
 
 ```
-ng build
+ng build -w
 ```
 
 ## Run Laravel
