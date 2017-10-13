@@ -1,9 +1,10 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DashboardComponent }   from './dashboard/dashboard.component';
-import { StudentsComponent } from "./students/student.component";
-import { QuestionComponent } from "./quanlicauhoi/question.component";
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { StudentsComponent } from './students/student.component';
+import { QuestionComponent } from './quanlicauhoi/question.component';
+import { AddQuestionComponent } from './quanlicauhoi/addquestion/addquestion.component';
 
 const routes: Routes = [
   { path: 'login', loadChildren: './auth/login/login.module#LoginModule' },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'reset', loadChildren: './auth/reset/reset.module#ResetModule' },
   { path: 'students',  component: StudentsComponent },
   { path: 'question',  component: QuestionComponent },
+  { path: 'addquestion',  component: AddQuestionComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent },
 ];

@@ -1,14 +1,15 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
-import { AppRoutingModule }     from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
-import { AppComponent }         from './app.component';
+import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { StudentsComponent } from "./students/student.component";
-import { QuestionComponent } from "./quanlicauhoi/question.component";
-import { HeaderComponent } from "./header/header.component";
+import { StudentsComponent } from './students/student.component';
+import { QuestionComponent } from './quanlicauhoi/question.component';
+import { HeaderComponent } from './header/header.component';
+import { AddQuestionComponent } from './quanlicauhoi/addquestion/addquestion.component';
 
 @NgModule({
   imports: [
@@ -21,9 +22,10 @@ import { HeaderComponent } from "./header/header.component";
     DashboardComponent,
     StudentsComponent,
     QuestionComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddQuestionComponent
   ],
-  providers: [ ],
-  bootstrap: [ AppComponent ]
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
