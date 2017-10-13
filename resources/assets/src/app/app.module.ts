@@ -7,7 +7,8 @@ import { AppRoutingModule }     from './app-routing.module';
 import { AppComponent }         from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudentsComponent } from "./students/student.component";
-
+import { QuestionComponent } from "./quanlicauhoi/question.component";
+import { HeaderComponent } from "./header/header.component";
 
 @NgModule({
   imports: [
@@ -18,7 +19,9 @@ import { StudentsComponent } from "./students/student.component";
   declarations: [
     AppComponent,
     DashboardComponent,
-    StudentsComponent
+    StudentsComponent,
+    QuestionComponent,
+    HeaderComponent
   ],
   providers: [ ],
   bootstrap: [ AppComponent ]
