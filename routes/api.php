@@ -16,4 +16,12 @@ use Illuminate\Http\Request;
 Route::prefix('admin')->group(function () {
     Route::post('login', 'Admin\LoginController@login');
     Route::post('info', 'Admin\LoginController@getAuthUser');
+    Route::group(['prefix' => 'students', 'middleware' => ['jwt.auth']], function () {
+        Route::get('/', 'Admin\StudentsController@index');
+    });
+});
+
+
+Route::prefix('student')->group(function () {
+    Route::post('login', 'Student\LoginController@login');
 });
