@@ -5,6 +5,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudentsComponent } from './students/student.component';
 import { QuestionComponent } from './quanlicauhoi/question.component';
 import { AddQuestionComponent } from './quanlicauhoi/addquestion/addquestion.component';
+import { ReViewTestComponent } from './xemlaibaithi/reviewtest.component';
+import { ScoreComponent } from './quanlidiem/score.component';
 
 const routes: Routes = [
   { path: 'login', loadChildren: './auth/login/login.module#LoginModule' },
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'students',  component: StudentsComponent },
   { path: 'question',  component: QuestionComponent },
   { path: 'addquestion',  component: AddQuestionComponent },
+  { path: 'reviewtest',  component: ReViewTestComponent },
+  { path: 'score',  component: ScoreComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent },
 ];

@@ -10,6 +10,8 @@ import { StudentsComponent } from './students/student.component';
 import { QuestionComponent } from './quanlicauhoi/question.component';
 import { HeaderComponent } from './header/header.component';
 import { AddQuestionComponent } from './quanlicauhoi/addquestion/addquestion.component';
+import { ReViewTestComponent } from './xemlaibaithi/reviewtest.component';
+import { ScoreComponent } from './quanlidiem/score.component';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { AddQuestionComponent } from './quanlicauhoi/addquestion/addquestion.com
     StudentsComponent,
     QuestionComponent,
     HeaderComponent,
-    AddQuestionComponent
+    AddQuestionComponent,
+    ReViewTestComponent,
+    ScoreComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
