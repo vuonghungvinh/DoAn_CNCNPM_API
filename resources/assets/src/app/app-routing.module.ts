@@ -7,6 +7,9 @@ import { QuestionComponent } from './quanlicauhoi/question.component';
 import { AddQuestionComponent } from './quanlicauhoi/addquestion/addquestion.component';
 import { ReViewTestComponent } from './xemlaibaithi/reviewtest.component';
 import { ScoreComponent } from './quanlidiem/score.component';
+import { ListExamComponent } from './quanlidethi/xemdethi/listexam.component';
+import { ExamComponent } from './quanlidethi/taodethi/exam.component';
+import { AccountComponent } from './quanlitaikhoan/taikhoan.component';
 
 const routes: Routes = [
   { path: 'login', loadChildren: './auth/login/login.module#LoginModule' },
@@ -17,6 +20,9 @@ const routes: Routes = [
   { path: 'addquestion',  component: AddQuestionComponent },
   { path: 'reviewtest',  component: ReViewTestComponent },
   { path: 'score',  component: ScoreComponent },
+  { path: 'listexam',  component: ListExamComponent },
+  { path: 'createxam',  component: ExamComponent },
+  { path: 'account',  component: AccountComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent },
 ];

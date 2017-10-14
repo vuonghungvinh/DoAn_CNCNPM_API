@@ -12,7 +12,9 @@ import { HeaderComponent } from './header/header.component';
 import { AddQuestionComponent } from './quanlicauhoi/addquestion/addquestion.component';
 import { ReViewTestComponent } from './xemlaibaithi/reviewtest.component';
 import { ScoreComponent } from './quanlidiem/score.component';
-
+import { ListExamComponent } from './quanlidethi/xemdethi/listexam.component';
+import { ExamComponent } from './quanlidethi/taodethi/exam.component';
+import { AccountComponent } from './quanlitaikhoan/taikhoan.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -27,7 +29,10 @@ import { ScoreComponent } from './quanlidiem/score.component';
     HeaderComponent,
     AddQuestionComponent,
     ReViewTestComponent,
-    ScoreComponent
+    ScoreComponent,
+    ListExamComponent,
+    ExamComponent,
+    AccountComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
