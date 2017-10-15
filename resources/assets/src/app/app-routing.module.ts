@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { StudentsComponent } from './students/student.component';
 import { QuestionComponent } from './quanlicauhoi/question.component';
 import { AddQuestionComponent } from './quanlicauhoi/addquestion/addquestion.component';
 import { ReViewTestComponent } from './xemlaibaithi/reviewtest.component';
@@ -17,13 +16,10 @@ import { Xemdanhsachlop } from "./XemDanhSachLopHocPhan/xemdanhsachlop.component
 import { Themlophocphan } from "./ThemLopHocPhan/themlophocphan.component";  
 import { Xemlichthi } from "./Xemlichthi/xemlichthi.component";  
 import { Dangkilichthi } from "./Dangkilichthi/dangkilichthi.component"; 
+import { LoginComponent } from "./login/login.component";
 
 const routes: Routes = [
-  { path: 'login', loadChildren: './auth/login/login.module#LoginModule' },
-  { path: 'forgot', loadChildren: './auth/forgot/forgot.module#ForgotModule' },
-  { path: 'reset', loadChildren: './auth/reset/reset.module#ResetModule' },
-
-  { path: 'students',  component: StudentsComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'question',  component: QuestionComponent },
   { path: 'addquestion',  component: AddQuestionComponent },
   { path: 'reviewtest',  component: ReViewTestComponent },
@@ -38,7 +34,7 @@ const routes: Routes = [
   { path: 'xemdanhsach', component: XemDanhSach },
   { path: 'xemlichthi', component: Xemlichthi },
   { path: 'themsinhvien', component: ThemSinhVien},
-  
+
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent },
 ];
