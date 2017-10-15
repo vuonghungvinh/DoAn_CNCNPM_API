@@ -15,6 +15,18 @@ import { ScoreComponent } from './quanlidiem/score.component';
 import { ListExamComponent } from './quanlidethi/xemdethi/listexam.component';
 import { ExamComponent } from './quanlidethi/taodethi/exam.component';
 import { AccountComponent } from './quanlitaikhoan/taikhoan.component';
+
+import { Themlophocphan } from "./ThemLopHocPhan/themlophocphan.component"; 
+import { XemDanhSach } from "./XemDanhSachSinhVien/xemdanhsach.component";
+import { ThemSinhVien } from "./ThemSinhVien/themsinhvien.component";
+import { Xemdanhsachlop } from "./XemDanhSachLopHocPhan/xemdanhsachlop.component";
+import { Xemlichthi } from "./Xemlichthi/xemlichthi.component"; 
+import { Dangkilichthi } from "./Dangkilichthi/dangkilichthi.component";
+
+
+
+
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -32,7 +44,14 @@ import { AccountComponent } from './quanlitaikhoan/taikhoan.component';
     ScoreComponent,
     ListExamComponent,
     ExamComponent,
-    AccountComponent
+    AccountComponent,
+    XemDanhSach,
+    ThemSinhVien,
+    Xemdanhsachlop,
+    Themlophocphan,
+    Xemlichthi,
+    Dangkilichthi,
+    HeaderComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

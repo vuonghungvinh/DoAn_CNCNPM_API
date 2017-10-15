@@ -11,10 +11,18 @@ import { ListExamComponent } from './quanlidethi/xemdethi/listexam.component';
 import { ExamComponent } from './quanlidethi/taodethi/exam.component';
 import { AccountComponent } from './quanlitaikhoan/taikhoan.component';
 
+import { XemDanhSach } from "./XemDanhSachSinhVien/xemdanhsach.component";
+import { ThemSinhVien } from "./ThemSinhVien/themsinhvien.component";
+import { Xemdanhsachlop } from "./XemDanhSachLopHocPhan/xemdanhsachlop.component";
+import { Themlophocphan } from "./ThemLopHocPhan/themlophocphan.component";  
+import { Xemlichthi } from "./Xemlichthi/xemlichthi.component";  
+import { Dangkilichthi } from "./Dangkilichthi/dangkilichthi.component"; 
+
 const routes: Routes = [
   { path: 'login', loadChildren: './auth/login/login.module#LoginModule' },
   { path: 'forgot', loadChildren: './auth/forgot/forgot.module#ForgotModule' },
   { path: 'reset', loadChildren: './auth/reset/reset.module#ResetModule' },
+
   { path: 'students',  component: StudentsComponent },
   { path: 'question',  component: QuestionComponent },
   { path: 'addquestion',  component: AddQuestionComponent },
@@ -23,6 +31,14 @@ const routes: Routes = [
   { path: 'listexam',  component: ListExamComponent },
   { path: 'createxam',  component: ExamComponent },
   { path: 'account',  component: AccountComponent },
+
+  { path: 'themlophocphan', component : Themlophocphan},
+   { path: 'dangkilichthi', component : Dangkilichthi},
+  { path: 'xemdanhsachlop', component : Xemdanhsachlop},
+  { path: 'xemdanhsach', component: XemDanhSach },
+  { path: 'xemlichthi', component: Xemlichthi },
+  { path: 'themsinhvien', component: ThemSinhVien},
+  
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent },
 ];
