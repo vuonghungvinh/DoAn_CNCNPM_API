@@ -19,45 +19,45 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quản lí sinh viên<b class="caret"></b></a>
                     <ul class="dropdown-menu" style="background: #bdc3c7">
                         <li><a [routerLink]="['/xemdanhsach']">Xem danh sách sinh viên</a></li>
-                        <li><a href="themsinhvien">Thêm sinh viên</a></li>
+                        <li><a [routerLink]="['/themsinhvien']">Thêm sinh viên</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quản lí lớp học phần<b class="caret"></b></a>
                     <ul class="dropdown-menu" style="background: #bdc3c7 ">
-                        <li><a href="xemdanhsachlop">Xem danh sách lớp học phần</a></li>
-                        <li><a href="themlophocphan">Thêm mới lớp học phần</a></li>
+                        <li><a [routerLink]="['/xemdanhsachlop']">Xem danh sách lớp học phần</a></li>
+                        <li><a [routerLink]="['/themlophocphan']">Thêm mới lớp học phần</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quản lí lịch thi<b class="caret"></b></a>
                     <ul class="dropdown-menu" style="background: #bdc3c7">
-                        <li><a href="xemlichthi">Xem lịch thi</a></li>
-                        <li><a href="dangkilichthi">Đăng ký lịch thi</a></li>
+                        <li><a [routerLink]="['/xemlichthi']">Xem lịch thi</a></li>
+                        <li><a [routerLink]="['/dangkilichthi']">Đăng ký lịch thi</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quản lí đề thi<b class="caret"></b></a>
                     <ul class="dropdown-menu" style="background: #bdc3c7">
-                        <li><a href="listexam">Xem danh sách đề thi</a></li>
-                        <li><a href="createxam">Tạo mới đề thi</a></li>
+                        <li><a [routerLink]="['/listexam']">Xem danh sách đề thi</a></li>
+                        <li><a [routerLink]="['/createxam']">Tạo mới đề thi</a></li>
                     </ul>
                 </li>
-                <li><a href="score"> Quản lí điểm</a></li>
+                <li><a [routerLink]="['/score']"> Quản lí điểm</a></li>
                 <li class="dropdown">
                     <a href="question" class="dropdown-toggle" data-toggle="dropdown">Quản lí câu hỏi<b class="caret"></b></a>
                     <ul class="dropdown-menu" style="background: #bdc3c7">
-                        <li><a href="question">Xem ngân hàng câu hỏi</a></li>
-                        <li><a href="addquestion">Tạo mới câu hỏi</a></li>
+                        <li><a [routerLink]="['/question']">Xem ngân hàng câu hỏi</a></li>
+                        <li><a [routerLink]="['/addquestion']">Tạo mới câu hỏi</a></li>
                     </ul>
                 </li>
-                <li><a href="reviewtest">Xem lại bài thi</a></li>
+                <li><a [routerLink]="['/reviewtest']">Xem lại bài thi</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="account">Quan li tai khoan</a></li>
+                  <li><a [routerLink]="['/account']">Quan li tai khoan</a></li>
                   <li><a href="#">Thoat</a></li>
                 </ul>
               </li>
