@@ -2,7 +2,7 @@
 	<div>
 		<h1 class="text-center">Danh Sách Sinh Viên</h1>
 	</div>
-	<div class="row" id="form1">		
+	<div class="row" id="form1">
 		<div class="col-md-6" >
 			<span class="col-md-2" id="chonlop">
 				Chọn lớp
@@ -18,7 +18,7 @@
 				    <label for="exampleInputEmail1">Tìm kiếm sinh viên</label>
 				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
 				</div>
-		
+
 			</div>
 	<div id="danhsach">
 		<table class="table table-bordered">
@@ -29,8 +29,17 @@
         		<th>Lop</th>
         		<th>NgaySinh</th>
         		<th>GioiTinh</th>
-      		</tr>
-		</table>	
+        </tr>
+        <tr *ngFor="let student of students">
+          <td>{{student.id}}</td>
+          <td>{{student.mssv}}</td>
+          <td>{{student.name}}</td>
+          <td>{{student.lop}}</td>
+          <td>{{student.ngaysinh}}</td>
+          <td *ngIf="student.gioitinh==1">Nam</td>
+          <td *ngIf="student.gioitinh!=1">Nu</td>
+        </tr>
+		</table>
 	</div>
-	
+
 </div>

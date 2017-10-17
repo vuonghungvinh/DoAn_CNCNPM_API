@@ -8,11 +8,8 @@
         <button type="button" style="padding: 8px 12px ; font-size: 15px" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Xem theo môn <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Môn A</a></li>
-          <li><a href="#">Môn B</a></li>
-          <li><a href="#">Môn C</a></li>
-          <li><a href="#">Môn D</a></li>
+        <ul class="dropdown-menu" >
+          <li *ngFor="let mon of mamon ; "><a href="#">{{mon.mamon + ' '+ mon.tenmon  }}</a></li>
         </ul>
       </div>
     </div>

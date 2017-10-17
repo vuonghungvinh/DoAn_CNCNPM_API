@@ -9,20 +9,14 @@
         		<th>Ma Mon</th>
         		<th>Ten Mon</th>
         		<th>Xem DS Sinh Vien</th>
-        		
-      		</tr>
-      		<tr>
-      			<th>01</th>
-      			<th>001</th>
-      			<th>Tin Dai Cuong</th>
-      			<th><a href="#">Xem</a></th>
-      		</tr>
-      		<tr>
-      			<th>02</th>
-      			<th>002</th>
-      			<th>Tin Dai Cuong</th>
-      			<th><a href="#">Xem</a></th>
-      		</tr>
-		</table>	
+
+    	</tr>
+      <tr *ngFor="let mon of mon; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{mon.mamon}}</td>
+            <td>{{mon.tenmon}}</td>
+            <td><a href=#> DS</a></td>
+      </tr>
+		</table>
 	</div>
 </div>

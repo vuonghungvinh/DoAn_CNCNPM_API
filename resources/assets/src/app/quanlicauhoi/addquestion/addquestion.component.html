@@ -4,9 +4,7 @@
       <label class='control-label col-md-2 col-md-offset-2' for='id_accomodation'>Chọn môn</label>
       <div class='col-md-3'>
         <select class='form-control' id='id_accomodation'>
-          <option>Hoa</option>
-          <option>Toan</option>
-          <option>Sinh</option>
+          <option *ngFor="let mon of mon">{{mon.mamon + ' ' + mon.tenmon}}</option>
         </select>
       </div>
       <div class="clearfix visible-md-block"></div>

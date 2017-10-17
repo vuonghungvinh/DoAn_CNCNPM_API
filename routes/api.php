@@ -19,6 +19,7 @@ Route::prefix('admin')->group(function () {
     Route::group(['prefix' => 'students', 'middleware' => ['jwt.auth']], function () {
         Route::get('/', 'Admin\StudentsController@index');
     });
+    Route::get('/mon', 'MonController@index');
 });
 
 
