@@ -1,90 +1,53 @@
 <div class='panel-body'>
-  <form class='form-horizontal' role='form'>
+  <form role="form" (ngSubmit)="addQuestion(f.value)" #f = "ngForm" class='form-horizontal col-md-6 col-md-offset-3' role='form'>
     <div class='form-group'>
-      <label class='control-label col-md-2 col-md-offset-2' for='id_accomodation'>Chọn môn</label>
-      <div class='col-md-3'>
-        <select class='form-control' id='id_accomodation'>
-          <option *ngFor="let mon of mon">{{mon.mamon + ' ' + mon.tenmon}}</option>
+      <label class='control-label col-md-2 ' for='id_accomodation'>Chọn môn</label>
+      <div class='col-md-10'>
+        <select #name="ngModel" name="mamon" class='form-control' id='id_accomodation' ngModel>
+          <option value="{{mon.id}}" *ngFor="let mon of mon">{{mon.id + ' ' + mon.tenmon}}</option>
         </select>
       </div>
       <div class="clearfix visible-md-block"></div>
     </div>
     <div class='form-group'>
-      <label class='control-label col-md-2 col-md-offset-2' for='id_adults'>Mã câu hỏi</label>
-      <div class='col-md-8'>
-        <div class='col-md-4'>
-          <div class='form-group internal'>
-            <input class='form-control col-md-8' id='id_adults' placeholder='001' type='number'>
-          </div>
-        </div>
+      <label class='control-label col-md-2 ' for='id_noidung'>Nội dung</label>
+      <div class='col-md-10'>
+        <textarea #name='ngModel' name='noidungcauhoi' ngModel class='form-control' id='id_noidung' rows='3'></textarea>
       </div>
     </div>
     <div class='form-group'>
-      <label class='control-label col-md-2 col-md-offset-2' for='id_noidung'>Nội dung</label>
-      <div class='col-md-6'>
-        <textarea class='form-control' id='id_noidung' rows='3'></textarea>
+      <div class="col-md-10 col-md-offset-2">
+        <div class="row" *ngFor="let dapan of list_dapan;let i = index">
+          <label class='control-label col-md-2' for='id_A'>{{dapan.ten}}</label>
+          <div class='col-md-10'>
+            <div class='form-group internal input-group'>
+              <input [(ngModel)] = "dapan.noi_dung" name="noi_dung" class='form-control' id='id_A'>
+            </div>
+            <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_slide_switch'>
+              <input [(ngModel)]="dapan.is_true" id='id_slide' name="is_true" type='checkbox' value='chk_hydro'>
+            </div>
+          </div>
+        </div>
+        <button (click)="add_dapan()">+</button>
+        <button (click)="remove_dapan()">-</button>
       </div>
     </div>
     <div class='form-group'>
-      <label class='control-label col-md-2 col-md-offset-2' for='id_A'>Câu A:</label>
-      <div class='col-md-8'>
-        <div class='col-md-3'>
-          <div class='form-group internal input-group'>
-            <input class='form-control datepicker' id='id_A'>
-          </div>
-          <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_slide_switch'>
-            <input id='id_slide' type='checkbox' value='chk_hydro'>
-          </div>
-        </div>
-        <label class='control-label col-md-2' for='id_B'>Câu B:</label>
-        <div class='col-md-3'>
-          <div class='form-group internal input-group'>
-            <input class='form-control datepicker' id='id_B'>
-          </div>
-          <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_slide_switch'>
-            <input id='id_slide' type='checkbox' value='chk_hydro'>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class='form-group'>
-      <label class='control-label col-md-2 col-md-offset-2' for='id_C'>Câu C:</label>
-      <div class='col-md-8'>
-        <div class='col-md-3'>
-          <div class='form-group internal input-group'>
-            <input class='form-control datepicker' id='id_C'>
-          </div>
-          <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_slide_switch'>
-            <input id='id_slide' type='checkbox' value='chk_hydro'>
-          </div>
-        </div>
-        <label class='control-label col-md-2' for='id_D'>Câu D:</label>
-        <div class='col-md-3'>
-          <div class='form-group internal input-group'>
-            <input class='form-control datepicker' id='id_D'>
-          </div>
-          <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_slide_switch'>
-            <input id='id_slide' type='checkbox' value='chk_hydro'>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class='form-group'>
-      <label class='control-label col-md-2 col-md-offset-2' for='id_mucdo'>Mức độ</label>
+      <label class='control-label col-md-2' for='id_mucdo'>Mức độ</label>
       <div class='col-md-8'>
         <div class='col-md-3'>
           <div class='form-group internal'>
-            <select class='form-control' id='id_equipment'>
-              <option>Easy</option>
-              <option>Nomal</option>
-              <option>Hard</option>
+            <select #name='ngModel' name='dokho' class='form-control' id='id_equipment' ngModel>
+              <option value=1>Easy</option>
+              <option value=2>Nomal</option>
+              <option value=3>Hard</option>
             </select>
           </div>
         </div>
       </div>
     </div>
     <div class='form-group'>
-      <div class='col-md-offset-4 col-md-3'>
+      <div class=' col-md-3'>
         <button class='btn-lg btn-primary' type='submit'>Submit</button>
       </div>
       <div class='col-md-3'>

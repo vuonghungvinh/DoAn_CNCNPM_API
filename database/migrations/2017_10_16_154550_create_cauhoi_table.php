@@ -15,13 +15,8 @@ class CreateCauhoiTable extends Migration
     {
         Schema::create('cauhoi', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('macauhoi', 69)->unique();
-            $table->string('mamon');
+            $table->integer('mamon');
             $table->text('noidung');
-            $table->text('caua');
-            $table->text('caub');
-            $table->text('cauc');
-            $table->text('caud');
             $table->string('dapan');
             $table->integer('mucdo');
             $table->timestamps();

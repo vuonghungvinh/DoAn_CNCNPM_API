@@ -12,7 +12,9 @@ constructor(private _http: Http) {
     getMaMon() {
         return this._http.get('/api/admin/mon', this.jwt()).map( result => result.json());
     }
-
+    addQuestion(data: any): Observable<any>{
+      return this._http.post('/api/admin/question/add', data, this.jwt()).map((response: Response)=> response.json());
+    }
 	// getUser() {
 	// 	let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     //     if (currentUser && currentUser.api_token) {
