@@ -24,7 +24,7 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('student')->group(function () {
     Route::post('login', 'Student\LoginController@login');
-    Route::group(['prefix' => 'v1', 'middleware' => ['auth.api']], function(){
-        Route::post('details', 'Student\LoginController@details');
+    Route::group(['prefix' => 'v1'], function(){
+        Route::post('details', 'Student\LoginController@details')->middleware('auth:api');
     });
 });
