@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Question;
 use App\DapAn;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Validator;
 
@@ -18,6 +19,15 @@ class QuestionController extends Controller
     public function index()
     {
         //
+        // $listquestion = Question::all();
+        // return response()->json(['listquestion'=>$listquestion]);
+        // $listquestion = DB::table('cauhoi')
+        // ->join('mon','cauhoi.mamon', '=', 'mon.id')
+        // ->join('dapan', 'cauhoi.id', '=', 'dapan.macauhoi')
+        // ->select('cauhoi.noidungcauhoi','cauhoi.dapan','cauhoi.mucdo','mon.id','mon.tenmon','dapan.tendapan','dapan.noidungdapan','dapan.id','dapan.macauhoi')
+        // ->get();
+        $listquestion = Question::with(['listdapan', 'mon'])->get();
+        return response()->json(['listquestion'=>$listquestion]);
     }
 
     /**
@@ -41,7 +51,7 @@ class QuestionController extends Controller
         //
         $cauhoi = new Question;
         $cauhoi->mamon = $request->mamon;
-        $cauhoi->noidung = $request->noidungcauhoi;
+        $cauhoi->noidungcauhoi = $request->noidungcauhoi;
         $cauhoi->mucdo = $request->dokho;
         $cauhoi->dapan = '';
         $cauhoi->save();
@@ -51,7 +61,7 @@ class QuestionController extends Controller
             $da = new DapAn;
             $da->macauhoi =$id_cauhoi;
             $da->tendapan = $dapan['ten'];
-            $da->noidung = $dapan['noi_dung'];
+            $da->noidungdapan = $dapan['noi_dung'];
             $da->save();
             if ($dapan['is_true']){
               $dapan_dung .= strval($da->id);//'1', '1,3'

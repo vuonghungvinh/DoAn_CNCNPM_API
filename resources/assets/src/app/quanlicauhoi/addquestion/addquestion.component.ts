@@ -64,8 +64,9 @@ constructor(
     else{
       console.log(value);
       value['list_dap_an'] = this.list_dapan;
-      alert("Thêm câu hỏi thành công.");
+
       this.taomoicauhoi.addQuestion(value).subscribe(data=>{
+        alert("Thêm câu hỏi thành công.");
         this.router.navigate(['/question']);
       });
     }

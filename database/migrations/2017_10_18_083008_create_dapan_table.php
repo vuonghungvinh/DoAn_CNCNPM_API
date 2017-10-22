@@ -17,7 +17,7 @@ class CreateDapanTable extends Migration
             $table->increments('id');
             $table->integer('macauhoi');
             $table->string('tendapan');
-            $table->string('noidung');
+            $table->string('noidungdapan');
             $table->timestamps();
         });
     }

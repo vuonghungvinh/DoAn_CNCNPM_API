@@ -22,6 +22,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/mon', 'MonController@index');
     Route::group(['prefix' => 'question', 'middleware' => ['jwt.auth']], function () {
         Route::post('/add','Admin\QuestionController@store');
+        Route::get('/listquestion','Admin\QuestionController@index');
     });
 });
 

@@ -15,7 +15,7 @@ class DapAnTableSeeder extends Seeder
         DB::table('dapan')->insert([
           'macauhoi' => '1',
           'tendapan' => 'Cau A',
-          'noidung' => 'Thu 2',
+          'noidungdapan' => 'Thu 2',
       ]);
     }
 }

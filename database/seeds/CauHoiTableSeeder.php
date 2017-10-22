@@ -14,7 +14,7 @@ class CauHoiTableSeeder extends Seeder
         //
         DB::table('cauhoi')->insert([
           'mamon' => '1',
-          'noidung' => 'Hom nay la thu may',
+          'noidungcauhoi' => 'Hom nay la thu may',
           'dapan' => 'Cau A',
           'mucdo' => '1',
       ]);
