@@ -22,6 +22,7 @@ import { Xemdanhsachlop } from "./XemDanhSachLopHocPhan/xemdanhsachlop.component
 import { Xemlichthi } from "./Xemlichthi/xemlichthi.component"; 
 import { Dangkilichthi } from "./Dangkilichthi/dangkilichthi.component";
 import { LoginComponent }  from "./login/login.component";
+import { Danhsachsinhvien } from "./Sinhvienoflophocphan/danhsachsinhvien.component";
 
 
 
@@ -51,7 +52,8 @@ import { LoginComponent }  from "./login/login.component";
     Xemlichthi,
     Dangkilichthi,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    Danhsachsinhvien
   ],
   providers: [],
   bootstrap: [AppComponent]

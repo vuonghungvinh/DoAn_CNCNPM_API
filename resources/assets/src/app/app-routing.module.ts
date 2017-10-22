@@ -17,6 +17,7 @@ import { Themlophocphan } from "./ThemLopHocPhan/themlophocphan.component";
 import { Xemlichthi } from "./Xemlichthi/xemlichthi.component";  
 import { Dangkilichthi } from "./Dangkilichthi/dangkilichthi.component"; 
 import { LoginComponent } from "./login/login.component";
+import { Danhsachsinhvien } from "./Sinhvienoflophocphan/danhsachsinhvien.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -29,11 +30,12 @@ const routes: Routes = [
   { path: 'account',  component: AccountComponent },
 
   { path: 'themlophocphan', component : Themlophocphan},
-   { path: 'dangkilichthi', component : Dangkilichthi},
+  { path: 'dangkilichthi', component : Dangkilichthi},
   { path: 'xemdanhsachlop', component : Xemdanhsachlop},
   { path: 'xemdanhsach', component: XemDanhSach },
   { path: 'xemlichthi', component: Xemlichthi },
   { path: 'themsinhvien', component: ThemSinhVien},
+  { path: 'danhsachsinhvien/:id', component: Danhsachsinhvien },
 
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent },

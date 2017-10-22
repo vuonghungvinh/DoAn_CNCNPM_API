@@ -6,23 +6,18 @@
 		<table class="table table-bordered">
 			<tr>
         		<th>STT</th>
-        		<th>Ma Mon</th>
-        		<th>Ten Mon</th>
-        		<th>Xem DS Sinh Vien</th>
+        		<th>Mã Môn</th>
+        		<th>Tên Môn</th>
+        		<th>Xem Danh Sách Sinh Viên</th>
         		
+      	</tr>
+      		<tr *ngFor="let lophocphan of lophocphans">
+      			<td>{{lophocphan.id}}</td>
+      			<td>{{lophocphan.mamon}}</td>
+      			<td>{{lophocphan.mon.tenmon}}</td>
+      			<td><a [routerLink]="['/danhsachsinhvien', lophocphan.mamon]">Xem</a></td>
       		</tr>
-      		<tr>
-      			<th>01</th>
-      			<th>001</th>
-      			<th>Tin Dai Cuong</th>
-      			<th><a href="#">Xem</a></th>
-      		</tr>
-      		<tr>
-      			<th>02</th>
-      			<th>002</th>
-      			<th>Tin Dai Cuong</th>
-      			<th><a href="#">Xem</a></th>
-      		</tr>
+      		
 		</table>	
 	</div>
 </div>
