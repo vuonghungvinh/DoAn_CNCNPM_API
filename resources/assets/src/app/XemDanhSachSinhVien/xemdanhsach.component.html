@@ -1,0 +1,47 @@
+<div class="container">
+	<div>
+		<h1 class="text-center">Danh Sách Sinh Viên</h1>
+	</div>
+	<div class="row" id="form1">		
+		<div class="col-md-6" >
+			<span class="col-md-2" id="chonlop">
+				Chọn lớp
+			</span>
+  			<select>
+  				<option *ngFor="let lops of students">{{lops.lop}}</option>
+  				
+  			</select>
+		</div>
+			<div class="col-md-6">
+				<div class="form-group" >
+				    <label for="exampleInputEmail1">Tìm kiếm sinh viên</label>
+				    <input type="text" class="form-control" id="exampleInputEmail1">
+				</div>
+		
+			</div>
+	<div id="danhsach">
+		<table class="table table-bordered">
+			<tr>
+        		<th>STT</th>
+        		<th>MSSV</th>
+        		<th>Tên</th>
+        		<th>Lớp</th>
+        		<th>Trạng Thái</th>
+        		<th>Ngày Sinh</th>
+        		<th>Gioi Tính</th>
+      		</tr>
+      		<tr *ngFor="let student of students">
+      			<td> {{student.id}} </td>
+      			<td> {{student.mssv}} </td>
+      			<td> {{student.name}} </td>
+      			<td> {{student.lop}} </td>
+      			<td *ngIf="student.trangthai ==1">Đang học</td>
+				<td *ngIf="student.trangthat ==0">Đã học</td>
+				<td> {{student.ngaysinh}}</td>
+				<td *ngIf="student.gioitinh ==1">Nam</td>
+				<td *ngIf="student.gioitinh ==0">Nữ</td>
+      		</tr> 
+		</table>	
+	</div>
+	
+</div>

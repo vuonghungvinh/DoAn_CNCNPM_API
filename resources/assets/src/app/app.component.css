@@ -13,9 +13,10 @@ nav a {
   text-decoration: none;
   margin-top: 10px;
   display: inline-block;
-  background-color: #eee;
+  background-color: black;
   border-radius: 4px;
 }
+
 nav a:visited, a:link {
   color: #607D8B;
 }
@@ -26,7 +27,27 @@ nav a:hover {
 nav a.active {
   color: #039be5;
 }
+.navbar-brand{
+  height: initial;
+}
+.navbar-default{
+  background: red;
+}
+#footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+label.text-center{
+      padding-left: 236px;
+    text-align: center;
+    padding-top: 27px;
+    font-size: 20px;
+    padding-bottom: 2px;
+  
 
+}
+ 
 
 /*
 Copyright 2017 Google Inc. All Rights Reserved.

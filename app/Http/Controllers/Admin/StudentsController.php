@@ -37,7 +37,18 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $students=new Students;
+        $students->name = $request->name;
+        $students->gioitinh = $request->gioitinh;
+        $students->lop = $request->lop;
+        $students->mssv = $request->mssv;
+        $students->ngaysinh = $request->ngaysinh;
+        $students->trangthai =true;
+        $students->diachi="Ha tinh";
+        $students->password=bcrypt('123456');
+        $students->save();
+        return response()->json(['status' => 200]);
     }
 
     /**
