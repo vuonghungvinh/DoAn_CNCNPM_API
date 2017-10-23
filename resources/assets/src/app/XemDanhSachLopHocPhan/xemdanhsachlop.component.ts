@@ -1,27 +1,25 @@
-import { Component } from '@angular/core';
-import { LophocphanService } from '../services/lophocphan.service';
-import { Router } from "@angular/router";
-
+import { Component, OnInit } from '@angular/core';
+import { LopHocPhan } from '../services/xemdanhsachlophocphan';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'xemdanhsach-lop',
   templateUrl: './xemdanhsachlop.component.html',
   styleUrls: ['./xemdanhsachlop.component.scss'],
-  providers : [LophocphanService]
+  providers: [LopHocPhan]
 })
-export class Xemdanhsachlop  { 
-	constructor(
-			private lophocphanservice:LophocphanService,
-			
-			){}
-	public lophocphans :any[];
-	ngOnInit(){
-		console.log();
-		this.lophocphanservice.getlophocphan().subscribe(data => {
-			console.log(data);
-			this.lophocphans=data['lophocphan'];
-			},error => {
-            console.log(error);
-        });
-	}
+
+export class Xemdanhsachlop implements OnInit {
+  constructor(
+    private lopHocPhan: LopHocPhan) {
+
 }
+public mon: any[];
+ngOnInit() {
+    this.lopHocPhan.getLopHocPhan().subscribe(data => {
+      this.mon = data['mon'];
+    }, error => {
+        console.log(error);
+    });
+}
+ }

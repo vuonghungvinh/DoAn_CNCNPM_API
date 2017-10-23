@@ -8,11 +8,8 @@
         <button type="button" style="padding: 8px 12px ; font-size: 15px" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Xem theo môn <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Môn A</a></li>
-          <li><a href="#">Môn B</a></li>
-          <li><a href="#">Môn C</a></li>
-          <li><a href="#">Môn D</a></li>
+        <ul class="dropdown-menu" >
+          <li *ngFor="let mon of mamon ; "><a href="#">{{mon.id + ' '+ mon.tenmon  }}</a></li>
         </ul>
       </div>
     </div>
@@ -20,43 +17,26 @@
   <div class="table-question form-group">
     <table class="table table-bordered" style="margin-top: 50px; margin-bottom: 100px">
       <tr>
-          <th>STT</th>
-          <th style="text-align: center"><label>Nội Dung</label></th>
-          <th>Đáp Án</th>
-          <th>Mức Độ</th>
+        <th>STT</th>
+        <th style="text-align: center"><label>Nội Dung</label></th>
+        <th>Môn</th>
+        <th>Đáp Án</th>
+        <th>#</th>
       </tr>
-      <tr>
-          <td>1</td>
-          <td>
-            <div>
-                <p>Hãy cho biết đâu là  ngôn ngữ bạn thích nhất?</p>
-                <p>A:Java &emsp; &#09; B:C#&emsp; &#09; C: Python</p>
-            </div>
-          </td>
-          <td>A:Java</td>
-          <td>Nomal</td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td>
-            <div>
-                <p>Hãy cho biết đâu là  ngôn ngữ bạn thích nhất?</p>
-                <p>A:Java &emsp; &#09; B:C#&emsp; &#09; C: Python</p>
-            </div>
-          </td>
-          <td>A:Java</td>
-          <td>Nomal</td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td>
-            <div>
-                <p>Hãy cho biết đâu là  ngôn ngữ bạn thích nhất?</p>
-                <p>A:Java &emsp; &#09; B:C#&emsp; &#09; C: Python</p>
-            </div>
-          </td>
-          <td>A:Java</td>
-          <td>Nomal</td>
+      <tr *ngFor="let cauhoi  of listcauhoi;let i = index">
+        <td>{{i}}</td>
+        <td >
+          <div>
+              <p>{{cauhoi.noidungcauhoi}}</p>
+              <p *ngFor="let listdapan of cauhoi.listdapan">{{listdapan.tendapan}}: {{listdapan.noidungdapan}}</p>
+          </div>
+        </td>
+        <td>{{cauhoi.mon.tenmon}}</td>
+        <td>
+          <p style="white-space: pre">{{getDapan(cauhoi.listdapan, cauhoi.dapan)}}</p>
+        </td>
+        <td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
       </tr>
     </table>
   </div>

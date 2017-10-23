@@ -1,7 +1,5 @@
 <?php
-
 use Illuminate\Database\Seeder;
-
 class MonTableSeeder extends Seeder
 {
     /**
@@ -11,10 +9,14 @@ class MonTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('mon')->insert([
-            'mamon' => '01',
-            'tenmon' => 'Tin dai cuong',
-            
-        ]);
+      DB::table('mon')->insert([
+        'tenmon' => 'Java',
+    ]);
+      DB::table('mon')->insert([
+        'tenmon' => 'Lap Trinh Mang',
+    ]);
+      DB::table('mon')->insert([
+        'tenmon' => 'Cong Nghe Web',
+    ]);
     }
 }
