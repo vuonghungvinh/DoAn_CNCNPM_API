@@ -23,8 +23,10 @@ import { Xemlichthi } from "./Xemlichthi/xemlichthi.component";
 import { Dangkilichthi } from "./Dangkilichthi/dangkilichthi.component";
 import { LoginComponent }  from "./login/login.component";
 import { Danhsachsinhvien } from "./Sinhvienoflophocphan/danhsachsinhvien.component";
-
-
+import { AlertService } from "./services/alert.service";
+import { AuthGurad } from "./guards/auth.guard";
+import { AlertComponent } from "./alert/alert.component";
+import { AuthenticationService } from "./services/authentication.service";
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { Danhsachsinhvien } from "./Sinhvienoflophocphan/danhsachsinhvien.compon
   ],
   declarations: [
     AppComponent,
+    AlertComponent,
     DashboardComponent,
     QuestionComponent,
     HeaderComponent,
@@ -55,7 +58,11 @@ import { Danhsachsinhvien } from "./Sinhvienoflophocphan/danhsachsinhvien.compon
     LoginComponent,
     Danhsachsinhvien
   ],
-  providers: [],
+  providers: [
+    AlertService,
+    AuthGurad,
+    AuthenticationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

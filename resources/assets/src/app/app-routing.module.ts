@@ -18,27 +18,28 @@ import { Xemlichthi } from "./Xemlichthi/xemlichthi.component";
 import { Dangkilichthi } from "./Dangkilichthi/dangkilichthi.component"; 
 import { LoginComponent } from "./login/login.component";
 import { Danhsachsinhvien } from "./Sinhvienoflophocphan/danhsachsinhvien.component";
+import { AuthGurad } from "./guards/auth.guard";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'question',  component: QuestionComponent },
-  { path: 'addquestion',  component: AddQuestionComponent },
-  { path: 'reviewtest',  component: ReViewTestComponent },
-  { path: 'score',  component: ScoreComponent },
-  { path: 'listexam',  component: ListExamComponent },
-  { path: 'createxam',  component: ExamComponent },
-  { path: 'account',  component: AccountComponent },
+  { path: 'question',  component: QuestionComponent, canActivate: [AuthGurad] },
+  { path: 'addquestion',  component: AddQuestionComponent, canActivate: [AuthGurad] },
+  { path: 'reviewtest',  component: ReViewTestComponent, canActivate: [AuthGurad] },
+  { path: 'score',  component: ScoreComponent, canActivate: [AuthGurad] },
+  { path: 'listexam',  component: ListExamComponent, canActivate: [AuthGurad] },
+  { path: 'createxam',  component: ExamComponent, canActivate: [AuthGurad] },
+  { path: 'account',  component: AccountComponent, canActivate: [AuthGurad] },
 
-  { path: 'themlophocphan', component : Themlophocphan},
-  { path: 'dangkilichthi', component : Dangkilichthi},
-  { path: 'xemdanhsachlop', component : Xemdanhsachlop},
-  { path: 'xemdanhsach', component: XemDanhSach },
-  { path: 'xemlichthi', component: Xemlichthi },
-  { path: 'themsinhvien', component: ThemSinhVien},
-  { path: 'danhsachsinhvien/:id', component: Danhsachsinhvien },
+  { path: 'themlophocphan', component : Themlophocphan, canActivate: [AuthGurad] },
+  { path: 'dangkilichthi', component : Dangkilichthi, canActivate: [AuthGurad]},
+  { path: 'xemdanhsachlop', component : Xemdanhsachlop, canActivate: [AuthGurad] },
+  { path: 'xemdanhsach', component: XemDanhSach, canActivate: [AuthGurad] },
+  { path: 'xemlichthi', component: Xemlichthi, canActivate: [AuthGurad] },
+  { path: 'themsinhvien', component: ThemSinhVien, canActivate: [AuthGurad] },
+  { path: 'danhsachsinhvien/:id', component: Danhsachsinhvien, canActivate: [AuthGurad] },
 
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard',  component: DashboardComponent },
+  { path: 'dashboard',  component: DashboardComponent, canActivate: [AuthGurad] },
 ];
 
 @NgModule({

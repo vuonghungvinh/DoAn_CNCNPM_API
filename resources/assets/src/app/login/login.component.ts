@@ -11,8 +11,11 @@ import { Router } from "@angular/router";
 export class LoginComponent{
     constructor(
         private authentication: AuthenticationService,
-        private router: Router){
-
+        private router: Router
+    ){
+        if (localStorage.getItem("currentUser")){
+            this.router.navigate(['/']);
+        }
     }
     login(value) {
         console.log(value);
