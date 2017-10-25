@@ -16,3 +16,14 @@
     font-weight: 600;
     color: #777;
   }
+  table {
+    white-space: pre-line;
+    text-align: center;
+    margin-top: 50px; margin-bottom: 100px;
+}
+.table-bordered>tbody>tr>th{
+  text-align: center;
+}
+.glyphicon{
+  line-height: 4;
+}
