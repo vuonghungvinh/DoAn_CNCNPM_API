@@ -32,12 +32,15 @@ constructor(
        if (!this.list_dapan[i].is_true){
           this.countlist+=1;
         }
-        else if(this.list_dapan[i].is_true) {
+        else  {
           this.countlist-=1;
         }
         if (this.countlist == this.list_dapan.length){
           alert("Hãy chọn ít nhất một đáp án sai. ");
+          this.countlist-=1;
+          return false;
         }
+        return true;
   }
   add_dapan() {
     if (this.list_dapan.length < 6){
@@ -47,19 +50,18 @@ constructor(
   }
 
   remove_dapan() {
-    if (this.list_dapan.length > 2) {
+    if (this.list_dapan[this.list_dapan.length-1].is_true) this.countlist-=1;
+    if (this.list_dapan.length >= 2 && (this.countlist < (this.list_dapan.length-1))) {
+
       this.list_dapan.splice(this.list_dapan.length - 1, 1);
       this.biendem -=1;
     }
+    else alert("Bỏ chọn một đáp án đúng.");
   }
   addQuestion(value: any) {
     if (this.countlist == 0){
      alert("Chọn ít nhất một đáp án đúng.");
      return false;
-    }
-    else if(this.countlist == this.list_dapan.length){
-      alert("Không thể chọn tất cả đáp án đều đúng. ");
-      return false;
     }
     else{
       console.log(value);
