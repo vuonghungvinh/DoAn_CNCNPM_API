@@ -18,7 +18,6 @@ class CreateCauhoiTable extends Migration
             $table->integer('mamon');
             $table->text('noidungcauhoi');
             $table->string('dapan');
-            $table->integer('mucdo');
             $table->timestamps();
         });
     }

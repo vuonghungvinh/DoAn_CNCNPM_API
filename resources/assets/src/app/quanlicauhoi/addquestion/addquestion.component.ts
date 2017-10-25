@@ -19,8 +19,8 @@ constructor(
   public biendem = 2;
   public countlist = 0;
   public list_dapan = [
-    { ten: 'Cau '+this.cau[0], noi_dung: '', is_true: false },
-    { ten: 'Cau '+this.cau[1], noi_dung: '', is_true: false },
+    { ten: this.cau[0], noi_dung: '', is_true: false },
+    { ten: this.cau[1], noi_dung: '', is_true: false },
   ];
   public mon: any[];
   ngOnInit() {
@@ -44,19 +44,18 @@ constructor(
   }
   add_dapan() {
     if (this.list_dapan.length < 6){
-      this.list_dapan.push({ ten: 'Cau '+this.cau[this.biendem], noi_dung: '', is_true: false });
+      this.list_dapan.push({ ten: this.cau[this.biendem], noi_dung: '', is_true: false });
       this.biendem +=1;
     }
   }
 
   remove_dapan() {
     if (this.list_dapan[this.list_dapan.length-1].is_true) this.countlist-=1;
-    if (this.list_dapan.length >= 2 && (this.countlist < (this.list_dapan.length-1))) {
+    if (this.list_dapan.length > 2 && (this.countlist < (this.list_dapan.length-1))) {
 
       this.list_dapan.splice(this.list_dapan.length - 1, 1);
       this.biendem -=1;
     }
-    else alert("Bỏ chọn một đáp án đúng.");
   }
   addQuestion(value: any) {
     if (this.countlist == 0){

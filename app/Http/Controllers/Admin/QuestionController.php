@@ -52,7 +52,6 @@ class QuestionController extends Controller
         $cauhoi = new Question;
         $cauhoi->mamon = $request->mamon;
         $cauhoi->noidungcauhoi = $request->noidungcauhoi;
-        $cauhoi->mucdo = $request->dokho;
         $cauhoi->dapan = '';
         $cauhoi->save();
         $id_cauhoi = $cauhoi->id;
@@ -64,7 +63,7 @@ class QuestionController extends Controller
             $da->noidungdapan = $dapan['noi_dung'];
             $da->save();
             if ($dapan['is_true']){
-              $dapan_dung .= strval($da->id);//'1', '1,3'
+              $dapan_dung .= strval($da->id).',';//'1', '1,3'
             }
         }
         //update bang cau hoi field dapan=$dapan_dung

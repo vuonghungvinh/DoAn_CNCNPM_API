@@ -26,7 +26,7 @@ export class ThemSinhVien  {
 	this.sinhvienservice.addstudents(value).subscribe(data=>{
     console.log(data);
     alert("Thêm sinh viên thành công");
-    this.router.navigate(['/question']);
+    this.router.navigate(['/xemdanhsach']);
 
 	});
 	// this.router.navigate(['xemdanhsach']);
