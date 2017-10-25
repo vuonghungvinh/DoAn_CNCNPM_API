@@ -6,14 +6,12 @@
 		<table class="table table-bordered">
 			<tr>
         		<th>STT</th>
-        		<th>Ma Mon</th>
         		<th>Ten Mon</th>
         		<th>Xem DS Sinh Vien</th>
 
     	</tr>
       <tr *ngFor="let mon of mon; let i = index">
-            <td>{{i+1}}</td>
-            <td>{{mon.mamon}}</td>
+            <td>{{mon.id}}</td>
             <td>{{mon.tenmon}}</td>
             <td><a href=#> DS</a></td>
       </tr>

@@ -17,15 +17,16 @@
   <div class="table-responsive">
     <table class="table table-bordered">
       <tr>
-        <th>STT</th>
-        <th><label>Nội Dung</label></th>
-        <th>Môn</th>
-        <th>Đáp Án</th>
-        <th>#</th>
+        <th class="col-md-1 tcenter">STT</th>
+        <th class="col-md-7 tcenter" ><label>Nội Dung</label></th>
+        <th class="col-md-2 tcenter">Môn</th>
+        <th class="col-md-1 tcenter">Đáp Án</th>
+        <th class="col-md-1 tcenter">#</th>
       </tr>
       <tr *ngFor="let cauhoi  of listcauhoi;let i = index">
         <td>{{i}}</td>
-        <td>{{cauhoi.noidungcauhoi}}
+        <td style="text-align: left">{{cauhoi.noidungcauhoi}}
+            Đáp án:
           <p *ngFor="let listdapan of cauhoi.listdapan">{{listdapan.tendapan}}: {{listdapan.noidungdapan}}</p>
         </td>
         <td>
@@ -34,8 +35,11 @@
         <td>
           <p>{{getDapan(cauhoi.listdapan, cauhoi.dapan)}}</p>
         </td>
-        <td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+        <td>
+          <div class="row">
+             <a href="#"><span class="glyphicon glyphicon-pencil"></span></a><a href="#">   <span class="glyphicon glyphicon-trash"></span></a>
+          </div>
+      </td>
       </tr>
     </table>
   </div>

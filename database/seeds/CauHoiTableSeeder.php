@@ -16,7 +16,6 @@ class CauHoiTableSeeder extends Seeder
           'mamon' => '1',
           'noidungcauhoi' => 'Hom nay la thu may',
           'dapan' => 'Cau A',
-          'mucdo' => '1',
       ]);
     }
 }
