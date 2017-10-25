@@ -14,26 +14,25 @@
       </div>
     </div>
   </div>
-  <div class="table-question form-group">
-    <table class="table table-bordered" style="margin-top: 50px; margin-bottom: 100px">
+  <div class="table-responsive">
+    <table class="table table-bordered">
       <tr>
         <th>STT</th>
-        <th style="text-align: center"><label>Nội Dung</label></th>
+        <th><label>Nội Dung</label></th>
         <th>Môn</th>
         <th>Đáp Án</th>
         <th>#</th>
       </tr>
       <tr *ngFor="let cauhoi  of listcauhoi;let i = index">
         <td>{{i}}</td>
-        <td >
-          <div>
-              <p>{{cauhoi.noidungcauhoi}}</p>
-              <p *ngFor="let listdapan of cauhoi.listdapan">{{listdapan.tendapan}}: {{listdapan.noidungdapan}}</p>
-          </div>
+        <td>{{cauhoi.noidungcauhoi}}
+          <p *ngFor="let listdapan of cauhoi.listdapan">{{listdapan.tendapan}}: {{listdapan.noidungdapan}}</p>
         </td>
-        <td>{{cauhoi.mon.tenmon}}</td>
         <td>
-          <p style="white-space: pre">{{getDapan(cauhoi.listdapan, cauhoi.dapan)}}</p>
+          {{cauhoi.mon.tenmon}}
+        </td>
+        <td>
+          <p>{{getDapan(cauhoi.listdapan, cauhoi.dapan)}}</p>
         </td>
         <td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
         <a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
