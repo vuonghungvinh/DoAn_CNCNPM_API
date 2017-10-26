@@ -1,15 +1,15 @@
 <div class="panel-body" style="margin-top: 100px">
   <div class="row">
     <div class="col-md-6" if="all">
-      <button type="button" class="btn btn-primary btn-lg active" style="font-size: 15px">Xem tất cả</button>
+      <button type="button" (click)="getAllMon()" class="btn btn-primary btn-lg active" style="font-size: 15px">Xem tất cả</button>
     </div>
     <div class="col-md-6">
       <div class="btn-group" >
-        <button type="button" style="padding: 8px 12px ; font-size: 15px" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button"  style="padding: 8px 12px ; font-size: 15px" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Xem theo môn <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" >
-          <li *ngFor="let mon of mamon ; "><a href="#">{{mon.id + ' '+ mon.tenmon  }}</a></li>
+          <li *ngFor="let mon of mon"><a href="javascript:void(0)" (click)="getCauHoiMon(mon.id)" >{{mon.tenmon}}</a></li>
         </ul>
       </div>
     </div>
@@ -24,7 +24,7 @@
         <th class="col-md-1 tcenter">#</th>
       </tr>
       <tr *ngFor="let cauhoi  of listcauhoi;let i = index">
-        <td>{{i}}</td>
+        <td>{{i+1}}</td>
         <td style="text-align: left">{{cauhoi.noidungcauhoi}}
             Đáp án:
           <p *ngFor="let listdapan of cauhoi.listdapan">{{listdapan.tendapan}}: {{listdapan.noidungdapan}}</p>
@@ -37,7 +37,7 @@
         </td>
         <td>
           <div class="row">
-             <a href="#"><span class="glyphicon glyphicon-pencil"></span></a><a href="#">   <span class="glyphicon glyphicon-trash"></span></a>
+             <a href="javascript:void(0)" (click)="deleteQuestion(cauhoi.id, i)" ><span class="glyphicon glyphicon-pencil"></span></a><a href="javascript:void(0)" (click)="deleteQuestion(cauhoi.id, i)">   <span class="glyphicon glyphicon-trash"></span></a>
           </div>
       </td>
       </tr>

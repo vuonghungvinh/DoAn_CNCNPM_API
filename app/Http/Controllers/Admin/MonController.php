@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Mon;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MonController extends Controller
 {
@@ -15,6 +16,8 @@ class MonController extends Controller
     public function index()
     {
         //
+        $mon = Mon::all();
+        return response()->json(['mon' => $mon]);
     }
 
     /**

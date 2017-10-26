@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { QuanLiCauHoi } from '../services/quanlicauhoi';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'question-component',
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.scss'],
@@ -13,16 +14,43 @@ export class QuestionComponent {
   constructor(
     private xemcauhoi: QuanLiCauHoi) {
   }
-  public mamon: any[];
+  public mon: any[];
   public listcauhoi: any[];
   public dapandung: any[];
+  public allcauhoi: any[];
+  // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
-    this.xemcauhoi.getMaMon().subscribe( data => {
-      this.mamon = data['mon'];
+    this.xemcauhoi.getMaMon().subscribe(data => {
+      this.mon = data['mon'];
     });
-    this.xemcauhoi.getCauHoi().subscribe( data =>{
-      this.listcauhoi = data['listquestion'];
+    this.xemcauhoi.getCauHoi().subscribe(data => {
+      this.allcauhoi = data['listquestion'];
+      this.listcauhoi = [...this.allcauhoi];
     });
+  }
+  deleteQuestion(value: number, index: number) {
+    if (confirm('Bạn có chắc muốn xóa câu hỏi này??') === true ) {
+      this.xemcauhoi.deleteQuestion(value).subscribe(data => {
+        for (const da in this.allcauhoi) {
+          if (this.allcauhoi[da]['id'] === value) {
+            this.allcauhoi.splice(this.allcauhoi[da]['id'], 1);
+            break;
+          }
+        }
+        this.ngOnInit();
+       });
+    }
+  }
+  getCauHoiMon(value: number) {
+    this.listcauhoi.splice(0, this.listcauhoi.length);
+    this.listcauhoi = this.allcauhoi.filter(function(item){
+      if (item['mamon'] === value) {
+        return item;
+      }
+    });
+  }
+  getAllMon() {
+    this.listcauhoi = [...this.allcauhoi];
   }
   getDapan(listdapan, dapan) {
     const arr_dapan = dapan.split(',');

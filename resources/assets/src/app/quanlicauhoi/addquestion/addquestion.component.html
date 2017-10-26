@@ -1,84 +1,83 @@
 <div class='panel-body'>
-    <form class="form-horizontal" (ngSubmit)="addQuestion(f.value)" #f="ngForm" class='form-horizontal col-md-6 col-md-offset-3' role='form' novalidate>
-      <div class='form-group'>
-        <label class='control-label col-md-2 ' for='id_accomodation'>Chọn môn</label>
-        <div class='col-md-10'>
-          <select  name="mamon" class='form-control' required #mamon="ngModel" id='id_accomodation' ngModel>
-            <option value="{{mon.id}}" *ngFor="let mon of mon">{{mon.id + ' ' + mon.tenmon}}</option>
-          </select>
-          <div *ngIf="mamon.errors  && (mamon.dirty || mamon.touched)" class="alert alert-danger">
-              <div [hidden]="!mamon.errors.required">
+  <form class="form-horizontal" (ngSubmit)="addQuestion(f.value)" #f="ngForm" class='form-horizontal col-md-6 col-md-offset-3' role='form' novalidate>
+    <div class='form-group'>
+      <label class='control-label col-md-2 ' for='id_accomodation'>Chọn môn</label>
+      <div class='col-md-10'>
+        <select  name="mamon" class='form-control' required #mamon="ngModel" id='id_accomodation' ngModel>
+          <option value="{{mon.id}}" *ngFor="let mon of mon">{{mon.id + ' ' + mon.tenmon}}</option>
+        </select>
+        <div *ngIf="mamon.errors  && (mamon.dirty || mamon.touched)" class="alert alert-danger">
+            <div [hidden]="!mamon.errors.required">
+                Bạn chưa chọn.
+            </div>
+        </div>
+      </div>
+      <div class="clearfix visible-md-block"></div>
+    </div>
+    <div class='form-group'>
+      <label class='control-label col-md-2 ' for='id_noidung'>Nội dung</label>
+      <div class='col-md-10'>
+        <textarea required #noidungcauhoi='ngModel' name='noidungcauhoi' ngModel class='form-control' id='id_noidung' rows='10'></textarea>
+        <div *ngIf="noidungcauhoi.errors && (noidungcauhoi.dirty || noidungcauhoi.touched)" class="text text-danger text-left">
+            <div [hidden]="!noidungcauhoi.errors.required">
+                Bạn chưa nhập nội dung.
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class='form-group'>
+      <div class="col-md-11 col-md-offset-1">
+        <div class="row" *ngFor="let dapan of list_dapan ;let i = index">
+          <label class='control-label col-md-2' for='id_A'>{{dapan.ten}}</label>
+          <div class='col-md-9'>
+            <div class='form-group internal '>
+              <input required #value="ngModel"  [(ngModel)] = "dapan.noi_dung" name="noi_dung{{i}}" class='form-control' id='id_A'>
+            </div>
+            <div *ngIf="value.errors && (value.dirty || value.touched)" class="text text-danger text-left">
+                <div [hidden]="!value.errors.required">
+                    Bạn chưa nhập nội dung.
+                </div>
+            </div>
+          </div>
+          <div class='make-switch col-md-1 form-group' data-off-label='NO' data-on-label='YES' id='id_slide_switch'>
+              <input [(ngModel)]="dapan.is_true" id='id_slide' (click)="this.checked=checkSelect(i)" name="is_true{{i}}" type='checkbox' value='chk_hydro'>
+            </div>
+        </div>
+        <div>
+          <a class="btn btn-primary"
+          (click)="add_dapan()">+</a>
+          <a class="btn btn-primary"
+          (click)="remove_dapan()">-</a>
+        </div>
+      </div>
+    </div>
+    <!-- <div class='form-group'>
+      <label class='control-label col-md-2' for='id_mucdo'>Mức độ</label>
+      <div class='col-md-10'>
+        <div class='col-md-12'>
+          <div class='form-group internal'>
+            <select required #dokho='ngModel' name='dokho' class='form-control' id='id_equipment' ngModel>
+              <option value=1>Easy</option>
+              <option value=2>Nomal</option>
+              <option value=3>Hard</option>
+            </select>
+          </div>
+          <div *ngIf="dokho.errors  && (dokho.dirty || dokho.touched)" class="alert alert-danger">
+              <div [hidden]="!dokho.errors.required">
                   Bạn chưa chọn.
               </div>
           </div>
         </div>
-        <div class="clearfix visible-md-block"></div>
       </div>
-      <div class='form-group'>
-        <label class='control-label col-md-2 ' for='id_noidung'>Nội dung</label>
-        <div class='col-md-10'>
-          <textarea required #noidungcauhoi='ngModel' name='noidungcauhoi' ngModel class='form-control' id='id_noidung' rows='10'></textarea>
-          <div *ngIf="noidungcauhoi.errors && (noidungcauhoi.dirty || noidungcauhoi.touched)" class="text text-danger text-left">
-              <div [hidden]="!noidungcauhoi.errors.required">
-                  Bạn chưa nhập nội dung.
-              </div>
-          </div>
-        </div>
-
+    </div> -->
+    <div class='form-group'>
+      <div class=' col-md-3 col-md-offset-3'>
+        <button class='btn btn-primary' [disabled]="!f.form.valid" type='submit' >
+            <i class="fa fa-btn fa-sign-in"></i>Submit</button>
       </div>
-      <div class='form-group'>
-        <div class="col-md-11 col-md-offset-1">
-          <div class="row" *ngFor="let dapan of list_dapan ;let i = index">
-            <label class='control-label col-md-2' for='id_A'>{{dapan.ten}}</label>
-            <div class='col-md-9'>
-              <div class='form-group internal '>
-                <input required #value="ngModel"  [(ngModel)] = "dapan.noi_dung" name="noi_dung{{i}}" class='form-control' id='id_A'>
-              </div>
-              <div *ngIf="value.errors && (value.dirty || value.touched)" class="text text-danger text-left">
-                  <div [hidden]="!value.errors.required">
-                      Bạn chưa nhập nội dung.
-                  </div>
-              </div>
-            </div>
-            <div class='make-switch col-md-1 form-group' data-off-label='NO' data-on-label='YES' id='id_slide_switch'>
-                <input [(ngModel)]="dapan.is_true" id='id_slide' (click)="this.checked=checkSelect(i)" name="is_true{{i}}" type='checkbox' value='chk_hydro'>
-              </div>
-          </div>
-          <a class="btn btn-primary"
-          (click)="add_dapan()">+
-       </a>
-       <a class="btn btn-primary"
-       (click)="remove_dapan()">-
-    </a>
-        </div>
+      <div class='col-md-3'>
+        <input type="button" class='btn btn-danger' (click)="navigate()" style='float:right' value="Cancel" >
       </div>
-      <!-- <div class='form-group'>
-        <label class='control-label col-md-2' for='id_mucdo'>Mức độ</label>
-        <div class='col-md-10'>
-          <div class='col-md-12'>
-            <div class='form-group internal'>
-              <select required #dokho='ngModel' name='dokho' class='form-control' id='id_equipment' ngModel>
-                <option value=1>Easy</option>
-                <option value=2>Nomal</option>
-                <option value=3>Hard</option>
-              </select>
-            </div>
-            <div *ngIf="dokho.errors  && (dokho.dirty || dokho.touched)" class="alert alert-danger">
-                <div [hidden]="!dokho.errors.required">
-                    Bạn chưa chọn.
-                </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <div class='form-group'>
-        <div class=' col-md-3 col-md-offset-3'>
-          <button class='btn btn-primary' [disabled]="!f.form.valid" type='submit'>
-              <i class="fa fa-btn fa-sign-in"></i>Submit</button>
-        </div>
-        <div class='col-md-3'>
-          <button class='btn btn-danger' [disabled]="!f.form.valid" style='float:right' type='submit'>Cancel</button>
-        </div>
-      </div>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>

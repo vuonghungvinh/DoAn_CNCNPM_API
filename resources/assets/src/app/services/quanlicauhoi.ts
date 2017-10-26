@@ -15,8 +15,11 @@ constructor(private _http: Http) {
     getCauHoi() {
         return this._http.get('/api/admin/question/listquestion', this.jwt()).map( result => result.json());
     }
-    addQuestion(data: any): Observable<any>{
-      return this._http.post('/api/admin/question/add', data, this.jwt()).map((response: Response)=> response.json());
+    addQuestion(data: any): Observable<any> {
+      return this._http.post('/api/admin/question/add', data, this.jwt()).map((response: Response) => response.json());
+    }
+    deleteQuestion(data: any): Observable<any> {
+      return this._http.delete('api/admin/question/' + data + '/delete', this.jwt()).map((response: Response) => response.json());
     }
 	// getUser() {
 	// 	let currentUser = JSON.parse(localStorage.getItem('currentUser'));

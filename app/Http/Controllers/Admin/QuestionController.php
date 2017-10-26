@@ -94,7 +94,14 @@ class QuestionController extends Controller
     {
         //
     }
-
+    public function delete( $id )
+    {
+      $da = DapAn::where("macauhoi","=",$id);
+      $da->delete();
+      $question = Question::where("id","=",$id);
+      $question->delete();
+      return Response(['status' => 200]);
+    }
     /**
      * Update the specified resource in storage.
      *

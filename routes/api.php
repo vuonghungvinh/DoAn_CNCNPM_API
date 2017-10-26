@@ -24,10 +24,11 @@ Route::prefix('admin')->group(function () {
         Route::get('/', 'Admin\LophocphanController@index');
         Route::get('/danhsachsinhvien/{id}', 'Admin\LophocphanController@danhsachsinhvien');
     });
-    Route::get('/mon', 'MonController@index');
+    Route::get('/mon', 'Admin\MonController@index');
     Route::group(['prefix' => 'question', 'middleware' => ['jwt.auth']], function () {
         Route::post('/add','Admin\QuestionController@store');
-        Route::get('/listquestion','Admin\QuestionController@index');
+        Route::get('/listquestion', 'Admin\QuestionController@index');
+        Route::delete('/{id}/delete', 'Admin\QuestionController@delete');
     });
 });
 
