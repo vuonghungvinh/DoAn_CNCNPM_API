@@ -31,13 +31,15 @@ export class QuestionComponent {
   deleteQuestion(value: number, index: number) {
     if (confirm('Bạn có chắc muốn xóa câu hỏi này??') === true ) {
       this.xemcauhoi.deleteQuestion(value).subscribe(data => {
+        this.listcauhoi.splice(index, 1);
         for (const da in this.allcauhoi) {
           if (this.allcauhoi[da]['id'] === value) {
-            this.allcauhoi.splice(this.allcauhoi[da]['id'], 1);
+            console.log(value);
+            this.allcauhoi.splice(parseInt(da), 1);
             break;
           }
         }
-        this.ngOnInit();
+        console.log(this.allcauhoi);
        });
     }
   }

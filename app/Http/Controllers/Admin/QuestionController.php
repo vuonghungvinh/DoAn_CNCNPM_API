@@ -82,6 +82,8 @@ class QuestionController extends Controller
     public function show($id)
     {
         //
+        $listquestion = Question::where('id', '=', $id) -> get();
+        return response()->json(['cauhoi'=>$listquestion]);
     }
 
     /**

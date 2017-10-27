@@ -63,7 +63,7 @@ constructor(
     }
   }
   addQuestion(value: any) {
-    if (this.countlist == 0){
+    if (this.countlist == 0) {
      alert('Chọn ít nhất một đáp án đúng.');
      return false;
     }

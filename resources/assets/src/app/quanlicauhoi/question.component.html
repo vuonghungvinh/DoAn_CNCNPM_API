@@ -37,7 +37,7 @@
         </td>
         <td>
           <div class="row">
-             <a href="javascript:void(0)" (click)="deleteQuestion(cauhoi.id, i)" ><span class="glyphicon glyphicon-pencil"></span></a><a href="javascript:void(0)" (click)="deleteQuestion(cauhoi.id, i)">   <span class="glyphicon glyphicon-trash"></span></a>
+             <a [routerLink]="['/updatequestion/'+cauhoi.id]" ><span class="glyphicon glyphicon-pencil"></span></a><a href="javascript:void(0)" (click)="deleteQuestion(cauhoi.id, i)">   <span class="glyphicon glyphicon-trash"></span></a>
           </div>
       </td>
       </tr>

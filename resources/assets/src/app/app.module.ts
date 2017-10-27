@@ -14,12 +14,12 @@ import { ScoreComponent } from './quanlidiem/score.component';
 import { ListExamComponent } from './quanlidethi/xemdethi/listexam.component';
 import { ExamComponent } from './quanlidethi/taodethi/exam.component';
 import { AccountComponent } from './quanlitaikhoan/taikhoan.component';
-
-import { Themlophocphan } from "./ThemLopHocPhan/themlophocphan.component"; 
-import { XemDanhSach } from "./XemDanhSachSinhVien/xemdanhsach.component";
+import { UpdateQuestionComponent } from './quanlicauhoi/updatequestion/updatequestion.component';
+import { Themlophocphan } from './ThemLopHocPhan/themlophocphan.component';
+import { XemDanhSach } from './XemDanhSachSinhVien/xemdanhsach.component';
 import { ThemSinhVien } from "./ThemSinhVien/themsinhvien.component";
 import { Xemdanhsachlop } from "./XemDanhSachLopHocPhan/xemdanhsachlop.component";
-import { Xemlichthi } from "./Xemlichthi/xemlichthi.component"; 
+import { Xemlichthi } from "./Xemlichthi/xemlichthi.component";
 import { Dangkilichthi } from "./Dangkilichthi/dangkilichthi.component";
 import { LoginComponent }  from "./login/login.component";
 import { Danhsachsinhvien } from "./Sinhvienoflophocphan/danhsachsinhvien.component";
@@ -56,7 +56,8 @@ import { AuthenticationService } from "./services/authentication.service";
     Dangkilichthi,
     HeaderComponent,
     LoginComponent,
-    Danhsachsinhvien
+    Danhsachsinhvien,
+    UpdateQuestionComponent
   ],
   providers: [
     AlertService,
