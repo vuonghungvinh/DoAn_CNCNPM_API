@@ -16,8 +16,7 @@ class CreateLophocphanTable extends Migration
         Schema::create('lophocphan', function (Blueprint $table) {
             $table->increments('id');
             $table->string('mssv', 10);
-            $table->string('mamon', 10);
-            $table->rememberToken();
+            $table->integer('mamon');
             $table->timestamps();
         });
     }

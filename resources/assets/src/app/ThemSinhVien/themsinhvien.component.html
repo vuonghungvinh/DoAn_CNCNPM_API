@@ -75,10 +75,13 @@
               </div>
           </div>
 					<div class="form-group col-md-12" id="formchonlop">
-						<label class=" col-md-4 control-label">Chọn lớp</label>
-						<div id="select" >
+						<label class=" col-md-3 control-label">Chọn lớp</label>
+						<div id="select" class="col-md-9" >
 							<select #lop="ngModel" name="lop" ngModel>
-				  				<option *ngFor="let lops of students" >{{lops.lop}}</option>
+                  <option value="Lop13T1" selected >Lớp 13T1</option>
+                  <option value="Lop13T2" >Lớp 13T2</option>
+                  <option value="Lop13T3" >Lớp 13T3</option>
+                  <option value="Lop13T4" >Lớp 13T4</option>
 							</select>
 						</div>
 					</div>

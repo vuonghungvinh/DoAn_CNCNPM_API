@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use App\LopHocPhan;
+use App\Mon;
 class LoginController extends Controller
 {
     public $successStatus = 200;
@@ -24,7 +26,15 @@ class LoginController extends Controller
     public function details()
     {
         $user = Auth::user();
-        return response()->json(['success' => $user], $this->successStatus);
+        return response()->json($user, $this->successStatus);
     }
 
+    public function getMon()
+    {
+      $user = Auth::user();
+      $lophp = Mon::with(['lichThi', 'lopHp'])->whereHas('lopHp', function($query) use ($user){
+        $query->where('mssv', $user->mssv);
+      })->get();
+      return response()->json($lophp);
+    }
 }

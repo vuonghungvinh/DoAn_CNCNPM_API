@@ -23,8 +23,11 @@ Route::prefix('admin')->group(function () {
     Route::group(['prefix' => 'lophocphan', 'middleware' => ['jwt.auth']], function () {
         Route::get('/', 'Admin\LophocphanController@index');
         Route::get('/danhsachsinhvien/{id}', 'Admin\LophocphanController@danhsachsinhvien');
+        Route::get('/mon/danhsachsinhvien/{id}', 'Admin\LophocphanController@sinhvienkhongthuocmon');
     });
-    Route::get('/mon', 'Admin\MonController@index');
+    Route::group(['prefix' => 'mon', 'middleware' => ['jwt.auth']], function () {
+      Route::get('/', 'Admin\MonController@index');
+    });
     Route::group(['prefix' => 'question', 'middleware' => ['jwt.auth']], function () {
         Route::post('/add','Admin\QuestionController@store');
         Route::get('/listquestion', 'Admin\QuestionController@index');
@@ -41,6 +44,7 @@ Route::prefix('admin')->group(function () {
 Route::prefix('student')->group(function () {
     Route::post('login', 'Student\LoginController@login');
     Route::group(['prefix' => 'v1'], function(){
-        Route::post('details', 'Student\LoginController@details')->middleware('auth:api');
+        Route::get('details', 'Student\LoginController@details')->middleware('auth:api');
+        Route::get('getmon', 'Student\LoginController@getMon')->middleware('auth:api');
     });
 });

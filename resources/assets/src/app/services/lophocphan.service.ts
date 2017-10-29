@@ -9,11 +9,16 @@ export class LophocphanService {
 	constructor(private _http: Http){
 	}
 	getlophocphan(){
-		return this._http.get("/api/admin/lophocphan", this.jwt()).map(result=>result.json());
+		return this._http.get('/api/admin/lophocphan', this.jwt()).map(result => result.json());
 	}
-
+  getMon() {
+    return this._http.get('/api/admin/mon', this.jwt()).map(result => result.json());
+  }
+  getSinhVienMon(id) {
+    return this._http.get('api/admin/lophocphan/mon/danhsachsinhvien/' + id, this.jwt()).map(result => result.json());
+  }
 	getdetail(id){
-		return this._http.get("/api/admin/lophocphan/danhsachsinhvien/"+id, this.jwt()).map(result=>result.json());
+		return this._http.get('/api/admin/lophocphan/danhsachsinhvien/'+id, this.jwt()).map(result=>result.json());
 	}
 	private jwt() {
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -23,4 +28,4 @@ export class LophocphanService {
         }
 }
 }
-	
+

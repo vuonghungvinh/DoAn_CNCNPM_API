@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\LopHocPhan;
+use App\Students;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use DB;
 
 class LophocphanController extends Controller
 {
@@ -19,7 +21,18 @@ class LophocphanController extends Controller
         $lophocphan = LopHocPhan::with(['mon', 'student'])->get();
         return response()->json(['lophocphan' => $lophocphan]);
     }
-
+    public function sinhvienkhongthuocmon(Request $request)
+    {
+        // $sinhvien = User::with(["mon"])->whereHas('mon', function($query) use($request){
+        //   $query->where("mamon", "<>", $request->id);
+        // })->get();
+        $sinhvien2 = DB::table('lophocphan')
+        ->where('mamon', $request->id)->get(['mssv'])->pluck('mssv');
+        $sinhvien = DB::table('users')
+        ->whereNotIn('mssv', $sinhvien2)
+        ->get(['mssv','name', 'lop']);
+        return response()->json(['sinhvien' => $sinhvien]);
+    }
     public function danhsachsinhvien(Request $request)
     {
         $lophocphan = LopHocPhan::with(['mon', 'student'])->get()->where('mamon',$request->id);
