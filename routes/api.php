@@ -32,6 +32,9 @@ Route::prefix('admin')->group(function () {
         Route::put('/listquestion/update/{id}', 'Admin\QuestionController@update');
         Route::get('/listquestion/{id}', 'Admin\QuestionController@show');
     });
+    Route::group(['prefix' => 'lichthi', 'middleware' => ['jwt.auth']], function () {
+        Route::get('/xemlichthi', 'Admin\LichThiController@index');
+    });
 });
 
 

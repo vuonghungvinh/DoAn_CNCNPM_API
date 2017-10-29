@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 class LoginController extends Controller
 {
-    public $successStatus = 200;public function login(){
+    public $successStatus = 200;
+
+    public function login(){
         if(Auth::attempt(['mssv' => request('mssv'), 'password' => request('password')])){
             $user = Auth::user();
             $success['token'] =  $user->createToken('MyApp')->accessToken;

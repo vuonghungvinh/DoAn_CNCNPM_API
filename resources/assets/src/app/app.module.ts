@@ -20,7 +20,7 @@ import { XemDanhSach } from './XemDanhSachSinhVien/xemdanhsach.component';
 import { ThemSinhVien } from "./ThemSinhVien/themsinhvien.component";
 import { Xemdanhsachlop } from "./XemDanhSachLopHocPhan/xemdanhsachlop.component";
 import { Xemlichthi } from "./Xemlichthi/xemlichthi.component";
-import { Dangkilichthi } from "./Dangkilichthi/dangkilichthi.component";
+import { DangkilichthiComponent } from "./Dangkilichthi/dangkilichthi.component";
 import { LoginComponent }  from "./login/login.component";
 import { Danhsachsinhvien } from "./Sinhvienoflophocphan/danhsachsinhvien.component";
 import { AlertService } from "./services/alert.service";
@@ -53,7 +53,7 @@ import { AuthenticationService } from "./services/authentication.service";
     Xemdanhsachlop,
     Themlophocphan,
     Xemlichthi,
-    Dangkilichthi,
+    DangkilichthiComponent,
     HeaderComponent,
     LoginComponent,
     Danhsachsinhvien,

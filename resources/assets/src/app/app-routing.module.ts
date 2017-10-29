@@ -16,7 +16,7 @@ import { ThemSinhVien } from "./ThemSinhVien/themsinhvien.component";
 import { Xemdanhsachlop } from "./XemDanhSachLopHocPhan/xemdanhsachlop.component";
 import { Themlophocphan } from "./ThemLopHocPhan/themlophocphan.component";
 import { Xemlichthi } from "./Xemlichthi/xemlichthi.component";
-import { Dangkilichthi } from "./Dangkilichthi/dangkilichthi.component";
+import { DangkilichthiComponent } from "./Dangkilichthi/dangkilichthi.component";
 import { LoginComponent } from "./login/login.component";
 import { Danhsachsinhvien } from "./Sinhvienoflophocphan/danhsachsinhvien.component";
 import { AuthGurad } from "./guards/auth.guard";
@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'account',  component: AccountComponent, canActivate: [AuthGurad] },
   { path: 'updatequestion/:id',  component: UpdateQuestionComponent, canActivate: [AuthGurad] },
   { path: 'themlophocphan', component : Themlophocphan, canActivate: [AuthGurad] },
-  { path: 'dangkilichthi', component : Dangkilichthi, canActivate: [AuthGurad]},
+  { path: 'dangkilichthi', component : DangkilichthiComponent, canActivate: [AuthGurad]},
   { path: 'xemdanhsachlop', component : Xemdanhsachlop, canActivate: [AuthGurad] },
   { path: 'xemdanhsach', component: XemDanhSach, canActivate: [AuthGurad] },
   { path: 'xemlichthi', component: Xemlichthi, canActivate: [AuthGurad] },

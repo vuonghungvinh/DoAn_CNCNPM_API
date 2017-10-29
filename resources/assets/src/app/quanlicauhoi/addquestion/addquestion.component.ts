@@ -31,7 +31,7 @@ constructor(
       this.mon = data['mon'];
     });
   }
-  checkSelect(i: number, check: boolean) {
+  checkSelect(i: number) {
        if (!this.list_dapan[i].is_true) {
           this.countlist += 1 ;
         }

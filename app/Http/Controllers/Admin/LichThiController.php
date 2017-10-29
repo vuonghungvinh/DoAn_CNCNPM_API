@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\LichThi;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Students;
+use Validator;
 
-class StudentsController extends Controller
+class LichThiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,9 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = Students::all();
-        return response()->json(['students' => $students]);
+        //
+        $lichthi = LichThi::with(['getMon'])->get();
+        return response()->json(['listlichthi' => $lichthi]);
     }
 
     /**
@@ -37,18 +40,7 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-
-        $students=new Students;
-        $students->name = $request->name;
-        $students->gioitinh = $request->gioitinh;
-        $students->lop = $request->lop;
-        $students->mssv = $request->mssv;
-        $students->ngaysinh = $request->ngaysinh;
-        $students->trangthai =true;
-        $students->diachi= $request->diachi;
-        $students->password=bcrypt('123456');
-        $students->save();
-        return response()->json(['status' => 200]);
+        //
     }
 
     /**

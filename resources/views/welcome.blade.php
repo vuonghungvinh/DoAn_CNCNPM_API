@@ -18,5 +18,6 @@
         <script type="text/javascript" src="js/styles.bundle.js"></script>
         <script type="text/javascript" src="js/vendor.bundle.js"></script>
         <script type="text/javascript" src="js/main.bundle.js"></script></body>
+        <script src="https://cdn.ckeditor.com/4.5.11/full/ckeditor.js"></script>
     </body>
 </html>

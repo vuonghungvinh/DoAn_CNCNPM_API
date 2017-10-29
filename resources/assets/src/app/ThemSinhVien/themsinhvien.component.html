@@ -11,11 +11,10 @@
 						<div class="col-sm-8">
 							<input type="text" class="form-control" required   #mssv="ngModel"  name="mssv" ngModel >
 							<div *ngIf="mssv.errors && (mssv.dirty || mssv.touched)" class="text text-danger text-left">
-                                <div [hidden]="!mssv.errors.required">
-                                    Bạn chưa nhập mã số sinh viên
-                                </div>
-
-                            </div>
+                <div [hidden]="!mssv.errors.required">
+                    Bạn chưa nhập mã số sinh viên
+                </div>
+              </div>
 						</div>
 					</div>
 					<div class="form-group" id="formten">
@@ -23,46 +22,59 @@
 						<div class="col-sm-8">
 							<input type="text" class="form-control" required minlength="4" maxlength="20" #name="ngModel" name="name" ngModel>
 							<div *ngIf="name.errors && (name.dirty || name.touched)" class="text text-danger text-left">
-                                <div [hidden]="!name.errors.required">
-                                    Bạn chưa nhập tên sinh viên
-                                </div>
-                                 <div *ngIf="name.errors.minlength">
-								    Tên phải dài hơn 4 kí tự .
-								 </div>
-								 <div *ngIf="!name.errors.maxlength">
-							        Tên không dài quá 20 kí tự
-							     </div>
-                            </div>
+                <div [hidden]="!name.errors.required">
+                    Bạn chưa nhập tên sinh viên
+                </div>
+                <div *ngIf="name.errors.minlength">
+                    Tên phải dài hơn 4 kí tự .
+                </div>
+                <div *ngIf="!name.errors.maxlength">
+                    Tên không dài quá 20 kí tự
+                </div>
+              </div>
 						</div>
 					</div>
 					<div class="form-group" id="formngaysinh">
 						<label class="col-sm-4 control-label">Ngày sinh</label>
 						<div class="col-sm-8">
-							<input type="date"  class="form-control" required #ngaysinh="ngModel" name="ngaysinh" ngModel>
+							<input type="date" placeholder="yyyy-MM-dd"  class="form-control" min="1993-01-01"  max="1996-01-01" #ngaysinh="ngModel" name="ngaysinh" ngModel>
 							<div *ngIf="ngaysinh.errors && (ngaysinh.dirty || ngaysinh.touched)" class="text text-danger text-left">
-                                <div [hidden]="!ngaysinh.errors.required">
-                                    Bạn chưa chon ngay sinh
-                                </div>
-                            </div>
+                <div [hidden]="!ngaysinh.errors.required">
+                  Bạn chưa chọn ngày sinh
+                </div>
+                <div [hidden]="!ngaysinh.errors.date">
+                  Nhập độ tuổi phù hợp.
+                </div>
+              </div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 			<div class="col-md-6">
 				<div id="form2">
-					<div class="form-check" id="form-check">
+					<div class="form-check col-md-12" id="form-check">
 						<label class="col-sm-4 control-label">Gioi Tính</label>
 						<div class="form-check-label col-sm-2">
-		      				<input type="checkbox" class="form-check-input" required #gioitinh="ngModel" name="gioitinh" ngModel>
-		      				Nam
-		    			</div>
-		    			<div class="form-check-label col-sm-2">
-		      				<input type="checkbox" class="form-check-input" required #gioitinh="ngModel" name="gioitinh" ngModel>
-		      				Nữ
-		    			</div>
-					</div>
-					<div class="form-group" id="formchonlop">
+              <input type="radio" class="form-check-input" (click)="setGioiTinh(true)" name="gioitinh" value="1" checked>
+              Nam
+            </div>
+            <div class="form-check-label col-sm-2">
+              <input type="radio" class="form-check-input" (click)="setGioiTinh(false)" name="gioitinh" value="0" >
+              Nữ{{gioitinh}}
+            </div>
+          </div>
+          <div class="form-group col-md-12" id="formdiachi">
+              <label class="col-md-4 control-label">Địa chỉ</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" required   #diachi="ngModel"  name="diachi" ngModel >
+                <div *ngIf="diachi.errors && (diachi.dirty || diachi.touched)" class="text text-danger text-left">
+                  <div [hidden]="!diachi.errors.required">
+                      Bạn chưa địa chỉ
+                  </div>
+                </div>
+              </div>
+          </div>
+					<div class="form-group col-md-12" id="formchonlop">
 						<label class=" col-md-4 control-label">Chọn lớp</label>
 						<div id="select" >
 							<select #lop="ngModel" name="lop" ngModel>
