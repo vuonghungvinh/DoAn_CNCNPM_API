@@ -14,11 +14,14 @@ export class LophocphanService {
   getMon() {
     return this._http.get('/api/admin/mon', this.jwt()).map(result => result.json());
   }
-  getSinhVienMon(id) {
+  getSinhVienMonKhongThuocMon(id) {
     return this._http.get('api/admin/lophocphan/mon/danhsachsinhvien/' + id, this.jwt()).map(result => result.json());
   }
-	getdetail(id){
-		return this._http.get('/api/admin/lophocphan/danhsachsinhvien/'+id, this.jwt()).map(result=>result.json());
+  addSinhVienVaoMon(data: any): Observable<any> {
+    return this._http.post('/api/admin/lophocphan/addsinhvien', data, this.jwt()).map((response: Response) => response.json());
+  }
+	getdetail(data: any){
+		return this._http.get('/api/admin/lophocphan/danhsachsinhvien/' + data, this.jwt()).map(result=>result.json());
 	}
 	private jwt() {
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));

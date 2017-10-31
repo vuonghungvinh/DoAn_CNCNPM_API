@@ -21,7 +21,7 @@ export class UpdateQuestionComponent {
   }
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
-    this.activateRouter.params.subscribe(params=>{
+    this.activateRouter.params.subscribe(params => {
       this.id = params.id;
       console.log(this.id);
     })

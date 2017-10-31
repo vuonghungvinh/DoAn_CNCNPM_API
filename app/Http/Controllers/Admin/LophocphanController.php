@@ -35,7 +35,7 @@ class LophocphanController extends Controller
     }
     public function danhsachsinhvien(Request $request)
     {
-        $lophocphan = LopHocPhan::with(['mon', 'student'])->get()->where('mamon',$request->id);
+        $lophocphan = LopHocPhan::with(['mon', 'student'])->where('mamon',$request->id)->get();
         return response()->json(['lophocphan' => $lophocphan]);
     }
 
@@ -58,6 +58,17 @@ class LophocphanController extends Controller
     public function store(Request $request)
     {
         //
+      $mamon = $request->mamon;
+      $index = 0;
+      foreach((array)$request->listsinhvien as $mssv){
+        $lophocphan = new LopHocPhan;
+        $lophocphan->mamon = $mamon;
+        $lophocphan->mssv = $mssv;
+        $lophocphan->save();
+        $index++;
+      }
+        //update bang cau hoi field dapan=$dapan_dung
+      return Response(['status' => 200]);
     }
 
     /**

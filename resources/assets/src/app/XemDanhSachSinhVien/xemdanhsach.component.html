@@ -32,8 +32,8 @@
         		<th>NgaySinh</th>
         		<th>GioiTinh</th>
         </tr>
-        <tr *ngFor="let student of students">
-          <td>{{student.id}}</td>
+        <tr *ngFor="let student of students; let i = index">
+          <td>{{i+1}}</td>
           <td>{{student.mssv}}</td>
           <td>{{student.name}}</td>
           <td>{{student.lop}}</td>

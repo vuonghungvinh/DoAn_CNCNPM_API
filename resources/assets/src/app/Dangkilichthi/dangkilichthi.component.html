@@ -1,36 +1,59 @@
 <div class="container">
 	<div>
-		<h1 class="text-center">Dang Ki Lich Thi</h1>
+		<h1 class="text-center">Đăng kí lịch thi</h1>
 	</div>
 	<div class="row">
 		<div class="col-md-6">
-			<label class="col-md-4">Chon mon</label>
-			<select>
-  				<option selected="selected">Tin Hoc Dai Cuong</option>
-  				<option>JAVA</option>
-  				<option>Lap Trinh Web</option>
+			<label class="col-md-3">Chọn môn</label>
+			<select  (change)= "getIdmon($event)" >
+  				<option disabled>Chọn môn</option>
+  				<option *ngFor="let mon of mon" [value]= "mon.id" >{{mon.id }} {{mon.tenmon}}</option>
   			</select>
-		</div>
+    </div>
+    <div class="col-md-6">
+        <label class="col-md-3">Nhập phòng</label>
+        <input class="col-md-7" type="text">
+    </div>
+    <div class="col-md-6">
+        <label class="col-md-3">Thời gian thi</label>
+        <input class="col-md-7" type="text">
+    </div>
+    <div class="col-md-6">
+        <label class="col-md-3">Tổng câu hỏi</label>
+        <input class="col-md-7" type="text">
+    </div>
 		<div class="col-md-6">
-			<label>Chon Ngay</label>
-			<input type="text">
-		</div>
+			<label class="col-md-3">Chon Ngay</label>
+			<input  type="datetime-local">
+    </div>
+    <div class="col-md-6">
+      <label class="col-md-3">Chọn môn</label>
+      <select (change)= "getIdmon($event)" >
+          <option disabled>Chọn môn</option>
+          <option *ngFor="let mon of mon" [value]= "mon.id" >{{mon.id }} {{mon.tenmon}}</option>
+      </select>
+    </div>
+
 	</div>
 	<div class="form">
+    <div>
+        <h1 class="text-center">Danh sách sinh viên của lớp.</h1>
+    </div>
 		<table class="table table-bordered">
 			<tr>
         <th>STT</th>
         <th>MSSV</th>
-        <th>Ten</th>
-        <th>Lop</th>
+        <th>Tên</th>
+        <th>Lớp</th>
         <th>Status</th>
       </tr>
-      <tr>
-        <th>01</th>
-        <th>0001</th>
-        <th>An</th>
-        <th>13T2</th>
-        <th><input type="checkbox">Them</th>
+      <tr *ngFor="let sinhvien of listsinhvien; let i = index;">
+        <td>{{i+1}}</td>
+        <td>{{sinhvien.mssv}}</td>
+        <td>{{sinhvien.student.name}}</td>
+        <td>{{sinhvien.student.lop}}</td>
+        <td *ngIf="sinhvien.dathi===0">Chưa DK thi</td>
+        <td *ngIf="sinhvien.dathi===1">Đã DK thi</td>
       </tr>
     </table>
 	</div>

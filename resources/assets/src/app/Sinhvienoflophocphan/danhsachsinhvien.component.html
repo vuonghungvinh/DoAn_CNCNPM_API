@@ -1,16 +1,20 @@
 <div class="container">
-	<div>
-		<h1 *ngIf="listdanhsach && listdanhsach.length > 0" class="text-center">Danh Sách Sinh Viên Môn {{listdanhsach[0].mon.tenmon}}</h1>
+	<div >
+		<h1 *ngIf="listdanhsach" class="text-center">Danh Sách Sinh Viên Môn {{listdanhsach[0].mon.tenmon}}</h1>
 	</div>
 	<div>
 		<table class="table table-bordered">
 			<tr>
-				<th>STT</th>
-				<th>Tên Sinh viên</th>
+        <th>STT</th>
+        <th>MSSV</th>
+        <th>Tên Sinh viên</th>
+        <th>Lớp</th>
 			</tr>
-			<tr *ngFor="let danhsach of listdanhsach">
-				<td>{{danhsach.id}}</td>
-				<td>{{danhsach.student.name}}</td>
+			<tr *ngFor="let danhsach of listdanhsach; let i = index">
+        <td><span >{{i+1}}</span></td>
+				<td><span>{{danhsach.mssv}}</span></td>
+        <td>{{danhsach.student.name}}</td>
+        <td>{{danhsach.student.lop}}</td>
 			</tr>
 		</table>
 	</div>

@@ -24,6 +24,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/', 'Admin\LophocphanController@index');
         Route::get('/danhsachsinhvien/{id}', 'Admin\LophocphanController@danhsachsinhvien');
         Route::get('/mon/danhsachsinhvien/{id}', 'Admin\LophocphanController@sinhvienkhongthuocmon');
+        Route::post('/addsinhvien', 'Admin\LophocphanController@store');
     });
     Route::group(['prefix' => 'mon', 'middleware' => ['jwt.auth']], function () {
       Route::get('/', 'Admin\MonController@index');

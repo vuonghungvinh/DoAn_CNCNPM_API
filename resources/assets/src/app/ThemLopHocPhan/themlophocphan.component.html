@@ -1,5 +1,5 @@
 <div>
-  <h1 class="text-center">Tạo mới lớp học phần</h1>
+  <h1 class="text-center">Thêm sinh viên vào lớp học phần</h1>
 </div>
 <form class="form-horizontal" (ngSubmit)="getThongtin(f.value)" #f="ngForm" class='form-horizontal col-md-12' role='form' novalidate>
   <div class="row">
@@ -22,8 +22,8 @@
           <div class="col-md-3">Lop</div>
         </div>
       <div class="col-md-10">
-        <select multiple class="form-control input-large container bg-view " name="listsinhvien" >
-            <option *ngFor="let sinhvien of sinhvien; let i = index">
+        <select multiple class="form-control input-large container bg-view" [(ngModel)]="listsinhvien" name="listsinhvien" >
+            <option *ngFor="let sinhvien of sinhvien; let i = index" [value]="sinhvien.mssv">
               <!-- <div class="col-md-1">{{i+1}}</div>
               <div class="col-md-3">{{sinhvien.mssv}}</div> -->
               <!-- <div class="col-md-6">{{sinhvien.name}}</div> -->

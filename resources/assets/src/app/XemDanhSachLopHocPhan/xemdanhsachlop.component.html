@@ -13,7 +13,7 @@
       <tr *ngFor="let mon of mon; let i = index">
             <td>{{mon.id}}</td>
             <td>{{mon.tenmon}}</td>
-            <td><a href=#> DS</a></td>
+            <td><a [routerLink]="['/danhsachsinhvien/'+mon.id]"> DS</a></td>
       </tr>
 		</table>
 	</div>
