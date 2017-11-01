@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Students;
+use DB;
 
 class StudentsController extends Controller
 {
@@ -15,7 +16,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = Students::all();
+        $students = DB::table('users')->orderByRaw('lop')->get();
         return response()->json(['students' => $students]);
     }
 

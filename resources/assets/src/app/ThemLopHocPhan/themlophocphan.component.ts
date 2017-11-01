@@ -26,7 +26,7 @@ export class Themlophocphan {
       this.idmon = event.target.value;
     });
   }
-  getThongtin(value : any){
+  themSinhVien(value : any){
     value['mamon'] = this.idmon;
     this.lophocphan.addSinhVienVaoMon(value).subscribe( data =>{
       alert('Thêm  thành công.');

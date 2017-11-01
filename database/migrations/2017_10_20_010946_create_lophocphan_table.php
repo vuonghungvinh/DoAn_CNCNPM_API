@@ -17,7 +17,7 @@ class CreateLophocphanTable extends Migration
             $table->increments('id');
             $table->string('mssv', 10);
             $table->integer('mamon');
-            $table->integer('dathi');
+            $table->integer('dkthi');
             $table->timestamps();
         });
     }

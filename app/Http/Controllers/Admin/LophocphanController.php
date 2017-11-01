@@ -30,6 +30,7 @@ class LophocphanController extends Controller
         ->where('mamon', $request->id)->get(['mssv'])->pluck('mssv');
         $sinhvien = DB::table('users')
         ->whereNotIn('mssv', $sinhvien2)
+        ->orderBy('lop')
         ->get(['mssv','name', 'lop']);
         return response()->json(['sinhvien' => $sinhvien]);
     }
@@ -48,7 +49,25 @@ class LophocphanController extends Controller
     {
         //
     }
-
+    public function getMon()
+    {
+        //
+        // $listquestion = Question::all();
+        // return response()->json(['listquestion'=>$listquestion]);
+        // $listquestion = DB::table('cauhoi')
+        // ->join('mon','cauhoi.mamon', '=', 'mon.id')
+        // ->join('dapan', 'cauhoi.id', '=', 'dapan.macauhoi')
+        // ->select('cauhoi.noidungcauhoi','cauhoi.dapan','cauhoi.mucdo','mon.id','mon.tenmon','dapan.tendapan','dapan.noidungdapan','dapan.id','dapan.macauhoi')
+        // ->get();
+        // $mon = LopHocPhan::with(['mon'])->where('dkthi',0)->distinct()->get();
+        $mon = DB::table('mon')
+        ->join('lophocphan','mon.id', '=', 'lophocphan.mamon')
+        ->select('mon.id', 'mon.tenmon')
+        ->distinct()
+        ->where('lophocphan.dkthi', '0')
+        ->get();
+        return response()->json(['mon' => $mon]);
+    }
     /**
      * Store a newly created resource in storage.
      *

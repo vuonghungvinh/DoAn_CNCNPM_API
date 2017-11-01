@@ -15,6 +15,9 @@ constructor(private _http: Http) {
     getDanhSachLichThi() {
       return this._http.get('/api/admin/lichthi/xemlichthi', this.jwt()).map( result => result.json());
     }
+    dangKiLichThi(data: any): Observable<any> {
+      return this._http.post('/api/admin/lichthi/add', data, this.jwt()).map((response: Response) => response.json());
+    }
     // addQuestion(data: any): Observable<any> {
     //   return this._http.post('/api/admin/question/add', data, this.jwt()).map((response: Response) => response.json());
     // }

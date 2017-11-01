@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\LichThi;
+use App\LopHocPhan;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Validator;
-
 class LichThiController extends Controller
 {
     /**
@@ -41,6 +41,18 @@ class LichThiController extends Controller
     public function store(Request $request)
     {
         //
+
+        $lichthi = new LichThi;
+        $lichthi->mamon = $request->mamon;
+        $lichthi->thoigianbatdauthi = $request->ngaydangki;
+        $lichthi->phong = $request->phongthi;
+        $lichthi->thoigianthi = $request->thoigianthi;
+        $lichthi->tongcauhoi = $request->tongcauhoi;
+        $lichthi->save();
+        DB::table('lophocphan')
+        ->where('mamon', $request->mamon)
+        ->update(['dkthi'=> 1]);
+        return Response(['status' => 200]);
     }
 
     /**

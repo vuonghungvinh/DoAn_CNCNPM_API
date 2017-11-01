@@ -25,6 +25,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/danhsachsinhvien/{id}', 'Admin\LophocphanController@danhsachsinhvien');
         Route::get('/mon/danhsachsinhvien/{id}', 'Admin\LophocphanController@sinhvienkhongthuocmon');
         Route::post('/addsinhvien', 'Admin\LophocphanController@store');
+        Route::get('/themsinhvienmon', 'Admin\LophocphanController@getMon');
     });
     Route::group(['prefix' => 'mon', 'middleware' => ['jwt.auth']], function () {
       Route::get('/', 'Admin\MonController@index');
@@ -38,6 +39,7 @@ Route::prefix('admin')->group(function () {
     });
     Route::group(['prefix' => 'lichthi', 'middleware' => ['jwt.auth']], function () {
         Route::get('/xemlichthi', 'Admin\LichThiController@index');
+        Route::post('/add', 'Admin\LichThiController@store');
     });
 });
 

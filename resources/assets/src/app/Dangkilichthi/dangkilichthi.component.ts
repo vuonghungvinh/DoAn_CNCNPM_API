@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { QuanLiLichThiService } from '../services/quanlilichthi';
 import { LophocphanService } from '../services/lophocphan.service';
+import { Router } from '@angular/router';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'dangki-lich',
@@ -11,7 +12,8 @@ import { LophocphanService } from '../services/lophocphan.service';
 export class DangkilichthiComponent {
   constructor(
     private lichthi: QuanLiLichThiService,
-    private sinhvienlophocphan: LophocphanService) {
+    private sinhvienlophocphan: LophocphanService,
+    private router: Router) {
     }
   public listsinhvien: any[];
   public mon: any[];
@@ -22,8 +24,15 @@ export class DangkilichthiComponent {
     });
   }
   getIdmon(event) {
-    this.sinhvienlophocphan.getdetail(event.target.value).subscribe( data=> {
+    this.sinhvienlophocphan.getdetail(event.target.value).subscribe( data => {
       this.listsinhvien = data['lophocphan'];
-    })
+    });
+  }
+  themLichThi(value: any) {
+    console.log(value);
+    this.lichthi.dangKiLichThi(value).subscribe( data => {
+      alert('Succsess');
+      this.router.navigate(['/xemlichthi']);
+    });
   }
 }

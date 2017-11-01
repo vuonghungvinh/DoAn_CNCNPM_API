@@ -12,7 +12,7 @@ export class LophocphanService {
 		return this._http.get('/api/admin/lophocphan', this.jwt()).map(result => result.json());
 	}
   getMon() {
-    return this._http.get('/api/admin/mon', this.jwt()).map(result => result.json());
+    return this._http.get('/api/admin/lophocphan/themsinhvienmon', this.jwt()).map(result => result.json());
   }
   getSinhVienMonKhongThuocMon(id) {
     return this._http.get('api/admin/lophocphan/mon/danhsachsinhvien/' + id, this.jwt()).map(result => result.json());
