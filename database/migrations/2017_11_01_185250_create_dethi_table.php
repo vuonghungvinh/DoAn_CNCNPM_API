@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMonTable extends Migration
+class CreateDethiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateMonTable extends Migration
      */
     public function up()
     {
-        Schema::create('mon', function (Blueprint $table) {
-            //
+        Schema::create('dethi', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tenmon', 20);
+            $table->string('madethi', 10)->unique();
+            $table->integer('mamon');
+            $table->integer('tongcauhoi');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateMonTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mon');
+        Schema::dropIfExists('dethi');
     }
 }

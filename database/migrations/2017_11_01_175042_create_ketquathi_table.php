@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMonTable extends Migration
+class CreateKetquathiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateMonTable extends Migration
      */
     public function up()
     {
-        Schema::create('mon', function (Blueprint $table) {
-            //
+        Schema::create('ketquathi', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tenmon', 20);
+            $table->string('mssv', 10);
+            $table->float('diem', 2, 2);
+            $table->string('madethi', 10);
+            $table->string('thoiganlam', 10);
+            $table->date('thoigianbatdau');
+            $table->string('dapan', 255);
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateMonTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mon');
+        Schema::dropIfExists('KetQuaThi');
     }
 }
