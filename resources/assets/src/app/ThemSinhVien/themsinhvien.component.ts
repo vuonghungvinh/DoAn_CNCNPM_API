@@ -7,16 +7,17 @@ import { SinhvienService } from '../services/sinhvien.service';
   styleUrls: ['./themsinhvien.component.scss'],
   providers: [ SinhvienService ]
 })
+// tslint:disable-next-line:component-class-suffix
 export class ThemSinhVien  {
+	// tslint:disable-next-line:indent
 	constructor(
 		private sinhvienservice: SinhvienService,
 		private router: Router) {
     }
-	  public students:any[];
+	  public students: any[];
     public setgioitinh = true;
 
 	ngOnInit(){
-		//lay danh sach lop da co bo vao select box
       this.sinhvienservice.getdanhsachsinhvien().subscribe(data => {
       this.students=data['students'];
 		});
@@ -29,9 +30,9 @@ export class ThemSinhVien  {
 	addstudents(value) {
     value['gioitinh']= this.setgioitinh;
     console.log(value);
-    this.sinhvienservice.addstudents(value).subscribe(data=>{
+    this.sinhvienservice.addstudents(value).subscribe(data => {
       console.log(data);
-      alert("Thêm sinh viên thành công");
+      alert('Thêm sinh viên thành công');
       this.router.navigate(['/xemdanhsach']);
      });
 	// this.router.navigate(['xemdanhsach']);

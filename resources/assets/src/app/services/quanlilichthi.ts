@@ -10,13 +10,16 @@ constructor(private _http: Http) {
 }
 
     getMaMon() {
-      return this._http.get('/api/admin/mon', this.jwt()).map( result => result.json());
+      return this._http.get('/api/admin/lophocphan/themsinhvienmon', this.jwt()).map( result => result.json());
     }
     getDanhSachLichThi() {
       return this._http.get('/api/admin/lichthi/xemlichthi', this.jwt()).map( result => result.json());
     }
     dangKiLichThi(data: any): Observable<any> {
       return this._http.post('/api/admin/lichthi/add', data, this.jwt()).map((response: Response) => response.json());
+    }
+    deleteLichThi(data: any): Observable<any> {
+      return this._http.delete('api/admin/lichthi/delete/' + data , this.jwt()).map((response: Response) => response.json());
     }
     // addQuestion(data: any): Observable<any> {
     //   return this._http.post('/api/admin/question/add', data, this.jwt()).map((response: Response) => response.json());

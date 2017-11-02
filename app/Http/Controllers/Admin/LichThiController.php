@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\LichThi;
 use App\LopHocPhan;
+use App\Mon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -75,6 +76,7 @@ class LichThiController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -98,5 +100,12 @@ class LichThiController extends Controller
     public function destroy($id)
     {
         //
+        $mamon = LichThi::find($id);
+        DB::table('lophocphan')
+        ->where('mamon','=',$mamon->mamon)
+        ->update(['dkthi' => 0]);
+        $lichthi = LichThi::where('id','=',$id);
+        $lichthi->delete();
+        return Response(['status' => 200]);
     }
 }

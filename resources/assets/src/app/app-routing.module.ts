@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuestionComponent } from './quanlicauhoi/question.component';
 import { AddQuestionComponent } from './quanlicauhoi/addquestion/addquestion.component';
 import { ReViewTestComponent } from './xemlaibaithi/reviewtest.component';
@@ -39,8 +38,7 @@ const routes: Routes = [
   { path: 'themsinhvien', component: ThemSinhVien, canActivate: [AuthGurad] },
   { path: 'danhsachsinhvien/:id', component: Danhsachsinhvien, canActivate: [AuthGurad] },
 
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard',  component: DashboardComponent, canActivate: [AuthGurad] },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({

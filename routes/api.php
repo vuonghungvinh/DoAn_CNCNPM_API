@@ -19,6 +19,8 @@ Route::prefix('admin')->group(function () {
     Route::group(['prefix' => 'students', 'middleware' => ['jwt.auth']], function () {
         Route::get('/', 'Admin\StudentsController@index');
         Route::post('/create', 'Admin\StudentsController@store');
+        Route::get('/lop/{id}', 'Admin\StudentsController@show');
+        Route::delete('/delete/{id}', 'Admin\StudentsController@destroy');
     });
     Route::group(['prefix' => 'lophocphan', 'middleware' => ['jwt.auth']], function () {
         Route::get('/', 'Admin\LophocphanController@index');
@@ -40,6 +42,7 @@ Route::prefix('admin')->group(function () {
     Route::group(['prefix' => 'lichthi', 'middleware' => ['jwt.auth']], function () {
         Route::get('/xemlichthi', 'Admin\LichThiController@index');
         Route::post('/add', 'Admin\LichThiController@store');
+        Route::delete('/delete/{id}', 'Admin\LichThiController@destroy');
     });
 });
 

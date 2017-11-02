@@ -21,12 +21,11 @@
         <th>{{lichthi.thoigianthi}}</th>
         <th>{{lichthi.tongcauhoi}}</th>
         <th>{{lichthi.phong}}</th>
-        <th><a href="#">Xem</a></th>
+        <th><a [routerLink]="['/danhsachsinhvien/'+lichthi.get_mon.id]">Xem</a><a href="javascript:void(0)" id="hrefdelete" (click)="deleteLichthi(lichthi.id)">   <span class="glyphicon glyphicon-trash"></span></a></th>
       </tr>
 		</table>
 	</div>
     <div class="button-group text-center ">
-        <button class="btn btn-primary" type="button" id="btn1">Thêm mới</button>
-        <button class="btn btn-primary" type="button">Hủy</button>
+        <button class="btn btn-primary" (click)="dangKi()" type="button" id="btn1">Đăng ký mới</button>
     </div>
 </div>

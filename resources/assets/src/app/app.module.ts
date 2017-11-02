@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from "@angular/http";
-import { AppRoutingModule } from './app-routing.module';
+import { HttpModule } from '@angular/http';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuestionComponent } from './quanlicauhoi/question.component';
 import { HeaderComponent } from './header/header.component';
 import { AddQuestionComponent } from './quanlicauhoi/addquestion/addquestion.component';
@@ -17,7 +17,7 @@ import { AccountComponent } from './quanlitaikhoan/taikhoan.component';
 import { UpdateQuestionComponent } from './quanlicauhoi/updatequestion/updatequestion.component';
 import { Themlophocphan } from './ThemLopHocPhan/themlophocphan.component';
 import { XemDanhSach } from './XemDanhSachSinhVien/xemdanhsach.component';
-import { ThemSinhVien } from "./ThemSinhVien/themsinhvien.component";
+import { ThemSinhVien } from './ThemSinhVien/themsinhvien.component';
 import { Xemdanhsachlop } from "./XemDanhSachLopHocPhan/xemdanhsachlop.component";
 import { Xemlichthi } from "./Xemlichthi/xemlichthi.component";
 import { DangkilichthiComponent } from "./Dangkilichthi/dangkilichthi.component";
@@ -34,12 +34,12 @@ import { AuthenticationService } from "./services/authentication.service";
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    Ng2SearchPipeModule
   ],
   declarations: [
     AppComponent,
     AlertComponent,
-    DashboardComponent,
     QuestionComponent,
     HeaderComponent,
     AddQuestionComponent,

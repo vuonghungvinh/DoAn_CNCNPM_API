@@ -29,7 +29,6 @@ export class DangkilichthiComponent {
     });
   }
   themLichThi(value: any) {
-    console.log(value);
     this.lichthi.dangKiLichThi(value).subscribe( data => {
       alert('Succsess');
       this.router.navigate(['/xemlichthi']);
