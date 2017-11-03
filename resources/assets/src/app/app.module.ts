@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,7 +36,8 @@ import { AuthenticationService } from "./services/authentication.service";
     FormsModule,
     AppRoutingModule,
     HttpModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    CKEditorModule
   ],
   declarations: [
     AppComponent,

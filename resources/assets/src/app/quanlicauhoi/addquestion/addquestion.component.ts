@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuanLiCauHoi } from '../../services/quanlicauhoi';
 import { Router } from '@angular/router';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 @Component({
   // tslint:disable-next-line:component-selector
