@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="16x16">
         <title>Laravel5A2</title>
-        <script src="https://cdn.ckeditor.com/4.5.11/full/ckeditor.js"></script>
+        <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js" type="text/javascript"></script>
     </head>

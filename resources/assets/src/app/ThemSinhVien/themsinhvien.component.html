@@ -2,7 +2,7 @@
 	<div>
 		<h1 class="text-center">Thêm Sinh Viên</h1>
 	</div>
-	<form role="form" (ngSubmit)="addstudents(f.value)" #f = "ngForm">
+	<form role="form" (ngSubmit)="addstudents(f.value)" #f = "ngForm" enctype="multipart/form-data" >
 		<div class="row">
 			<div class="col-md-6">
 				<div id="form1">
@@ -90,7 +90,8 @@
                   </div>
             </div>
 					</div>
-				</div>
+        </div>
+
 			</div>
 			<div class="button-group text-center " id="buttonthem">
 				<button class="btn btn-primary" type="submit" [disabled]="!f.form.valid" >Thêm mới</button>

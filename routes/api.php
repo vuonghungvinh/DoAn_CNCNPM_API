@@ -36,7 +36,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/add','Admin\QuestionController@store');
         Route::get('/listquestion', 'Admin\QuestionController@index');
         Route::delete('/{id}/delete', 'Admin\QuestionController@delete');
-        Route::put('/listquestion/update/{id}', 'Admin\QuestionController@update');
+        Route::put('/update/{id}', 'Admin\QuestionController@update');
         Route::get('/listquestion/{id}', 'Admin\QuestionController@show');
     });
     Route::group(['prefix' => 'lichthi', 'middleware' => ['jwt.auth']], function () {

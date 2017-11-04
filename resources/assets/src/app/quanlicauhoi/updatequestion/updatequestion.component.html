@@ -1,1 +1,46 @@
-<p>Hello</p>
+<div style="text-align: center; margin-bottom: 50px">
+    <h2>Tạo Mới Câu Hỏi</h2>
+  </div>
+  <div class='panel-body'>
+    <form class="form-horizontal" (ngSubmit)="updateQuestion(f.value)" #f="ngForm" class='form-horizontal' role='form' novalidate>
+      <div class='form-group' id="chonmon">
+        <label class='control-label col-md-2 ' for='id_accomodation'>Môn</label>
+        <div class='col-md-8'>
+          <select  class='form-control'   id='id_accomodation' l>
+            <option *ngIf="cauhoi" selected  disabled >{{cauhoi[0].mon.tenmon}}</option>
+          </select>
+        </div>
+        <div class="clearfix visible-md-block"></div>
+      </div>
+      <div class='form-group' id="noidungcauhoi">
+        <label class='control-label col-md-2 ' for='id_noidung'>Nội dung</label>
+        <div class='col-md-8'>
+          <textarea *ngIf="cauhoi" [(ngModel)]="cauhoi[0].noidungcauhoi"  name='noidungcauhoi' class='form-control' id='id_noidung'  rows='10'>{{cauhoi[0].noidungcauhoi}}</textarea>
+        </div>
+      </div>
+      <div class='form-group'>
+        <div  class="col-md-11 col-md-offset-1">
+          <div  class="row" *ngFor="let dapan of list_dapan ;let i = index">
+            <label class='control-label col-md-2' for='id_A'>{{dapan.ten}}</label>
+            <div class='col-md-7'>
+              <div class='form-group internal '>
+                <input [(ngModel)]="dapan.noi_dung"  name="noi_dung{{i}}" value="{{dapan.noi_dung}}" class='form-control' id='id_A'>
+              </div>
+              <div class='make-switch col-md-1 form-group' data-off-label='NO' data-on-label='YES' id='id_slide_switch'>
+                  <input  id='id_slide' (click)="!this.checked" [(ngModel)]="dapan.is_true" name="is_true{{i}}" type='checkbox' value='dapan.is_true'>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='form-group' id="btgroup" >
+        <div class=' col-md-3 col-md-offset-4' id="btsubmit">
+          <button class='btn btn-primary' type='submit' >
+              <i class="fa fa-btn fa-sign-in"></i>Submit</button>
+        </div>
+        <div class='col-md-3' id="btcancel">
+          <input type="button" class='btn btn-danger' (click)="navigate()"  value="Cancel" >
+        </div>
+      </div>
+    </form>
+  </div>

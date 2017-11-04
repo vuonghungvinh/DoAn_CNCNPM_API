@@ -16,6 +16,7 @@ export class ThemSinhVien  {
     }
 	  public students: any[];
     public setgioitinh = true;
+    public myFile: File;
 
 	ngOnInit(){
       this.sinhvienservice.getdanhsachsinhvien().subscribe(data => {
@@ -26,8 +27,10 @@ export class ThemSinhVien  {
     this.setgioitinh = gender;
     console.log(gender);
   }
+
 	//up len serve
 	addstudents(value) {
+
     value['gioitinh']= this.setgioitinh;
     console.log(value);
     this.sinhvienservice.addstudents(value).subscribe(data => {
@@ -35,6 +38,6 @@ export class ThemSinhVien  {
       alert('Thêm sinh viên thành công');
       this.router.navigate(['/xemdanhsach']);
      });
-	// this.router.navigate(['xemdanhsach']);
+	this.router.navigate(['xemdanhsach']);
 	}
 }

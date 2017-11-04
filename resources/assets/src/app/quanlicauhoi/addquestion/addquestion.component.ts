@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { QuanLiCauHoi } from '../../services/quanlicauhoi';
 import { Router } from '@angular/router';
 import { CKEditorModule } from 'ng2-ckeditor';
-
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'add-question-component',
@@ -71,7 +70,7 @@ constructor(
     // tslint:disable-next-line:one-line
     else if (this.checkSubmit) {
       this.checkSubmit = false;
-      console.log(value);
+      console.log(value.noidungcauhoi);
       value['list_dap_an'] = this.list_dapan;
 
       this.taomoicauhoi.addQuestion(value).subscribe(data => {
