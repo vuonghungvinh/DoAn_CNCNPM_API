@@ -1,0 +1,9 @@
+<div class="formexcel">
+    <form role="form" (ngSubmit)="addstudents(f.value)" #f = "ngForm" enctype="multipart/form-data">
+          <div class="form-group">
+                <label for="fileupload" >Upload</label>
+                <input type="file" class="form-control" (change)="onChange($event)">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

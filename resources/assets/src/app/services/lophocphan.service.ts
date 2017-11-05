@@ -20,9 +20,19 @@ export class LophocphanService {
   addSinhVienVaoMon(data: any): Observable<any> {
     return this._http.post('/api/admin/lophocphan/addsinhvien', data, this.jwt()).map((response: Response) => response.json());
   }
+  deleteSinhvien(data: any, mssv: any): Observable<any> {
+    return this._http.delete('api/admin/lophocphan/delete/' + data + '/' + mssv, this.jwt()).map((response: Response) => response.json());
+  }
 	getdetail(data: any){
 		return this._http.get('/api/admin/lophocphan/danhsachsinhvien/' + data, this.jwt()).map(result=>result.json());
-	}
+  }
+	getTongCauHoi(data: any){
+		return this._http.get('/api/admin/lophocphan/danhsachsinhvien/tongcauhoi/' + data, this.jwt()).map(result=>result.json());
+  }
+
+  addMon(data: any) {
+    return this._http.post('/api/admin/lophocphan/themlophocphan', data, this.jwt()).map((response: Response) => response.json());
+  }
 	private jwt() {
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser && currentUser.token) {

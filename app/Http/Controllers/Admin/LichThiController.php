@@ -50,9 +50,9 @@ class LichThiController extends Controller
         $lichthi->thoigianthi = $request->thoigianthi;
         $lichthi->tongcauhoi = $request->tongcauhoi;
         $lichthi->save();
-        DB::table('lophocphan')
-        ->where('mamon', $request->mamon)
-        ->update(['dkthi'=> 1]);
+        // DB::table('lophocphan')
+        // ->where('mamon', $request->mamon)
+        // ->update(['dkthi'=> 1]);
         return Response(['status' => 200]);
     }
 

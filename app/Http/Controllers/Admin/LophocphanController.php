@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\LopHocPhan;
 use App\Students;
 use App\User;
+use App\Mon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
@@ -36,8 +37,16 @@ class LophocphanController extends Controller
     }
     public function danhsachsinhvien(Request $request)
     {
-        $lophocphan = LopHocPhan::with(['mon', 'student'])->where('mamon',$request->id)->get();
+        $lophocphan = LopHocPhan::with(['mon', 'student'])
+        ->where('mamon',$request->id)->get();
         return response()->json(['lophocphan' => $lophocphan]);
+    }
+    public function tongcauhoi(Request $request)
+    {
+
+        $tongcauhoi = DB::table('cauhoi')
+        ->where('mamon',$request->id)->count();
+        return response()->json(['tongcauhoi' => $tongcauhoi]);
     }
 
     /**
@@ -60,12 +69,12 @@ class LophocphanController extends Controller
         // ->select('cauhoi.noidungcauhoi','cauhoi.dapan','cauhoi.mucdo','mon.id','mon.tenmon','dapan.tendapan','dapan.noidungdapan','dapan.id','dapan.macauhoi')
         // ->get();
         // $mon = LopHocPhan::with(['mon'])->where('dkthi',0)->distinct()->get();
-        $mon = DB::table('mon')
-        ->join('lophocphan','mon.id', '=', 'lophocphan.mamon')
-        ->select('mon.id', 'mon.tenmon')
-        ->distinct()
-        ->where('lophocphan.dkthi', '0')
-        ->get();
+        $mon = DB::table('mon')->get();
+        // ->join('lophocphan','mon.id', '=', 'lophocphan.mamon')
+        // ->select('mon.id', 'mon.tenmon')
+        // ->distinct()
+        // ->where('lophocphan.dkthi', '0')
+        // ->get();
         return response()->json(['mon' => $mon]);
     }
     /**
@@ -90,6 +99,14 @@ class LophocphanController extends Controller
       return Response(['status' => 200]);
     }
 
+
+    public function themlophocphan(Request $request)
+    {
+      $monhoc = new Mon;
+      $monhoc->tenmon = $request->name;
+      $monhoc->save();
+      return Response(['status' => 200]);
+    }
     /**
      * Display the specified resource.
      *
@@ -130,7 +147,13 @@ class LophocphanController extends Controller
      * @param  \App\LopHocPhan  $lopHocPhan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LopHocPhan $lopHocPhan)
+    public function delete($id, $mssv)
+    {
+      $da = LopHocPhan::where("mamon","=", $id)->where("mssv", "=", $mssv);
+      $da->delete();
+      return Response(['status' => 200]);
+    }
+    public function destroy(LopHocPhan $lopHocPhan, Request $request)
     {
         //
     }

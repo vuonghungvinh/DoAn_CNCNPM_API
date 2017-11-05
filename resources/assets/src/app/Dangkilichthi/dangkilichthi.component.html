@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="dangkilichthi">
     <div>
         <h1 class="text-center">Đăng kí lịch thi</h1>
     </div>
@@ -44,8 +44,8 @@
                 </div>
             </div>
             <div class="col-md-6 form-group">
-                <label class="col-md-3">Tổng câu hỏi</label>
-                <input class="col-md-9 form-control" type="number" required #tongcauhoi="ngModel" name="tongcauhoi" min="10" max="60" ngModel >
+                <label *ngIf="tong_cauhoi" class="col-md-3">Tổng câu hỏi {{tong_cauhoi}}</label>
+                <input class="col-md-9 form-control" type="number"   required #tongcauhoi="ngModel" name="tongcauhoi" value="tongcauhoi" min="10" max="60" ngModel >
                 <div *ngIf="tongcauhoi.errors && (tongcauhoi.dirty || tongcauhoi.touched)" class="text text-danger text-left">
                   <div [hidden]="!tongcauhoi.errors.required">
                       Bạn chưa nhập
@@ -63,7 +63,7 @@
         </div>
     </form>
     <div class="liststudent">
-        <div>
+        <div id="danhsachsinhvienlop">
             <h1 class="text-center">Danh sách sinh viên của lớp.</h1>
         </div>
         <table class="table table-bordered">

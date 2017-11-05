@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CKEditorModule } from 'ng2-ckeditor';
 
+import { SinhVienExcelComponent } from './ThemSinhVien/themtufileexcel/sinhvienexcelcomponent';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuestionComponent } from './quanlicauhoi/question.component';
@@ -19,15 +20,16 @@ import { UpdateQuestionComponent } from './quanlicauhoi/updatequestion/updateque
 import { Themlophocphan } from './ThemLopHocPhan/themlophocphan.component';
 import { XemDanhSach } from './XemDanhSachSinhVien/xemdanhsach.component';
 import { ThemSinhVien } from './ThemSinhVien/themsinhvien.component';
-import { Xemdanhsachlop } from "./XemDanhSachLopHocPhan/xemdanhsachlop.component";
-import { Xemlichthi } from "./Xemlichthi/xemlichthi.component";
-import { DangkilichthiComponent } from "./Dangkilichthi/dangkilichthi.component";
-import { LoginComponent }  from "./login/login.component";
-import { Danhsachsinhvien } from "./Sinhvienoflophocphan/danhsachsinhvien.component";
-import { AlertService } from "./services/alert.service";
-import { AuthGurad } from "./guards/auth.guard";
-import { AlertComponent } from "./alert/alert.component";
-import { AuthenticationService } from "./services/authentication.service";
+import { Xemdanhsachlop } from './XemDanhSachLopHocPhan/xemdanhsachlop.component';
+import { Xemlichthi } from './Xemlichthi/xemlichthi.component';
+import { DangkilichthiComponent } from './Dangkilichthi/dangkilichthi.component';
+import { LoginComponent } from './login/login.component';
+import { Danhsachsinhvien } from './Sinhvienoflophocphan/danhsachsinhvien.component';
+import { ThemMonHocComponent } from './Themmonhoc/themonhoc.component';
+import { AlertService } from './services/alert.service';
+import { AuthGurad } from './guards/auth.guard';
+import { AlertComponent } from './alert/alert.component';
+import { AuthenticationService } from './services/authentication.service';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { AuthenticationService } from "./services/authentication.service";
     HeaderComponent,
     LoginComponent,
     Danhsachsinhvien,
-    UpdateQuestionComponent
+    UpdateQuestionComponent,
+    SinhVienExcelComponent,
+    ThemMonHocComponent
   ],
   providers: [
     AlertService,
