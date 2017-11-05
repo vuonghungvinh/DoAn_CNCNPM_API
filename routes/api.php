@@ -56,5 +56,8 @@ Route::prefix('student')->group(function () {
     Route::group(['prefix' => 'v1'], function(){
         Route::get('details', 'Student\LoginController@details')->middleware('auth:api');
         Route::get('getmon', 'Student\LoginController@getMon')->middleware('auth:api');
+        Route::get('getdanhsachmonthi', 'Student\StudentController@getDanhSachMonThi')->middleware('auth:api');
+        Route::post('getdethi', 'Student\StudentController@getDeThi')->middleware('auth:api');
+        Route::post('nopbaithi', 'Student\StudentController@nopBaiThi')->middleware('auth:api');
     });
 });
