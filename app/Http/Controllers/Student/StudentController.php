@@ -48,22 +48,22 @@ class StudentController extends Controller
       } while(count(DeThi::where('madethi', $madethi)->get())>0);
       $dethi = new DeThi();
       $dethi->madethi = $madethi;
-      $dethi->mamon = $request->mamon;
-      $dethi->tongcauhoi = $request->tongcauhoi;
+      $dethi->mamon = $lichthi->mamon;
+      $dethi->tongcauhoi = $lichthi->tongcauhoi;
       $dethi->save();
       $dethilichthi = new DeThiLichThi();
       $dethilichthi->madethi = $madethi;
       $dethilichthi->malichthi = $request->lichthi_id;
       $dethilichthi->save();
-      $questions = Question::with(['listdapan'])->where('mamon', $request->mamon)->get()->random($request->tongcauhoi);
+      $questions = Question::with(['listdapan'])->where('mamon', $lichthi->mamon)->get()->random($lichthi->tongcauhoi);
       foreach($questions as $question) {
         $dethicauhoi = new DeThiCauHoi();
         $dethicauhoi->madethi = $madethi;
         $dethicauhoi->macauhoi = $question->id;
         $dethicauhoi->save();
       }
-      LopHocPhan::where('mamon', $request->mamon)->where('mssv', $user->mssv)->update(['dkthi'=>1]);
-      $result = (object) array('start_time' => date('Y-m-d H:i:s'), 'madethi' => $madethi, 'questions' => $questions);
+      LopHocPhan::where('mamon', $lichthi->mamon)->where('mssv', $user->mssv)->update(['dkthi'=>1]);
+      $result = (object) array('start_time' => date('Y-m-d H:i:s'), 'madethi' => $madethi, 'questions' => $questions,'thoigianthi' => $lichthi->thoigianthi);
       return response()->json($result);
     }
 
@@ -84,7 +84,7 @@ class StudentController extends Controller
       $dapan_str = '';//'id_cauhoi: id_dapan[, id_dapan];'
       $diem = 0;
       $diem_moi_cau = 10.0/count($request->questions);
-      
+
       foreach($request->questions as $question) {
         $dapan=''.$question->id.':'.$this->processString($question->answer);
         if(count($dapan_str) < 1){

@@ -14,7 +14,10 @@ export class SinhvienService {
 	}
 	addstudents(data: any): Observable<any>{
 		return this._http.post("/api/admin/students/create", data, this.jwt()).map((response: Response) => response.json());
-	}
+  }
+  uploadFile(data: any){
+    return this._http.post('/api/admin/students/uploadfile', data, this.jwt()).map((response: Response) => response.json());
+  }
 
 	private jwt() {
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));

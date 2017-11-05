@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use \stdClass;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Students;
@@ -65,7 +66,34 @@ class StudentsController extends Controller
         $students = DB::table('users')->where('lop', $id)->get();
         return response()->json(['students' => $students]);
     }
+    public function uploadfile(Request $request)
+    {
+      if($request->hasFile('uploadFile')){
+                $path = $request->file('uploadFile')->getRealPath();
+                $data = Excel::load($path, function($reader) {})->get();
+                if(!empty($data) && $data->count()){
+                    foreach ($data->toArray() as $key => $value) {
+                        if(!empty($value)){
+                            foreach ($value as $v) {
 
+                              $sinhvien = new Students;
+                              $students->name = $v['name'];
+                              $students->gioitinh =  $v['gioitinh'];
+                              $students->lop =  $v['lop'];
+                              $students->mssv =  $v['mssv'];
+                              $students->ngaysinh =  '10-02-1995';
+                              $students->trangthai =true;
+                              $students->diachi=  $v['diachi'];
+                              $students->password=bcrypt('123456');
+                              $students->save();
+                              // $insert[] = ['name' => $v['name'], 'ngaysinh' => $v['ngaysonh']];
+                            }
+                        }
+                    }
+                }
+            }
+            return response()->json(['status' => 200]);
+    }
     /**
      * Show the form for editing the specified resource.
      *

@@ -21,6 +21,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/create', 'Admin\StudentsController@store');
         Route::get('/lop/{id}', 'Admin\StudentsController@show');
         Route::delete('/delete/{id}', 'Admin\StudentsController@destroy');
+        Route::post('/uploadfile', 'Admin\StudentsController@uploadfile');
     });
     Route::group(['prefix' => 'lophocphan', 'middleware' => ['jwt.auth']], function () {
         Route::get('/', 'Admin\LophocphanController@index');
