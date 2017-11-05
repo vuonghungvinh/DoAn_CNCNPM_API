@@ -76,20 +76,24 @@ class StudentsController extends Controller
                         if(!empty($value)){
                             foreach ($value as $v) {
 
-                              $sinhvien = new Students;
-                              $students->name = $v['name'];
-                              $students->gioitinh =  $v['gioitinh'];
-                              $students->lop =  $v['lop'];
-                              $students->mssv =  $v['mssv'];
-                              $students->ngaysinh =  '10-02-1995';
-                              $students->trangthai =true;
-                              $students->diachi=  $v['diachi'];
-                              $students->password=bcrypt('123456');
-                              $students->save();
-                              // $insert[] = ['name' => $v['name'], 'ngaysinh' => $v['ngaysonh']];
+                              // $sinhvien = new Students;
+                              // $students->name = $v['name'];
+                              // $students->gioitinh =  $v['gioitinh'];
+                              // $students->lop =  $v['lop'];
+                              // $students->mssv =  $v['mssv'];
+                              // $students->ngaysinh =  '10-02-1995';
+                              // $students->trangthai =true;
+                              // $students->diachi=  $v['diachi'];
+                              // $students->password=bcrypt('123456');
+                              // $students->save();
+                              $insert = array();
+                              $insert[] = ['name' => $v['name'], 'mssv' => $v['mssv'], 'ngaysinh' => $v['ngaysinh'],
+                              'gioitinh' =>  $v['gioitinh'],'diachi'=>  $v['diachi'],'lop' =>  $v['lop'],'trangthai' => $v['trangthai'],'password' => bcrypt('123456') ];
+                               Students::insert($insert);
                             }
                         }
                     }
+
                 }
             }
             return response()->json(['status' => 200]);

@@ -20,6 +20,7 @@ export class SinhVienExcelComponent {
    }
   files: FileList;
   filestring: string;
+  public formData: FormData;
   ngOnInit() {
 
   }
@@ -27,17 +28,14 @@ export class SinhVienExcelComponent {
     let fileList: FileList = event.target.files;
     if(fileList.length > 0) {
         let file: File = fileList[0];
-        let formData:FormData = new FormData();
-        formData.append('uploadFile', file, file.name);
+        this.formData = new FormData();
+        this.formData.append('uploadFile', file, file.name);
         let headers = new Headers();
         /** No need to include Content-Type in Angular 4 */
         headers.append('Content-Type', 'multipart/form-data');
         headers.append('Accept', 'application/json');
         let options = new RequestOptions({ headers: headers });
-        this.sinhivienservice.uploadFile(formData).subscribe( data=> {
-          alert("sucssec");
-          this.router.navigate['xemdanhsach'];
-        })
+
         // this.http.post(`http://localhost:8000/api/admin/students/uploadfile`, formData, options)
         //     .map(res => res.json())
         //     .subscribe(
@@ -47,6 +45,10 @@ export class SinhVienExcelComponent {
     }
   }
   addstudents(value: any){
+    this.sinhivienservice.uploadFile(this.formData).subscribe( data=> {
+      alert("sucssec");
+      this.router.navigate(['xemdanhsach']);
+    })
  }
 }
 
