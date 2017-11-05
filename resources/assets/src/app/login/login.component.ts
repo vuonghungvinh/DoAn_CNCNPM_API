@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 @Component({
     selector: "login-component",
     templateUrl: "./login.component.html",
+    styleUrls: ['./login.component.scss'],
     providers: [AuthenticationService]
 })
 
@@ -14,13 +15,13 @@ export class LoginComponent{
         private router: Router
     ){
         if (localStorage.getItem("currentUser")){
-            this.router.navigate(['/']);
+            this.router.navigate(['/xemdanhsach']);
         }
     }
     login(value) {
         console.log(value);
         this.authentication.login(value).subscribe(data => {
-            this.router.navigate(['/']);
+            this.router.navigate(['/xemdanhsach']);
         }, error => {
             console.log(error);
         });

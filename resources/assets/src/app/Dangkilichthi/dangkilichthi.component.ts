@@ -17,6 +17,7 @@ export class DangkilichthiComponent {
     }
   public listsinhvien: any[];
   public mon: any[];
+  public tong_cauhoi: number;
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
     this.lichthi.getMaMon().subscribe( data => {
@@ -27,9 +28,11 @@ export class DangkilichthiComponent {
     this.sinhvienlophocphan.getdetail(event.target.value).subscribe( data => {
       this.listsinhvien = data['lophocphan'];
     });
+    this.sinhvienlophocphan.getTongCauHoi(event.target.value).subscribe( data => {
+      this.tong_cauhoi = data['tongcauhoi'];
+    });
   }
   themLichThi(value: any) {
-    console.log(value);
     this.lichthi.dangKiLichThi(value).subscribe( data => {
       alert('Succsess');
       this.router.navigate(['/xemlichthi']);

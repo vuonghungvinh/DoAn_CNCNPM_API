@@ -12,7 +12,12 @@ constructor(private _http: Http) {
     getStudents() {
         return this._http.get('/api/admin/students', this.jwt()).map( result => result.json());
     }
-
+    getSinhVienLop(data: any) {
+      return this._http.get('/api/admin/students/lop/' + data, this.jwt()).map( result => result.json());
+    }
+    deleteSinhVien(data: any) {
+      return this._http.delete('/api/admin/students/delete/' +data, this.jwt()).map( result => result.json());
+    }
 	// getUser() {
 	// 	let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     //     if (currentUser && currentUser.api_token) {

@@ -82,8 +82,9 @@ class QuestionController extends Controller
     public function show($id)
     {
         //
-        $listquestion = Question::where('id', '=', $id) -> get();
-        return response()->json(['cauhoi'=>$listquestion]);
+        $cauhoi = Question::with(['listdapan', 'mon'])->where('id', '=', $id)->get();
+        return response()->json(['cauhoi'=>$cauhoi]);
+
     }
 
     /**
@@ -114,6 +115,23 @@ class QuestionController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $dapan_dung = '';
+        foreach($request->listdapan as $dapan){
+            // $da = new DapAn;
+            // $da->macauhoi =$id_cauhoi;
+            // $da->tendapan = $dapan['ten'];
+            // $da->noidungdapan = $dapan['noi_dung'];
+            // $da->save();
+            if ($dapan['is_true']){
+              $dapan_dung .= strval($dapan['id']).',';//'1', '1,3'
+            }
+            DB::table('dapan')->where('id', $dapan['id'])->update(['noidungdapan' => $dapan['noi_dung']]);
+        }
+        //update bang cau hoi field dapan=$dapan_dung
+        // $question = Question::find($id);
+        DB::table('cauhoi')->where('id', $id)->update(['noidungcauhoi' => $request->noidungcauhoi, 'dapan' => $dapan_dung]);
+        return Response(['status' => 200]);
+
     }
 
     /**

@@ -19,13 +19,18 @@ Route::prefix('admin')->group(function () {
     Route::group(['prefix' => 'students', 'middleware' => ['jwt.auth']], function () {
         Route::get('/', 'Admin\StudentsController@index');
         Route::post('/create', 'Admin\StudentsController@store');
+        Route::get('/lop/{id}', 'Admin\StudentsController@show');
+        Route::delete('/delete/{id}', 'Admin\StudentsController@destroy');
     });
     Route::group(['prefix' => 'lophocphan', 'middleware' => ['jwt.auth']], function () {
         Route::get('/', 'Admin\LophocphanController@index');
         Route::get('/danhsachsinhvien/{id}', 'Admin\LophocphanController@danhsachsinhvien');
+        Route::get('/danhsachsinhvien/tongcauhoi/{id}', 'Admin\LophocphanController@tongcauhoi');
         Route::get('/mon/danhsachsinhvien/{id}', 'Admin\LophocphanController@sinhvienkhongthuocmon');
         Route::post('/addsinhvien', 'Admin\LophocphanController@store');
+        Route::post('/themlophocphan', 'Admin\LophocphanController@themlophocphan');
         Route::get('/themsinhvienmon', 'Admin\LophocphanController@getMon');
+        Route::delete('/delete/{id}/{mssv}', 'Admin\LophocphanController@delete');
     });
     Route::group(['prefix' => 'mon', 'middleware' => ['jwt.auth']], function () {
       Route::get('/', 'Admin\MonController@index');
@@ -34,12 +39,13 @@ Route::prefix('admin')->group(function () {
         Route::post('/add','Admin\QuestionController@store');
         Route::get('/listquestion', 'Admin\QuestionController@index');
         Route::delete('/{id}/delete', 'Admin\QuestionController@delete');
-        Route::put('/listquestion/update/{id}', 'Admin\QuestionController@update');
+        Route::put('/update/{id}', 'Admin\QuestionController@update');
         Route::get('/listquestion/{id}', 'Admin\QuestionController@show');
     });
     Route::group(['prefix' => 'lichthi', 'middleware' => ['jwt.auth']], function () {
         Route::get('/xemlichthi', 'Admin\LichThiController@index');
         Route::post('/add', 'Admin\LichThiController@store');
+        Route::delete('/delete/{id}', 'Admin\LichThiController@destroy');
     });
 });
 

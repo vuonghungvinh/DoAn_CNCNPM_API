@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuestionComponent } from './quanlicauhoi/question.component';
 import { AddQuestionComponent } from './quanlicauhoi/addquestion/addquestion.component';
 import { ReViewTestComponent } from './xemlaibaithi/reviewtest.component';
@@ -11,15 +10,17 @@ import { ExamComponent } from './quanlidethi/taodethi/exam.component';
 import { AccountComponent } from './quanlitaikhoan/taikhoan.component';
 import { UpdateQuestionComponent } from './quanlicauhoi/updatequestion/updatequestion.component';
 
-import { XemDanhSach } from "./XemDanhSachSinhVien/xemdanhsach.component";
-import { ThemSinhVien } from "./ThemSinhVien/themsinhvien.component";
-import { Xemdanhsachlop } from "./XemDanhSachLopHocPhan/xemdanhsachlop.component";
-import { Themlophocphan } from "./ThemLopHocPhan/themlophocphan.component";
-import { Xemlichthi } from "./Xemlichthi/xemlichthi.component";
-import { DangkilichthiComponent } from "./Dangkilichthi/dangkilichthi.component";
-import { LoginComponent } from "./login/login.component";
-import { Danhsachsinhvien } from "./Sinhvienoflophocphan/danhsachsinhvien.component";
-import { AuthGurad } from "./guards/auth.guard";
+import { ThemMonHocComponent } from './Themmonhoc/themonhoc.component';
+import { SinhVienExcelComponent } from './ThemSinhVien/themtufileexcel/sinhvienexcelcomponent';
+import { XemDanhSach } from './XemDanhSachSinhVien/xemdanhsach.component';
+import { ThemSinhVien } from './ThemSinhVien/themsinhvien.component';
+import { Xemdanhsachlop } from './XemDanhSachLopHocPhan/xemdanhsachlop.component';
+import { Themlophocphan } from './ThemLopHocPhan/themlophocphan.component';
+import { Xemlichthi } from './Xemlichthi/xemlichthi.component';
+import { DangkilichthiComponent } from './Dangkilichthi/dangkilichthi.component';
+import { LoginComponent } from './login/login.component';
+import { Danhsachsinhvien } from './Sinhvienoflophocphan/danhsachsinhvien.component';
+import { AuthGurad } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -36,11 +37,12 @@ const routes: Routes = [
   { path: 'xemdanhsachlop', component : Xemdanhsachlop, canActivate: [AuthGurad] },
   { path: 'xemdanhsach', component: XemDanhSach, canActivate: [AuthGurad] },
   { path: 'xemlichthi', component: Xemlichthi, canActivate: [AuthGurad] },
+  { path: 'themmonhoc', component: ThemMonHocComponent, canActivate: [AuthGurad] },
+  { path: 'importexcel', component: SinhVienExcelComponent, canActivate: [AuthGurad] },
   { path: 'themsinhvien', component: ThemSinhVien, canActivate: [AuthGurad] },
   { path: 'danhsachsinhvien/:id', component: Danhsachsinhvien, canActivate: [AuthGurad] },
 
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard',  component: DashboardComponent, canActivate: [AuthGurad] },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -21,8 +21,11 @@ constructor(private _http: Http) {
     deleteQuestion(data: any): Observable<any> {
       return this._http.delete('api/admin/question/' + data + '/delete', this.jwt()).map((response: Response) => response.json());
     }
+    updateQuestion(data: any, id: any){
+      return this._http.put('api/admin/question/update/' + id, data, this.jwt()).map((response: Response) => response.json());
+    }
     getCauHoiId(data: any) {
-      return this._http.get('/api/admin/question/listquestion/'+ data, this.jwt()).map( result => result.json());
+      return this._http.get('/api/admin/question/listquestion/' + data, this.jwt()).map( result => result.json());
     }
 
 	// getUser() {

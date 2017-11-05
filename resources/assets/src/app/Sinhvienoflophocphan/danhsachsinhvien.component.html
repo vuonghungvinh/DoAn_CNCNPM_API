@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="listdanhsach">
 	<div >
 		<h1 *ngIf="listdanhsach" class="text-center">Danh Sách Sinh Viên Môn {{listdanhsach[0].mon.tenmon}}</h1>
 	</div>
@@ -9,12 +9,14 @@
         <th>MSSV</th>
         <th>Tên Sinh viên</th>
         <th>Lớp</th>
+        <th>#</th>
 			</tr>
 			<tr *ngFor="let danhsach of listdanhsach; let i = index">
         <td><span >{{i+1}}</span></td>
 				<td><span>{{danhsach.mssv}}</span></td>
         <td>{{danhsach.student.name}}</td>
         <td>{{danhsach.student.lop}}</td>
+        <td><a href="javascript:void(0)" (click)="deleteSinhvien(danhsach.mssv)">   <span class="glyphicon glyphicon-trash"></span></a></td>
 			</tr>
 		</table>
 	</div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Students;
+use App\LopHocPhan;
 use DB;
 
 class StudentsController extends Controller
@@ -16,7 +17,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = DB::table('users')->orderByRaw('lop')->get();
+        $students = DB::table('users')->orderByRaw('lop')->orderByRaw('mssv')->get();
         return response()->json(['students' => $students]);
     }
 
@@ -61,6 +62,8 @@ class StudentsController extends Controller
     public function show($id)
     {
         //
+        $students = DB::table('users')->where('lop', $id)->get();
+        return response()->json(['students' => $students]);
     }
 
     /**
@@ -95,5 +98,10 @@ class StudentsController extends Controller
     public function destroy($id)
     {
         //
+        $lophocphan = LopHocPhan::where("mssv", $id);
+        $lophocphan->delete();
+        $students = Students::where("mssv", $id);
+        $students->delete();
+        return Response(['status' => 200]);
     }
 }
