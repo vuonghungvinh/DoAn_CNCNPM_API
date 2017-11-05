@@ -12,6 +12,9 @@ constructor(private _http: Http) {
     getLopHocPhan() {
         return this._http.get('/api/admin/mon', this.jwt()).map( result => result.json());
     }
+    deleteLopHP(data: any): Observable<any> {
+      return this._http.delete('api/admin/mon/delete/' + data , this.jwt()).map((response: Response) => response.json());
+    }
 
 	// getUser() {
 	// 	let currentUser = JSON.parse(localStorage.getItem('currentUser'));

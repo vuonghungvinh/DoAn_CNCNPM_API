@@ -34,6 +34,7 @@ Route::prefix('admin')->group(function () {
     });
     Route::group(['prefix' => 'mon', 'middleware' => ['jwt.auth']], function () {
       Route::get('/', 'Admin\MonController@index');
+      Route::delete('/delete/{id}', 'Admin\MonController@delete');
     });
     Route::group(['prefix' => 'question', 'middleware' => ['jwt.auth']], function () {
         Route::post('/add','Admin\QuestionController@store');

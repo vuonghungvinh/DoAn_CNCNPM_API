@@ -21,5 +21,13 @@ ngOnInit() {
     }, error => {
         console.log(error);
     });
+  }
+  xoaLopHocPhan(value: any){
+    if (confirm("Are you sure") === true ){
+      this.lopHocPhan.deleteLopHP(value).subscribe( data => {
+        alert("Succsess");
+        this.ngOnInit();
+      })
+    }
+  }
 }
- }

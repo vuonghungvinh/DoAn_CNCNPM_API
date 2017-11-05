@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Mon;
+use App\LopHocPhan;
+use App\Question;
+use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -30,6 +33,16 @@ class MonController extends Controller
         //
     }
 
+    public function delete($id)
+    {
+      $question = Question::where("mamon","=",$id);
+      $question->delete();
+      $lophp = LopHocPhan::where("mamon","=",$id);
+      $lophp->delete();
+      $mon = Mon::where("id","=",$id);
+      $mon->delete();
+      return Response(['status' => 200]);
+    }
     /**
      * Store a newly created resource in storage.
      *
