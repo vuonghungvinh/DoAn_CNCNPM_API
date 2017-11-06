@@ -15,7 +15,7 @@ import { SinhVienExcelComponent } from './ThemSinhVien/themtufileexcel/sinhviene
 import { XemDanhSach } from './XemDanhSachSinhVien/xemdanhsach.component';
 import { ThemSinhVien } from './ThemSinhVien/themsinhvien.component';
 import { Xemdanhsachlop } from './XemDanhSachLopHocPhan/xemdanhsachlop.component';
-import { Themlophocphan } from './ThemLopHocPhan/themlophocphan.component';
+import { Themlophocphan } from './ThemSinhVienVaoLopHocPhan/themlophocphan.component';
 import { Xemlichthi } from './Xemlichthi/xemlichthi.component';
 import { DangkilichthiComponent } from './Dangkilichthi/dangkilichthi.component';
 import { LoginComponent } from './login/login.component';

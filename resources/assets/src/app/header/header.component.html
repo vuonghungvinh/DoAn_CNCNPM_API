@@ -1,7 +1,80 @@
-<div class="header">
+<div id="wrapper">
+
+          <!-- Navigation -->
+          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" [routerLink]="['/xemdanhsach']">Hello Admin</a>
+              </div>
+              <!-- Top Menu Items -->
+              <ul class="nav navbar-right top-nav">
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li>
+                              <a href="#"><i class="fa fa-fw fa-gear"></i>Quản lí tài khoản</a>
+                          </li>
+                          <li class="divider"></li>
+                          <li>
+                              <a a href="javascript:void(0)" (click)="logout()"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+              <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+              <div class="collapse navbar-collapse navbar-ex1-collapse">
+                  <ul class="nav navbar-nav side-nav menu">
+                      <li >
+                          <a href="javascript:;"  data-toggle="collapse" data-target="#quanlisinhvien"><i class="fa fa-fw fa-arrows-v"></i>Quản lí sinh viên<b class="caret"></b></a>
+                          <ul id="quanlisinhvien" class="collapse">
+                              <li><a [routerLink]="['/xemdanhsach']">Xem danh sách sinh viên</a></li>
+                              <li><a [routerLink]="['/themsinhvien']">Thêm sinh viên</a></li>
+                              <li><a [routerLink]="['/importexcel']">Thêm từ file</a></li>
+                          </ul>
+                      </li>
+                      <li >
+                          <a  href="javascript:;"  data-toggle="collapse" data-target="#quanlilophp"><i class="fa fa-fw fa-arrows-v"></i>Quản lí lớp học phần<b class="caret"></b></a>
+                          <ul id="quanlilophp" class="collapse">
+                              <li><a [routerLink]="['/xemdanhsachlop']">Xem danh sách lớp học phần</a></li>
+                              <li><a [routerLink]="['/themlophocphan']">Thêm sinh viên vào lớp học phần</a></li>
+                              <li><a [routerLink]="['/themmonhoc']">Thêm lớp học phần</a></li>
+                          </ul>
+                      </li>
+                      <li >
+                          <a  href="javascript:;"  data-toggle="collapse" data-target="#quanlilichthi"><i class="fa fa-fw fa-arrows-v"></i> Quản lí lịch thi<b class="caret"></b></a>
+                          <ul id="quanlilichthi" class="collapse">
+                              <li><a [routerLink]="['/xemlichthi']">Xem lịch thi</a></li>
+                              <li><a [routerLink]="['/dangkilichthi']">Đăng ký lịch thi</a></li>
+                          </ul>
+                      </li>
+
+                      <li><a [routerLink]="['/score']"><i class="fa fa-fw fa-edit"></i> Quản lí điểm</a></li>
+                      <li>
+                          <a  href="javascript:;"  data-toggle="collapse" data-target="#quanlicauhoi"><i class="fa fa-fw fa-arrows-v"></i> Quản lí câu hỏi<b class="caret"></b></a>
+                          <ul id="quanlicauhoi" class="collapse">
+                              <li><a [routerLink]="['/question']">Xem ngân hàng câu hỏi</a></li>
+                              <li><a [routerLink]="['/addquestion']">Tạo mới câu hỏi</a></li>
+                          </ul>
+                      </li>
+                      <li><a [routerLink]="['/reviewtest']"><i class="fa fa-fw fa-wrench"></i>Xem lại bài thi</a></li>
+                  </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+          </nav>
+
+
+
+      </div>
+      <!-- /#wrapper -->
+<!-- <div class="header">
     <nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top" >
         <div class="container" >
-          <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
               <span class="sr-only">Quan li thi trac nghiem</span>
@@ -11,7 +84,6 @@
             </button>
           </div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="menu">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
@@ -21,7 +93,7 @@
                         <li><a [routerLink]="['/themsinhvien']">Thêm sinh viên</a></li>
                         <li><a [routerLink]="['/importexcel']">Thêm từ file</a></li>
                     </ul>
-                </li>
+                </li>//
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quản lí lớp học phần<b class="caret"></b></a>
                     <ul class="dropdown-menu" style="background: #bdc3c7 ">
@@ -37,13 +109,7 @@
                         <li><a [routerLink]="['/dangkilichthi']">Đăng ký lịch thi</a></li>
                     </ul>
                 </li>
-                <!-- <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quản lí đề thi<b class="caret"></b></a>
-                    <ul class="dropdown-menu" style="background: #bdc3c7">
-                        <li><a [routerLink]="['/listexam']">Xem danh sách đề thi</a></li>
-                        <li><a [routerLink]="['/createxam']">Tạo mới đề thi</a></li>
-                    </ul>
-                </li> -->
+
                 <li><a [routerLink]="['/score']"> Quản lí điểm</a></li>
                 <li class="dropdown">
                     <a href="question" class="dropdown-toggle" data-toggle="dropdown">Quản lí câu hỏi<b class="caret"></b></a>
@@ -63,7 +129,7 @@
                 </ul>
               </li>
             </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
+          </div>
+        </div>
       </nav>
-</div>
+</div> -->

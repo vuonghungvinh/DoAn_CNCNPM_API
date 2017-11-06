@@ -17,7 +17,7 @@ import { ListExamComponent } from './quanlidethi/xemdethi/listexam.component';
 import { ExamComponent } from './quanlidethi/taodethi/exam.component';
 import { AccountComponent } from './quanlitaikhoan/taikhoan.component';
 import { UpdateQuestionComponent } from './quanlicauhoi/updatequestion/updatequestion.component';
-import { Themlophocphan } from './ThemLopHocPhan/themlophocphan.component';
+import { Themlophocphan } from './ThemSinhVienVaoLopHocPhan/themlophocphan.component';
 import { XemDanhSach } from './XemDanhSachSinhVien/xemdanhsach.component';
 import { ThemSinhVien } from './ThemSinhVien/themsinhvien.component';
 import { Xemdanhsachlop } from './XemDanhSachLopHocPhan/xemdanhsachlop.component';

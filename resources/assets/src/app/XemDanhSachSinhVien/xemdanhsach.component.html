@@ -1,53 +1,60 @@
-<div class="container">
-	<div>
-		<h1 class="text-center">Danh Sách Sinh Viên</h1>
-	</div>
-	<div class="row" id="form1">
-    <div class="col-md-4">
-        <div class="form-group col-md-10 col-md-offset-2" id="btnall" >
-            <input type="button" class="btn btn-primary btn-md" (click)="ngOnInit()" value="Xem tất cả">
+<div  id="wrapper">
+	<div id="page-wrapper">
+    <div  class="container-fluid">
+        <div class="col-md-4">
+            <div class="form-group col-md-10 col-md-offset-2" id="btnall" >
+                <input type="button" class="btn btn-primary btn-md" (click)="ngOnInit()" value="Xem tất cả">
+            </div>
+          </div>
+        <div class="col-md-4 " >
+          <div class="form-group col-md-12">
+            <label for="exampleInputEmail1"  >Xem theo lớp: </label>
+            <select  class="form-control" id="exampleInputEmail1" (change)="xemTheoLop($event)" >
+                <option disabled>Chọn lớp</option>
+                <option value="13T1" >13T1</option>
+                <option value="13T2">13T2</option>
+                <option value="13T3">13T3</option>
+                <option value="13T4">13T4</option>
+              </select>
+          </div>
         </div>
-      </div>
-		<div class="col-md-4 " >
-      <div class="form-group col-md-12">
-        <label for="exampleInputEmail1"  >Xem theo lớp: </label>
-        <select  class="form-control" id="exampleInputEmail1" (change)="xemTheoLop($event)" >
-            <option disabled>Chọn lớp</option>
-            <option value="13T1" >13T1</option>
-            <option value="13T2">13T2</option>
-            <option value="13T3">13T3</option>
-            <option value="13T4">13T4</option>
-          </select>
-      </div>
-		</div>
-			<div class="col-md-4">
-				<div class="form-group" >
-				    <label for="exampleInputEmail1">Tìm kiếm sinh viên</label>
-				    <input type="text" class="form-control" id="exampleInputEmail1" name='search' [(ngModel)]="search" placeholder="nhap mssv, ten ...">
-				</div>
-			</div>
-	<div id="danhsach">
-		<table class="table table-bordered">
-			<tr>
-        		<th>STT</th>
-        		<th>MSSV</th>
-        		<th>Ten</th>
-        		<th>Lop</th>
-        		<th>NgaySinh</th>
-            <th>GioiTinh</th>
-            <th>#</th>
-        </tr>
-        <tr *ngFor="let student of students | filter:search; let i = index">
-          <td>{{i+1}}</td>
-          <td>{{student.mssv}}</td>
-          <td>{{student.name}}</td>
-          <td>{{student.lop}}</td>
-          <td>{{student.ngaysinh}}</td>
-          <td *ngIf="student.gioitinh==1">Nam</td>
-          <td *ngIf="student.gioitinh!=1">Nữ</td>
-          <td><a href="javascript:void(0)" (click)="deleteSinhVien(student.mssv)">   <span class="glyphicon glyphicon-trash"></span></a></td>
-        </tr>
-		</table>
+          <div class="col-md-4">
+            <div class="form-group" >
+                <label for="exampleInputEmail1">Tìm kiếm sinh viên</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name='search' [(ngModel)]="search" placeholder="nhap mssv, ten ...">
+            </div>
+          </div>
+      <div class="row">
+        <div class="col-lg-12">
+            <h1 class="text-center">Danh Sách Sinh Viên</h1>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                          <th>STT</th>
+                          <th>MSSV</th>
+                          <th>Ten</th>
+                          <th>Lop</th>
+                          <th>NgaySinh</th>
+                          <th>GioiTinh</th>
+                          <th>#</th>
+                      </tr>
+                      <tr *ngFor="let student of students | filter:search; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{student.mssv}}</td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.lop}}</td>
+                        <td>{{student.ngaysinh}}</td>
+                        <td *ngIf="student.gioitinh==1">Nam</td>
+                        <td *ngIf="student.gioitinh!=1">Nữ</td>
+                        <td><a href="javascript:void(0)" (click)="deleteSinhVien(student.mssv)">   <span class="glyphicon glyphicon-trash"></span></a></td>
+                      </tr>
+                  </table>
+            </div>
+
+        </div>
+    </div>
+
+
 	</div>
 
 </div>

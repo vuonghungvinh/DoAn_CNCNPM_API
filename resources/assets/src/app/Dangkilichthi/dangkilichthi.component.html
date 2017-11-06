@@ -1,85 +1,93 @@
-<div class="container" >
-    <div>
-        <h1 class="text-center">Đăng kí lịch thi</h1>
-    </div>
-    <form class="form" id="dangkilichthi" (ngSubmit)="themLichThi(f.value)" #f="ngForm" role="form"  >
-        <div class="row">
-            <div class="col-md-6 form-group">
-                <label class="col-md-3">Chọn môn</label>
-                <select (change)="getIdmon($event)" class="form-control" name="mamon" required #mamon="ngModel" ngModel >
-                    <option disabled>Chọn môn</option>
-                    <option *ngFor="let mon of mon" [value]="mon.id">{{mon.id }} {{mon.tenmon}}</option>
-                </select>
-                <div *ngIf="mamon.errors  && (mamon.dirty || mamon.touched)" class="alert alert-danger">
-                    <div [hidden]="!mamon.errors.required">
-                      Bạn chưa chọn.
+<div id="wrapper" >
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="text-center">Đăng kí lịch thi</h1>
+                    <form class="form" id="dangkilichthi" (ngSubmit)="themLichThi(f.value)" #f="ngForm" role="form"  >
+                            <div class="form-group has-success">
+                                <label class="control-label">Chọn môn</label>
+                                <select (change)="getIdmon($event)" class="form-control" name="mamon" required #mamon="ngModel" ngModel >
+                                    <option disabled>Chọn môn</option>
+                                    <option *ngFor="let mon of mon" [value]="mon.id">{{mon.id }} {{mon.tenmon}}</option>
+                                </select>
+                                <div *ngIf="mamon.errors  && (mamon.dirty || mamon.touched)" class="alert alert-danger">
+                                    <div [hidden]="!mamon.errors.required">
+                                      Bạn chưa chọn.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group has-success">
+                                <label class="control-label">Chọn ngày</label>
+                                <input type="datetime-local" class="form-control" required #ngaydangki="ngModel" name="ngaydangki" ngModel >
+                                <div *ngIf="ngaydangki.errors && (ngaydangki.dirty || ngaydangki.touched)" class="text text-danger text-left">
+                                    <div [hidden]="!ngaydangki.errors.required">
+                                        Bạn chưa chọn ngày
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group has-success">
+                                <label class="control-label">Nhập phòng</label>
+                                <input class="form-control"  type="text" required #phongthi="ngModel" name="phongthi" ngModel>
+                                <div *ngIf="phongthi.errors && (phongthi.dirty || phongthi.touched)" class="text text-danger text-left">
+                                    <div [hidden]="!phongthi.errors.required">
+                                        Bạn chưa nhập phòng
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group has-success">
+                                <label class="control-label">Thời gian thi</label>
+                                <input class="form-control" type="number" required #thoigianthi="ngModel" name="thoigianthi" min="20" max="120" ngModel >
+                                <div *ngIf="thoigianthi.errors && (thoigianthi.dirty || thoigianthi.touched)" class="text text-danger text-left">
+                                    <div [hidden]="!thoigianthi.errors.required">
+                                        Bạn chưa nhập
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group has-success">
+                                <label *ngIf="tong_cauhoi" class="control-label">Tổng câu hỏi {{tong_cauhoi}}</label>
+                                <input class="form-control" type="number"   required #tongcauhoi="ngModel" name="tongcauhoi" value="tongcauhoi" min="10" max="60" ngModel >
+                                <div *ngIf="tongcauhoi.errors && (tongcauhoi.dirty || tongcauhoi.touched)" class="text text-danger text-left">
+                                  <div [hidden]="!tongcauhoi.errors.required">
+                                      Bạn chưa nhập
+                                  </div>
+                                  <div [hidden]="!tongcauhoi.errors.min">
+                                    Bạn chưa nhập
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group has-success">
+                                <div class="text-center">
+                                  <button class="form-control" type="submit" class="btn btn-primary btn-lg" [disabled]="!f.form.valid" >Thêm</button>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="text-center">Danh sách sinh viên của lớp.</h1>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>MSSV</th>
+                                    <th>Tên</th>
+                                    <th>Lớp</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let sinhvien of listsinhvien; let i = index;">
+                                    <td>{{i+1}}</td>
+                                    <td>{{sinhvien.mssv}}</td>
+                                    <td>{{sinhvien.student.name}}</td>
+                                    <td>{{sinhvien.student.lop}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-6 form-group">
-                <label class="col-md-3">Chọn ngày</label>
-                <input type="datetime-local" class="form-control" required #ngaydangki="ngModel" name="ngaydangki" ngModel >
-                <div *ngIf="ngaydangki.errors && (ngaydangki.dirty || ngaydangki.touched)" class="text text-danger text-left">
-                    <div [hidden]="!ngaydangki.errors.required">
-                        Bạn chưa chọn ngày
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 form-group">
-                <label class="col-md-3">Nhập phòng</label>
-                <input class="col-md-9 form-control"  type="text" required #phongthi="ngModel" name="phongthi" ngModel>
-                <div *ngIf="phongthi.errors && (phongthi.dirty || phongthi.touched)" class="text text-danger text-left">
-                    <div [hidden]="!phongthi.errors.required">
-                        Bạn chưa nhập phòng
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 form-group">
-                <label class="col-md-3">Thời gian thi</label>
-                <input class="col-md-9 form-control" type="number" required #thoigianthi="ngModel" name="thoigianthi" min="20" max="120" ngModel >
-                <div *ngIf="thoigianthi.errors && (thoigianthi.dirty || thoigianthi.touched)" class="text text-danger text-left">
-                    <div [hidden]="!thoigianthi.errors.required">
-                        Bạn chưa nhập
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 form-group">
-                <label *ngIf="tong_cauhoi" class="col-md-3">Tổng câu hỏi {{tong_cauhoi}}</label>
-                <input class="col-md-9 form-control" type="number"   required #tongcauhoi="ngModel" name="tongcauhoi" value="tongcauhoi" min="10" max="60" ngModel >
-                <div *ngIf="tongcauhoi.errors && (tongcauhoi.dirty || tongcauhoi.touched)" class="text text-danger text-left">
-                  <div [hidden]="!tongcauhoi.errors.required">
-                      Bạn chưa nhập
-                  </div>
-                  <div [hidden]="!tongcauhoi.errors.min">
-                    Bạn chưa nhập
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12 form-group">
-                <div class="col-md-6 col-md-offset-6">
-                  <button class="form-control" type="submit" class="btn btn-primary btn-lg" [disabled]="!f.form.valid" >Thêm</button>
                 </div>
             </div>
         </div>
-    </form>
-    <div class="liststudent">
-        <div id="danhsachsinhvienlop">
-            <h1 class="text-center">Danh sách sinh viên của lớp.</h1>
-        </div>
-        <table class="table table-bordered">
-            <tr>
-                <th>STT</th>
-                <th>MSSV</th>
-                <th>Tên</th>
-                <th>Lớp</th>
-            </tr>
-            <tr *ngFor="let sinhvien of listsinhvien; let i = index;">
-                <td>{{i+1}}</td>
-                <td>{{sinhvien.mssv}}</td>
-                <td>{{sinhvien.student.name}}</td>
-                <td>{{sinhvien.student.lop}}</td>
-            </tr>
-        </table>
     </div>
 </div>
 
