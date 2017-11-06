@@ -37,7 +37,8 @@ export class ThemSinhVien  {
       console.log(data);
       alert('Thêm sinh viên thành công');
       this.router.navigate(['/xemdanhsach']);
+     }, error => {
+      alert('Có lỗi');
      });
-	this.router.navigate(['xemdanhsach']);
 	}
 }

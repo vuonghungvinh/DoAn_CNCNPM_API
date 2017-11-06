@@ -46,7 +46,7 @@ export class SinhVienExcelComponent {
   }
   addstudents(value: any){
     this.sinhivienservice.uploadFile(this.formData).subscribe( data=> {
-      alert("sucssec");
+      alert('success');
       this.router.navigate(['xemdanhsach']);
     })
  }
