@@ -18,10 +18,10 @@ class CreateStudentsTable extends Migration
             $table->string('name', 20);
             $table->string('mssv', 10)->unique();
             $table->date('ngaysinh');
-            $table->boolean('gioitinh');
+            $table->tinyInteger('gioitinh');
             $table->string('diachi', 255);
-            $table->string('lop',10);
-            $table->boolean('trangthai');
+            $table->integer('malop');
+            $table->tinyInteger('trangthai')->default(1);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

@@ -16,7 +16,8 @@ class CreateLichthiTable extends Migration
         Schema::create('lichthi', function (Blueprint $table) {
             //
             $table->increments('id');
-            $table->string('mamon', 10);
+            $table->integer('mamon');
+            $table->string('malophp',10);
             $table->string('phong',20);
             $table->dateTime('thoigianbatdauthi');
             $table->integer('thoigianthi');

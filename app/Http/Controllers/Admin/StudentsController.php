@@ -18,7 +18,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = DB::table('users')->orderByRaw('lop')->orderByRaw('mssv')->get();
+        $students = DB::table('users')->orderByRaw('malop')->orderByRaw('mssv')->get();
         return response()->json(['students' => $students]);
     }
 

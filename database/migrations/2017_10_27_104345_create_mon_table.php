@@ -17,6 +17,7 @@ class CreateMonTable extends Migration
             //
             $table->increments('id');
             $table->string('tenmon', 20);
+            $table->tinyInteger('trangthai')->default(1);
             $table->timestamps();
         });
     }

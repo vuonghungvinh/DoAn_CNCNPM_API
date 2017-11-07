@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCauhoiTable extends Migration
+class CreateLopTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateCauhoiTable extends Migration
      */
     public function up()
     {
-        Schema::create('cauhoi', function (Blueprint $table) {
+        Schema::create('lop', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('mamon');
-            $table->text('noidungcauhoi');
-            $table->string('dapan');
-            $table->tinyInteger('trangthai')->default(1);
+            $table->string('tenlop',20)->unique();
+            $table->integer('khoa');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateCauhoiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cauhoi');
+        Schema::dropIfExists('lop');
     }
 }
