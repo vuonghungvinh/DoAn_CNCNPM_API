@@ -18,7 +18,7 @@ import { ExamComponent } from './quanlidethi/taodethi/exam.component';
 import { AccountComponent } from './quanlitaikhoan/taikhoan.component';
 import { UpdateQuestionComponent } from './quanlicauhoi/updatequestion/updatequestion.component';
 import { Themlophocphan } from './ThemSinhVienVaoLopHocPhan/themlophocphan.component';
-import { XemDanhSach } from './XemDanhSachSinhVien/xemdanhsach.component';
+import { XemDanhSachComponent } from './XemDanhSachSinhVien/xemdanhsachsinhvien.component';
 import { ThemSinhVien } from './ThemSinhVien/themsinhvien.component';
 import { Xemdanhsachlop } from './XemDanhSachLopHocPhan/xemdanhsachlop.component';
 import { Xemlichthi } from './Xemlichthi/xemlichthi.component';
@@ -30,16 +30,19 @@ import { AlertService } from './services/alert.service';
 import { AuthGurad } from './guards/auth.guard';
 import { AlertComponent } from './alert/alert.component';
 import { AuthenticationService } from './services/authentication.service';
+import { NoopInterceptor } from './services/httpinterceptor.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpModule,
     Ng2SearchPipeModule,
-    CKEditorModule
+    CKEditorModule,
   ],
   declarations: [
     AppComponent,
@@ -52,7 +55,7 @@ import { AuthenticationService } from './services/authentication.service';
     ListExamComponent,
     ExamComponent,
     AccountComponent,
-    XemDanhSach,
+    XemDanhSachComponent,
     ThemSinhVien,
     Xemdanhsachlop,
     Themlophocphan,
@@ -68,7 +71,12 @@ import { AuthenticationService } from './services/authentication.service';
   providers: [
     AlertService,
     AuthGurad,
-    AuthenticationService
+    AuthenticationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NoopInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

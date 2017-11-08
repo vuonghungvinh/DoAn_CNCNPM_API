@@ -1,31 +1,25 @@
-<div id="wrapper" >
-	<div id="page-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="text-center">Danh Sách Lớp Học Phần</h1>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
-                      <thead>
-                          <tr>
-                              <th>STT</th>
-                              <th>Ten Mon</th>
-                              <th>Xem DS Sinh Vien</th>
-                              <th>#</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr *ngFor="let mon of mon; let i = index">
-                              <td>{{mon.id}}</td>
-                              <td>{{mon.tenmon}}</td>
-                              <td><a [routerLink]="['/danhsachsinhvien/'+mon.id]"> DS</a></td>
-                              <td><a href="javascript:void(0)" (click)="xoaLopHocPhan(mon.id)">   <span class="glyphicon glyphicon-trash"></span></a></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                </div>
-            </div>
-          </div>
-    </div>
-	</div>
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="text-center">Danh Sách Lớp Học Phần</h1>
+      <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Ten Mon</th>
+                    <th>Xem DS Sinh Vien</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let mon of mon; let i = index">
+                    <td>{{mon.id}}</td>
+                    <td>{{mon.tenmon}}</td>
+                    <td><a [routerLink]="['/danhsachsinhvien/'+mon.id]"> DS</a></td>
+                    <td><a href="javascript:void(0)" (click)="xoaLopHocPhan(mon.id)">   <span class="glyphicon glyphicon-trash"></span></a></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+  </div>
 </div>

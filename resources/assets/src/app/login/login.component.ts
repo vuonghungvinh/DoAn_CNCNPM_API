@@ -1,20 +1,21 @@
-import { Component } from "@angular/core";
-import { AuthenticationService } from "../services/authentication.service";
-import { Router } from "@angular/router";
+import { Component } from '@angular/core';
+import { AuthenticationService } from '../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
-    selector: "login-component",
-    templateUrl: "./login.component.html",
+    // tslint:disable-next-line:component-selector
+    selector: 'login-component',
+    templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
     providers: [AuthenticationService]
 })
 
-export class LoginComponent{
+export class LoginComponent {
     constructor(
         private authentication: AuthenticationService,
         private router: Router
-    ){
-        if (localStorage.getItem("currentUser")){
+    ) {
+        if (localStorage.getItem('currentUser')) {
             this.router.navigate(['/xemdanhsach']);
         }
     }

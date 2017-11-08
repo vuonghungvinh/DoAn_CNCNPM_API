@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class LopHocPhan {
-constructor(private _http: Http) {
+constructor(private _httpclient: HttpClient) {
 
 }
 
     getLopHocPhan() {
-        return this._http.get('/api/admin/mon', this.jwt()).map( result => result.json());
+        return this._httpclient.get('/api/admin/mon', this.jwt()).map((result: Response) => result.json());
     }
     deleteLopHP(data: any): Observable<any> {
-      return this._http.delete('api/admin/mon/delete/' + data , this.jwt()).map((response: Response) => response.json());
+      return this._httpclient.delete('api/admin/mon/delete/' + data , this.jwt()).map((result: Response) => result.json());
     }
 
 	// getUser() {
@@ -25,10 +25,17 @@ constructor(private _http: Http) {
     //     }
     // }
     private jwt() {
-      let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      // let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      // if (currentUser && currentUser.token) {
+      //     let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+      //     return new RequestOptions({ headers: headers });
+      // }
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
       if (currentUser && currentUser.token) {
-          let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-          return new RequestOptions({ headers: headers });
+          // let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+          // return new RequestOptions({ headers: headers });
+          return {headers: new HttpHeaders({ 'Authorization': 'Bearer ' + currentUser.token })};
       }
+      return {};
   }
 }

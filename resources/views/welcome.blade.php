@@ -15,7 +15,6 @@
     </head>
     <body>
         <app-root></app-root>
-
         <script type="text/javascript" src="js/inline.bundle.js"></script>
         <script type="text/javascript" src="js/polyfills.bundle.js"></script>
         <script type="text/javascript" src="js/styles.bundle.js"></script>

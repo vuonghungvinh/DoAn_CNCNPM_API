@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class QuanLiLichThiService {
-constructor(private _http: Http) {
+constructor(private _httpclient: HttpClient) {
 
 }
 
     getMaMon() {
-      return this._http.get('/api/admin/lophocphan/themsinhvienmon', this.jwt()).map( result => result.json());
+      return this._httpclient.get('/api/admin/lophocphan/themsinhvienmon', this.jwt()).map((result: Response) => result.json());
     }
     getDanhSachLichThi() {
-      return this._http.get('/api/admin/lichthi/xemlichthi', this.jwt()).map( result => result.json());
+      return this._httpclient.get('/api/admin/lichthi/xemlichthi', this.jwt()).map((result: Response) => result.json());
     }
     dangKiLichThi(data: any): Observable<any> {
-      return this._http.post('/api/admin/lichthi/add', data, this.jwt()).map((response: Response) => response.json());
+      return this._httpclient.post('/api/admin/lichthi/add', data, this.jwt()).map((response: Response) => response.json());
     }
     deleteLichThi(data: any): Observable<any> {
-      return this._http.delete('api/admin/lichthi/delete/' + data , this.jwt()).map((response: Response) => response.json());
+      return this._httpclient.delete('api/admin/lichthi/delete/' + data , this.jwt()).map((response: Response) => response.json());
     }
     // addQuestion(data: any): Observable<any> {
     //   return this._http.post('/api/admin/question/add', data, this.jwt()).map((response: Response) => response.json());
@@ -40,10 +40,12 @@ constructor(private _http: Http) {
     //     }
     // }
     private jwt() {
-      let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
       if (currentUser && currentUser.token) {
-          let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-          return new RequestOptions({ headers: headers });
+          // let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+          // return new RequestOptions({ headers: headers });
+          return {headers: new HttpHeaders({ 'Authorization': 'Bearer ' + currentUser.token })};
       }
+      return {};
   }
 }

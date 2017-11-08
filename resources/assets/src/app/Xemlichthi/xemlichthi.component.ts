@@ -19,11 +19,11 @@ export class Xemlichthi {
       this.listlichthi = data['listlichthi'];
     });
   }
-  dangKi(){
+  dangKi() {
     this.route.navigate(['/dangkilichthi']);
   }
-  deleteLichthi(id: number){
-    if ((confirm("Bạn chắc chắn muốn xóa")=== true)) {
+  deleteLichthi(id: number) {
+    if ((confirm('Bạn chắc chắn muốn xóa') === true)) {
       this.xemlichthi.deleteLichThi(id).subscribe( data => {
         this.ngOnInit();
       });

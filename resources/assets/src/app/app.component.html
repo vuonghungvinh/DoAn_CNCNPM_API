@@ -1,13 +1,17 @@
 <!-- <link href="./css/sb-admin.scss" rel="stylesheet">
 <link href="./font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+<div id="wrapper">
+    <header-component></header-component>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+          <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
 
-<header-component></header-component>
 <!--<navbar-component></navbar-component>-->
 <!-- Page Content -->
-	<div class="row">
-        <alert></alert>
-    	<router-outlet></router-outlet>
-    </div>
+
 
     <!-- Footer -->
 <div id="footer" style="margin-top: 50px">

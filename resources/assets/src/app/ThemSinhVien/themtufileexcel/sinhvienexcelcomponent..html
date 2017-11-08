@@ -1,14 +1,8 @@
-<div id="wrapper">
-  <div id="page-wrapper">
-      <div class="container-fluid">
-          <form role="form" (ngSubmit)="addstudents(f.value)" #f = "ngForm" enctype="multipart/form-data">
-            <div class="form-group">
-                  <label for="uploadFile" >Upload</label>
-                  <input type="file" name="uploadFile" id="uploadFile"  (change)="onChange($event)">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-      </div>
-  </div>
+<form role="form" (ngSubmit)="addstudents(f.value)" #f = "ngForm" enctype="multipart/form-data">
+    <div class="form-group">
+          <label for="uploadFile" >Upload</label>
+          <input type="file" name="uploadFile" id="uploadFile"  (change)="onChange($event)">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
-</div>

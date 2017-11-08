@@ -12,7 +12,7 @@ import { UpdateQuestionComponent } from './quanlicauhoi/updatequestion/updateque
 
 import { ThemMonHocComponent } from './Themmonhoc/themonhoc.component';
 import { SinhVienExcelComponent } from './ThemSinhVien/themtufileexcel/sinhvienexcelcomponent';
-import { XemDanhSach } from './XemDanhSachSinhVien/xemdanhsach.component';
+import { XemDanhSachComponent } from './XemDanhSachSinhVien/xemdanhsachsinhvien.component';
 import { ThemSinhVien } from './ThemSinhVien/themsinhvien.component';
 import { Xemdanhsachlop } from './XemDanhSachLopHocPhan/xemdanhsachlop.component';
 import { Themlophocphan } from './ThemSinhVienVaoLopHocPhan/themlophocphan.component';
@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'themlophocphan', component : Themlophocphan, canActivate: [AuthGurad] },
   { path: 'dangkilichthi', component : DangkilichthiComponent, canActivate: [AuthGurad]},
   { path: 'xemdanhsachlop', component : Xemdanhsachlop, canActivate: [AuthGurad] },
-  { path: 'xemdanhsach', component: XemDanhSach, canActivate: [AuthGurad] },
+  { path: 'xemdanhsach', component: XemDanhSachComponent, canActivate: [AuthGurad] },
   { path: 'xemlichthi', component: Xemlichthi, canActivate: [AuthGurad] },
   { path: 'themmonhoc', component: ThemMonHocComponent, canActivate: [AuthGurad] },
   { path: 'importexcel', component: SinhVienExcelComponent, canActivate: [AuthGurad] },

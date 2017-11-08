@@ -4,32 +4,9 @@ body{
 .example{
   margin: 5px;
 }
-#wrapper {
-  margin-top: 100px;
-  background-color: #222;
-  padding-left: 0;
-  line-height: normal;
-}
-
-#page-wrapper {
-  width: 100%;
-  padding: 0;
-  background-color: #fff;
-}
-
 .huge {
   font-size: 50px;
   line-height: normal;
-}
-
-@media(min-width:768px) {
-  #wrapper {
-      padding-left: 225px;
-  }
-
-  #page-wrapper {
-      padding: 10px;
-  }
 }
 
 /* Top Navigation */
@@ -106,10 +83,10 @@ ul.alert-dropdown {
   .side-nav {
       position: fixed;
       top: 51px;
-      left: 225px;
-      width: 225px;
+      left: 200px;
+      width: 200px;
       height: 100%;
-      margin-left: -225px;
+      margin-left: -200px;
       border: none;
       border-radius: 0;
       overflow-y: auto;
@@ -117,7 +94,7 @@ ul.alert-dropdown {
   }
 
   .side-nav>li>a {
-      width: 225px;
+      width: 200px;
   }
 
   .side-nav li a:hover,
