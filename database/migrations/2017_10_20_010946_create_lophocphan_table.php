@@ -15,9 +15,10 @@ class CreateLophocphanTable extends Migration
     {
         Schema::create('lophocphan', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('mssv', 10);
+            $table->string('mssv', 10)->default('null');
             $table->string('malophp',10);
-            $table->integer('dkthi');
+            $table->integer('mamon');
+            $table->integer('dkthi')->default(0);
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LopService } from '../services/quanlilop.service';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'sinhvien_lophocphan',
   templateUrl: './danhsachsinhviencualopHP.component.html',
   styleUrls: ['./danhsachsinhviencualopHP.component.scss'],
@@ -22,12 +23,13 @@ export class DanhsachsinhvienCuaLopHPComponent {
       private router: Router,
     ) {
     }
+    // tslint:disable-next-line:use-life-cycle-interface
     ngOnInit() {
       this.activatedRouter.params.subscribe(params => {
          this._id = params['id'];
         this.Danhsachservice.getdetail(this._id).subscribe(data => {
           this.listdanhsach = data['lophocphan'];
-          if (this.listdanhsach.length === 0) {
+          if (this.listdanhsach[0].mssv == 'null') {
             alert('Không có sinh viên');
             this.router.navigate(['xemdanhsachlophocphan']);
           }
@@ -44,8 +46,11 @@ export class DanhsachsinhvienCuaLopHPComponent {
     //       });
     }
     deleteSinhvien(mssv: string) {
-      if (confirm('Are you sure') === true) {
+      if (confirm('Bạn muốn xóa sinh viên này?') === true) {
         this.Danhsachservice.deleteSinhvien(this._id, mssv).subscribe( data => {
+          if (this.listdanhsach.length == 1) {
+              this.router.navigate(['xemdanhsachlophocphan']);
+          }
           this.ngOnInit();
         });
       }

@@ -24,8 +24,12 @@ ngOnInit() {
     });
   }
   xoaLopHocPhan(value: any) {
-    if (confirm('Are you sure') === true ) {
-
+    if (confirm('Bạn muốn xóa lớp HP ' + value) === true ) {
+      this.lopHocPhan.deleteLopHP(value).subscribe( data => {
+        this.ngOnInit();
+      }, error => {
+        alert('Không thể xóa lớp này');
+      });
     }
   }
 }

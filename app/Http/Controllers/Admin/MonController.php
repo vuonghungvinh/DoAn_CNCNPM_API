@@ -52,6 +52,10 @@ class MonController extends Controller
     public function store(Request $request)
     {
         //
+        $mon = new Mon;
+        $mon->tenmon = $request->tenmon;
+        $mon->save();
+        return Response(['status' => 200]);
     }
 
     /**

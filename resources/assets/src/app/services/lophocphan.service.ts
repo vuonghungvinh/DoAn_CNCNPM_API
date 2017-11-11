@@ -14,10 +14,10 @@ constructor(private _httpclient: HttpClient) {
   getMon() {
     return this._httpclient.get('/api/admin/lophocphan/themsinhvienmon', this.jwt()).map((response: Response) => response);
   }
-  getSinhVienMonKhongThuocMon(id) {
+  getSinhVienMonKhongThuocLopHP(id) {
     return this._httpclient.get('api/admin/lophocphan/mon/danhsachsinhvien/' + id, this.jwt()).map((response: Response) => response);
   }
-  addSinhVienVaoMon(data: any): Observable<any> {
+  addSinhVienVaoLopHP(data: any): Observable<any> {
     return this._httpclient.post('/api/admin/lophocphan/addsinhvien', data, this.jwt()).map((response: Response) => response);
   }
   deleteSinhvien(data: any, mssv: any): Observable<any> {
@@ -29,11 +29,13 @@ constructor(private _httpclient: HttpClient) {
   }
   getTongCauHoi(data: any) {
     // tslint:disable-next-line:max-line-length
-    return this._httpclient.get('/api/admin/lophocphan/danhsachsinhvien/tongcauhoi/' + data, this.jwt()).map((response: Response) => response.json());
+    return this._httpclient.get('/api/admin/lophocphan/danhsachsinhvien/tongcauhoi/' + data, this.jwt()).map((response: Response) => response);
   }
-
-  addMon(data: any) {
-    return this._httpclient.post('/api/admin/lophocphan/themlophocphan', data, this.jwt()).map((response: Response) => response.json());
+  deleteLopHP(data: any) {
+    return this._httpclient.delete('api/admin/lophocphan/delete/' + data , this.jwt()).map((result: Response) => result);
+  }
+  addLopHP(data: any) {
+    return this._httpclient.post('/api/admin/lophocphan/themlophocphan', data, this.jwt()).map((response: Response) => response);
   }
   private jwt() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
