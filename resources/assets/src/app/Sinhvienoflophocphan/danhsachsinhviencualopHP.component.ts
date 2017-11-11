@@ -1,21 +1,24 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LophocphanService } from '../services/lophocphan.service';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router } from '@angular/router';
+import { LopService } from '../services/quanlilop.service';
 
 @Component({
   selector: 'sinhvien_lophocphan',
-  templateUrl: './danhsachsinhvien.component.html',
-  styleUrls: ['./danhsachsinhvien.component.scss'],
-  providers : [LophocphanService]
+  templateUrl: './danhsachsinhviencualopHP.component.html',
+  styleUrls: ['./danhsachsinhviencualopHP.component.scss'],
+  providers : [LophocphanService, LopService]
 })
-export class Danhsachsinhvien {
+export class DanhsachsinhvienCuaLopHPComponent {
     private subscription: any;
     public listdanhsach: any[];
-    public _id: number;
+    public _id: string;
+    public listlop: any[];
     public xoasinhvien = [];
     constructor(
       private Danhsachservice: LophocphanService,
       private activatedRouter: ActivatedRoute,
+      private lopservice: LopService,
       private router: Router,
     ) {
     }
@@ -23,12 +26,14 @@ export class Danhsachsinhvien {
       this.activatedRouter.params.subscribe(params => {
          this._id = params['id'];
         this.Danhsachservice.getdetail(this._id).subscribe(data => {
-          console.log(data);
           this.listdanhsach = data['lophocphan'];
           if (this.listdanhsach.length === 0) {
             alert('Không có sinh viên');
-            this.router.navigate(['xemdanhsachlop']);
+            this.router.navigate(['xemdanhsachlophocphan']);
           }
+        });
+        this.lopservice.getLop().subscribe( data => {
+            this.listlop = data['lop'];
         });
       });
       // this.lophocphanservice.getdetail().subscribe(data => {
@@ -39,7 +44,7 @@ export class Danhsachsinhvien {
     //       });
     }
     deleteSinhvien(mssv: string) {
-      if (confirm("Are you sure") === true) {
+      if (confirm('Are you sure') === true) {
         this.Danhsachservice.deleteSinhvien(this._id, mssv).subscribe( data => {
           this.ngOnInit();
         });

@@ -14,17 +14,21 @@ import { ThemMonHocComponent } from './Themmonhoc/themonhoc.component';
 import { SinhVienExcelComponent } from './ThemSinhVien/themtufileexcel/sinhvienexcelcomponent';
 import { XemDanhSachComponent } from './XemDanhSachSinhVien/xemdanhsachsinhvien.component';
 import { ThemSinhVien } from './ThemSinhVien/themsinhvien.component';
-import { Xemdanhsachlop } from './XemDanhSachLopHocPhan/xemdanhsachlop.component';
+import { XemdanhsachlopHPComponent } from './XemDanhSachLopHocPhan/xemdanhsachlop.component';
 import { Themlophocphan } from './ThemSinhVienVaoLopHocPhan/themlophocphan.component';
 import { Xemlichthi } from './Xemlichthi/xemlichthi.component';
 import { DangkilichthiComponent } from './Dangkilichthi/dangkilichthi.component';
 import { LoginComponent } from './login/login.component';
-import { Danhsachsinhvien } from './Sinhvienoflophocphan/danhsachsinhvien.component';
+import { DanhsachsinhvienCuaLopHPComponent } from './Sinhvienoflophocphan/danhsachsinhviencualopHP.component';
 import { AuthGurad } from './guards/auth.guard';
 import { LopComponent } from './quanlilop/xemdanhsachlop/xemdanhsachlop.component';
+import { SinhVienBoHocComponent } from './XemDanhSachSinhVien/sinhvienbohoc/xemdanhsachsinhvienbohoc.component';
+import { SinhVienTotNghiepComponent } from './XemDanhSachSinhVien/sinhvientotnghiep/sinhvientotnghiep.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'sinhviennghihoc',  component: SinhVienBoHocComponent, canActivate: [AuthGurad] },
+  { path: 'sinhvientotnghiep',  component: SinhVienTotNghiepComponent, canActivate: [AuthGurad] },
   { path: 'question',  component: QuestionComponent, canActivate: [AuthGurad] },
   { path: 'addquestion',  component: AddQuestionComponent, canActivate: [AuthGurad] },
   { path: 'reviewtest',  component: ReViewTestComponent, canActivate: [AuthGurad] },
@@ -35,15 +39,14 @@ const routes: Routes = [
   { path: 'updatequestion/:id',  component: UpdateQuestionComponent, canActivate: [AuthGurad] },
   { path: 'themlophocphan', component : Themlophocphan, canActivate: [AuthGurad] },
   { path: 'dangkilichthi', component : DangkilichthiComponent, canActivate: [AuthGurad]},
-  { path: 'xemdanhsachlophocphan', component : Xemdanhsachlop, canActivate: [AuthGurad] },
+  { path: 'xemdanhsachlophocphan', component : XemdanhsachlopHPComponent, canActivate: [AuthGurad] },
   { path: 'xemdanhsachlopsinhvien', component : LopComponent, canActivate: [AuthGurad] },
   { path: 'xemdanhsach', component: XemDanhSachComponent, canActivate: [AuthGurad] },
   { path: 'xemlichthi', component: Xemlichthi, canActivate: [AuthGurad] },
   { path: 'themmonhoc', component: ThemMonHocComponent, canActivate: [AuthGurad] },
   { path: 'importexcel', component: SinhVienExcelComponent, canActivate: [AuthGurad] },
   { path: 'themsinhvien', component: ThemSinhVien, canActivate: [AuthGurad] },
-  { path: 'danhsachsinhvien/:id', component: Danhsachsinhvien, canActivate: [AuthGurad] },
-
+  { path: 'danhsachsinhvien/:id', component: DanhsachsinhvienCuaLopHPComponent, canActivate: [AuthGurad] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 

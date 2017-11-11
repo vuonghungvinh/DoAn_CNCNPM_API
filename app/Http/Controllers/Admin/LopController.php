@@ -32,7 +32,7 @@ class LopController extends Controller
 
     public function getKhoa()
     {
-      $khoa = DB::table('lop')->select('khoa')->distinct()->get();
+      $khoa = DB::table('lop')->select('khoa')->distinct()->orderByRaw('khoa')->get();
       return response()->json(['khoa' => $khoa]);
     }
     public function getLopCuaKhoa($id)

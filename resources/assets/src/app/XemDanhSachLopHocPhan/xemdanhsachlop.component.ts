@@ -1,33 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { LopHocPhan } from '../services/xemdanhsachlophocphan';
+import { LophocphanService } from '../services/lophocphan.service';
 import { Router } from '@angular/router';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'xemdanhsach-lop',
   templateUrl: './xemdanhsachlop.component.html',
   styleUrls: ['./xemdanhsachlop.component.scss'],
-  providers: [LopHocPhan]
+  providers: [LophocphanService]
 })
 
-export class Xemdanhsachlop implements OnInit {
+export class XemdanhsachlopHPComponent implements OnInit {
   constructor(
-    private lopHocPhan: LopHocPhan) {
+    private lopHocPhan: LophocphanService) {
 
 }
 public mon: any[];
 ngOnInit() {
-    this.lopHocPhan.getLopHocPhan().subscribe(data => {
-      this.mon = data['mon'];
+    this.lopHocPhan.getlophocphan().subscribe(data => {
+      this.mon = data['lophocphan'];
     }, error => {
         console.log(error);
     });
   }
-  xoaLopHocPhan(value: any){
-    if (confirm("Are you sure") === true ){
-      this.lopHocPhan.deleteLopHP(value).subscribe( data => {
-        alert("Succsess");
-        this.ngOnInit();
-      })
+  xoaLopHocPhan(value: any) {
+    if (confirm('Are you sure') === true ) {
+
     }
   }
 }

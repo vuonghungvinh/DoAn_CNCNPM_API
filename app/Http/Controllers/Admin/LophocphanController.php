@@ -19,7 +19,8 @@ class LophocphanController extends Controller
      */
     public function index()
     {
-        $lophocphan = LopHocPhan::with(['mon', 'student'])->get();
+        $lophocphan = DB::table('lophocphan')->join('mon','lophocphan.mamon', '=', 'mon.id')
+        ->select("lophocphan.malophp","mon.tenmon")->distinct()->orderByRaw('lophocphan.malophp')->get();
         return response()->json(['lophocphan' => $lophocphan]);
     }
     public function sinhvienkhongthuocmon(Request $request)
@@ -38,7 +39,7 @@ class LophocphanController extends Controller
     public function danhsachsinhvien(Request $request)
     {
         $lophocphan = LopHocPhan::with(['mon', 'student'])
-        ->where('mamon',$request->id)->get();
+        ->where('malophp',$request->id)->get();
         return response()->json(['lophocphan' => $lophocphan]);
     }
     public function tongcauhoi(Request $request)

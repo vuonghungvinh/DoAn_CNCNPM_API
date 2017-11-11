@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CKEditorModule } from 'ng2-ckeditor';
 
+import { SinhVienBoHocComponent } from './XemDanhSachSinhVien/sinhvienbohoc/xemdanhsachsinhvienbohoc.component';
 import { SinhVienExcelComponent } from './ThemSinhVien/themtufileexcel/sinhvienexcelcomponent';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,15 +22,16 @@ import { Themlophocphan } from './ThemSinhVienVaoLopHocPhan/themlophocphan.compo
 import { XemDanhSachComponent } from './XemDanhSachSinhVien/xemdanhsachsinhvien.component';
 import { LopComponent } from './quanlilop/xemdanhsachlop/xemdanhsachlop.component';
 import { ThemSinhVien } from './ThemSinhVien/themsinhvien.component';
-import { Xemdanhsachlop } from './XemDanhSachLopHocPhan/xemdanhsachlop.component';
+import { XemdanhsachlopHPComponent } from './XemDanhSachLopHocPhan/xemdanhsachlop.component';
 import { Xemlichthi } from './Xemlichthi/xemlichthi.component';
 import { DangkilichthiComponent } from './Dangkilichthi/dangkilichthi.component';
 import { LoginComponent } from './login/login.component';
-import { Danhsachsinhvien } from './Sinhvienoflophocphan/danhsachsinhvien.component';
+import { DanhsachsinhvienCuaLopHPComponent } from './Sinhvienoflophocphan/danhsachsinhviencualopHP.component';
 import { ThemMonHocComponent } from './Themmonhoc/themonhoc.component';
 import { AlertService } from './services/alert.service';
 import { AuthGurad } from './guards/auth.guard';
 import { AlertComponent } from './alert/alert.component';
+import { SinhVienTotNghiepComponent } from './XemDanhSachSinhVien/sinhvientotnghiep/sinhvientotnghiep.component';
 import { AuthenticationService } from './services/authentication.service';
 import { NoopInterceptor } from './services/httpinterceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -46,6 +48,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     CKEditorModule,
   ],
   declarations: [
+    SinhVienTotNghiepComponent,
+    SinhVienBoHocComponent,
     AppComponent,
     AlertComponent,
     QuestionComponent,
@@ -59,13 +63,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     AccountComponent,
     XemDanhSachComponent,
     ThemSinhVien,
-    Xemdanhsachlop,
+    XemdanhsachlopHPComponent,
     Themlophocphan,
     Xemlichthi,
     DangkilichthiComponent,
     HeaderComponent,
     LoginComponent,
-    Danhsachsinhvien,
+    DanhsachsinhvienCuaLopHPComponent,
     UpdateQuestionComponent,
     SinhVienExcelComponent,
     ThemMonHocComponent

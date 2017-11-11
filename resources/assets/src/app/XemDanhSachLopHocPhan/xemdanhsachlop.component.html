@@ -6,17 +6,19 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Ten Mon</th>
-                    <th>Xem DS Sinh Vien</th>
+                    <th>Mã Lớp HP</th>
+                    <th>Tên Môn</th>
+                    <th>DS Sinh Viên</th>
                     <th>#</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let mon of mon; let i = index">
-                    <td>{{mon.id}}</td>
-                    <td>{{mon.tenmon}}</td>
-                    <td><a [routerLink]="['/danhsachsinhvien/'+mon.id]"> DS</a></td>
-                    <td><a href="javascript:void(0)" (click)="xoaLopHocPhan(mon.id)">   <span class="glyphicon glyphicon-trash"></span></a></td>
+                <tr *ngFor="let lophocphan of mon; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{lophocphan.malophp}}</td>
+                    <td>{{lophocphan.tenmon}}</td>
+                    <td><a [routerLink]="['/danhsachsinhvien/'+lophocphan.malophp]"> DS</a></td>
+                    <td><a href="javascript:void(0)" (click)="xoaLopHocPhan(lophocphan.malophp)">   <span class="glyphicon glyphicon-trash"></span></a></td>
               </tr>
             </tbody>
           </table>

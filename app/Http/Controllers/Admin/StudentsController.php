@@ -19,7 +19,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = Students::with(['lop'])->orderByRaw('malop')->orderByRaw('mssv')->get();
+        $students = Students::with(['lop'])->where('trangthai', '=', '1')->orderByRaw('mssv')->get();
         return response()->json(['students' => $students]);
     }
 
@@ -33,6 +33,14 @@ class StudentsController extends Controller
         //
     }
 
+    public function getsinhvientotnghiep(){
+      $students = Students::with(['lop'])->where('trangthai', '=', '0')->orderByRaw('mssv')->get();
+      return response()->json(['students' => $students]);
+    }
+    public function getsinhviennghihoc(){
+      $students = Students::with(['lop'])->where('trangthai', '=', '2')->orderByRaw('mssv')->get();
+      return response()->json(['students' => $students]);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -64,7 +72,7 @@ class StudentsController extends Controller
     public function show($id)
     {
         //
-        $students = Students::with(['lop'])->where('malop', '=', $id)->orderByRaw('malop')->orderByRaw('mssv')->get();
+        $students = Students::with(['lop'])->where('malop', '=', $id)->where('trangthai', '=', '1')->orderByRaw('mssv')->get();
         return response()->json(['students' => $students]);
     }
     public function uploadfile(Request $request)

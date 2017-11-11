@@ -22,6 +22,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/lop/{id}', 'Admin\StudentsController@show');
         Route::delete('/delete/{id}', 'Admin\StudentsController@destroy');
         Route::post('/uploadfile', 'Admin\StudentsController@uploadfile');
+        Route::get('/sinhviennghihoc', 'Admin\StudentsController@getsinhviennghihoc');
+        Route::get('/sinhvientotnghiep', 'Admin\StudentsController@getsinhvientotnghiep');
     });
     Route::group(['prefix' => 'lop', 'middleware' => ['jwt.auth']], function () {
       Route::get('/', 'Admin\LopController@index');
@@ -40,7 +42,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/delete/{id}/{mssv}', 'Admin\LophocphanController@delete');
     });
     Route::group(['prefix' => 'mon', 'middleware' => ['jwt.auth']], function () {
-      Route::get('/', 'Admin\MonController@index');
+      Route::get('/lophocphan', 'Admin\MonController@index');
       Route::delete('/delete/{id}', 'Admin\MonController@delete');
     });
     Route::group(['prefix' => 'question', 'middleware' => ['jwt.auth']], function () {
