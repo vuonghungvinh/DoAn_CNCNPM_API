@@ -21,6 +21,7 @@ import { DangkilichthiComponent } from './Dangkilichthi/dangkilichthi.component'
 import { LoginComponent } from './login/login.component';
 import { Danhsachsinhvien } from './Sinhvienoflophocphan/danhsachsinhvien.component';
 import { AuthGurad } from './guards/auth.guard';
+import { LopComponent } from './quanlilop/xemdanhsachlop/xemdanhsachlop.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -34,7 +35,8 @@ const routes: Routes = [
   { path: 'updatequestion/:id',  component: UpdateQuestionComponent, canActivate: [AuthGurad] },
   { path: 'themlophocphan', component : Themlophocphan, canActivate: [AuthGurad] },
   { path: 'dangkilichthi', component : DangkilichthiComponent, canActivate: [AuthGurad]},
-  { path: 'xemdanhsachlop', component : Xemdanhsachlop, canActivate: [AuthGurad] },
+  { path: 'xemdanhsachlophocphan', component : Xemdanhsachlop, canActivate: [AuthGurad] },
+  { path: 'xemdanhsachlopsinhvien', component : LopComponent, canActivate: [AuthGurad] },
   { path: 'xemdanhsach', component: XemDanhSachComponent, canActivate: [AuthGurad] },
   { path: 'xemlichthi', component: Xemlichthi, canActivate: [AuthGurad] },
   { path: 'themmonhoc', component: ThemMonHocComponent, canActivate: [AuthGurad] },

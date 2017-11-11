@@ -9,23 +9,23 @@ export class LophocphanService {
 constructor(private _httpclient: HttpClient) {
   }
   getlophocphan() {
-    return this._httpclient.get('/api/admin/lophocphan', this.jwt()).map((response: Response) => response.json());
+    return this._httpclient.get('/api/admin/lophocphan', this.jwt()).map((response: Response) => response);
   }
   getMon() {
-    return this._httpclient.get('/api/admin/lophocphan/themsinhvienmon', this.jwt()).map((response: Response) => response.json());
+    return this._httpclient.get('/api/admin/lophocphan/themsinhvienmon', this.jwt()).map((response: Response) => response);
   }
   getSinhVienMonKhongThuocMon(id) {
-    return this._httpclient.get('api/admin/lophocphan/mon/danhsachsinhvien/' + id, this.jwt()).map((response: Response) => response.json());
+    return this._httpclient.get('api/admin/lophocphan/mon/danhsachsinhvien/' + id, this.jwt()).map((response: Response) => response);
   }
   addSinhVienVaoMon(data: any): Observable<any> {
-    return this._httpclient.post('/api/admin/lophocphan/addsinhvien', data, this.jwt()).map((response: Response) => response.json());
+    return this._httpclient.post('/api/admin/lophocphan/addsinhvien', data, this.jwt()).map((response: Response) => response);
   }
   deleteSinhvien(data: any, mssv: any): Observable<any> {
     // tslint:disable-next-line:max-line-length
-    return this._httpclient.delete('api/admin/lophocphan/delete/' + data + '/' + mssv, this.jwt()).map((response: Response) => response.json());
+    return this._httpclient.delete('api/admin/lophocphan/delete/' + data + '/' + mssv, this.jwt()).map((response: Response) => response);
   }
   getdetail(data: any) {
-    return this._httpclient.get('/api/admin/lophocphan/danhsachsinhvien/' + data, this.jwt()).map((response: Response) => response.json());
+    return this._httpclient.get('/api/admin/lophocphan/danhsachsinhvien/' + data, this.jwt()).map((response: Response) => response);
   }
   getTongCauHoi(data: any) {
     // tslint:disable-next-line:max-line-length

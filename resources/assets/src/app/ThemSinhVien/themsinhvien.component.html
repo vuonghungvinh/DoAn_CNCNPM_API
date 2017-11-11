@@ -1,5 +1,22 @@
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="page-header text-center">
+        Thêm Sinh Viên
+      </h1>
+      <ol class="breadcrumb">
+          <li >
+              <i class="fa fa-dashboard "></i><a [routerLink]="['/xemdanhsach']">Xem danh sách </a>
+          </li>
+          <li>
+              <i class="fa fa-table"></i> Thêm sinh viên
+          </li>
+          <li>
+            <i class="fa fa-table"></i>
+        </li>
+      </ol>
+  </div>
+</div>
 <div class="col-lg-12">
-    <h1 class="text-center">Thêm Sinh Viên</h1>
     <form role="form" id="themsinhvien" (ngSubmit)="addstudents(f.value)" #f = "ngForm" enctype="multipart/form-data" >
             <div class="form-group has-success" id="formmssv">
               <label class="control-label" for="inputSuccess">Mã số sinh viên</label>
@@ -59,15 +76,24 @@
                   </div>
             </div>
             <div class="form-group has-success" id="formchonlop">
-              <label  class="control-label">Chọn lớp</label>
-                  <select required #lop="ngModel" class="form-control" name="lop" id="sel1" ngModel>
-                      <option value="13T1" selected >Lớp 13T1</option>
-                      <option value="13T2" >Lớp 13T2</option>
-                      <option value="13T3" >Lớp 13T3</option>
-                      <option value="13T4" >Lớp 13T4</option>
+              <label  class="control-label">Chọn Khóa</label>
+                  <select required #khoa="ngModel" class="form-control" (change)="changeKhoa($event)" name="khoa" id="sel1" ngModel>
+                      <option *ngFor="let khoahoc of khoahoc;let i = index" [value]="khoahoc.khoa"  >{{khoahoc.khoa}}</option>
                   </select>
-                  <div *ngIf="lop.errors && (lop.dirty || lop.touched)" class="text text-danger text-left">
-                      <div [hidden]="!diachi.errors.required">
+                  <div *ngIf="khoa.errors && (khoa.dirty || khoa.touched)" class="text text-danger text-left">
+                      <div [hidden]="!khoa.errors.required">
+                          Bạn chưa chọn Khóa
+                      </div>
+                    </div>
+            </div>
+            <div class="form-group has-success" id="formchonlop">
+              <label  class="control-label">Chọn lớp</label>
+                  <select required #malop="ngModel" class="form-control" name="malop" id="sel1" [disabled]="selectkhoa" ngModel>
+                      <option *ngFor="let lopcuakhoa of lopcuakhoa" [value]="lopcuakhoa.id" >{{lopcuakhoa.tenlop}}</option>
+
+                  </select>
+                  <div *ngIf="malop.errors && (malop.dirty || malop.touched)" class="text text-danger text-left">
+                      <div [hidden]="!malop.errors.required">
                           Bạn chưa chọn lớp
                       </div>
                     </div>

@@ -23,6 +23,12 @@ Route::prefix('admin')->group(function () {
         Route::delete('/delete/{id}', 'Admin\StudentsController@destroy');
         Route::post('/uploadfile', 'Admin\StudentsController@uploadfile');
     });
+    Route::group(['prefix' => 'lop', 'middleware' => ['jwt.auth']], function () {
+      Route::get('/', 'Admin\LopController@index');
+      Route::get('/khoa', 'Admin\LopController@getKhoa');
+      Route::get('/{id}', 'Admin\LopController@show');
+      Route::get('/khoa/{id}', 'Admin\LopController@getLopCuaKhoa');
+  });
     Route::group(['prefix' => 'lophocphan', 'middleware' => ['jwt.auth']], function () {
         Route::get('/', 'Admin\LophocphanController@index');
         Route::get('/danhsachsinhvien/{id}', 'Admin\LophocphanController@danhsachsinhvien');

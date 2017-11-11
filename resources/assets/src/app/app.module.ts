@@ -19,6 +19,7 @@ import { AccountComponent } from './quanlitaikhoan/taikhoan.component';
 import { UpdateQuestionComponent } from './quanlicauhoi/updatequestion/updatequestion.component';
 import { Themlophocphan } from './ThemSinhVienVaoLopHocPhan/themlophocphan.component';
 import { XemDanhSachComponent } from './XemDanhSachSinhVien/xemdanhsachsinhvien.component';
+import { LopComponent } from './quanlilop/xemdanhsachlop/xemdanhsachlop.component';
 import { ThemSinhVien } from './ThemSinhVien/themsinhvien.component';
 import { Xemdanhsachlop } from './XemDanhSachLopHocPhan/xemdanhsachlop.component';
 import { Xemlichthi } from './Xemlichthi/xemlichthi.component';
@@ -51,6 +52,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     AddQuestionComponent,
     ReViewTestComponent,
+    LopComponent,
     ScoreComponent,
     ListExamComponent,
     ExamComponent,

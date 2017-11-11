@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Students;
 use App\LopHocPhan;
+use App\Lop;
 use DB;
 
 class StudentsController extends Controller
@@ -18,7 +19,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = DB::table('users')->orderByRaw('malop')->orderByRaw('mssv')->get();
+        $students = Students::with(['lop'])->orderByRaw('malop')->orderByRaw('mssv')->get();
         return response()->json(['students' => $students]);
     }
 
@@ -44,7 +45,7 @@ class StudentsController extends Controller
         $students=new Students;
         $students->name = $request->name;
         $students->gioitinh = $request->gioitinh;
-        $students->lop = $request->lop;
+        $students->malop = $request->malop;
         $students->mssv = $request->mssv;
         $students->ngaysinh = $request->ngaysinh;
         $students->trangthai =true;
@@ -63,7 +64,7 @@ class StudentsController extends Controller
     public function show($id)
     {
         //
-        $students = DB::table('users')->where('lop', $id)->get();
+        $students = Students::with(['lop'])->where('malop', '=', $id)->orderByRaw('malop')->orderByRaw('mssv')->get();
         return response()->json(['students' => $students]);
     }
     public function uploadfile(Request $request)
@@ -87,8 +88,9 @@ class StudentsController extends Controller
                               // $students->password=bcrypt('123456');
                               // $students->save();
                               $insert = array();
+                              $malop = DB::table('lop')->select('id')->where('tenlop', 'like', $v['lop'])->get();
                               $insert[] = ['name' => $v['name'], 'mssv' => $v['mssv'], 'ngaysinh' => $v['ngaysinh'],
-                              'gioitinh' =>  $v['gioitinh'],'diachi'=>  $v['diachi'],'lop' =>  $v['lop'],'trangthai' => $v['trangthai'],'password' => bcrypt('123456') ];
+                              'gioitinh' =>  $v['gioitinh'],'diachi'=>  $v['diachi'],'malop' =>  $malop->pluck('id')[0],'trangthai' => $v['trangthai'],'password' => bcrypt('123456') ];
                                Students::insert($insert);
                             }
                         }

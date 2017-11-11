@@ -19,16 +19,16 @@ getdanhsachsinhvien() {
 	// 	return this._http.post("/api/admin/students/create", data, this.jwt()).map((response: Response) => response.json());
   // }
   getSinhVienLop(data: any) {
-    return this._httpclient.get('/api/admin/students/lop/' + data, this.jwt()).map((result: Response) => result.json());
+    return this._httpclient.get('/api/admin/students/lop/' + data, this.jwt()).map((result: Response) => result);
   }
   deleteSinhVien(data: any) {
-    return this._httpclient.delete('/api/admin/students/delete/' + data, this.jwt()).map((result: Response) => result.json());
+    return this._httpclient.delete('/api/admin/students/delete/' + data, this.jwt()).map((result: Response) => result);
   }
   addstudents(data: any): Observable<any> {
-  return this._httpclient.post('/api/admin/students/create', data, this.jwt()).map((response: Response) => response.json());
+  return this._httpclient.post('/api/admin/students/create', data, this.jwt()).map((response: Response) => response);
   }
   uploadFile(data: any) {
-    return this._httpclient.post('/api/admin/students/uploadfile', data, this.jwt()).map((response: Response) => response.json());
+    return this._httpclient.post('/api/admin/students/uploadfile', data, this.jwt()).map((response: Response) => response);
   }
 
   private jwt() {

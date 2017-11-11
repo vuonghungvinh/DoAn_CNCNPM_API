@@ -10,16 +10,16 @@ constructor(private _httpclient: HttpClient) {
 }
 
     getMaMon() {
-      return this._httpclient.get('/api/admin/lophocphan/themsinhvienmon', this.jwt()).map((result: Response) => result.json());
+      return this._httpclient.get('/api/admin/lophocphan/themsinhvienmon', this.jwt()).map((result: Response) => result);
     }
     getDanhSachLichThi() {
-      return this._httpclient.get('/api/admin/lichthi/xemlichthi', this.jwt()).map((result: Response) => result.json());
+      return this._httpclient.get('/api/admin/lichthi/xemlichthi', this.jwt()).map((result: Response) => result);
     }
     dangKiLichThi(data: any): Observable<any> {
-      return this._httpclient.post('/api/admin/lichthi/add', data, this.jwt()).map((response: Response) => response.json());
+      return this._httpclient.post('/api/admin/lichthi/add', data, this.jwt()).map((response: Response) => response);
     }
     deleteLichThi(data: any): Observable<any> {
-      return this._httpclient.delete('api/admin/lichthi/delete/' + data , this.jwt()).map((response: Response) => response.json());
+      return this._httpclient.delete('api/admin/lichthi/delete/' + data , this.jwt()).map((response: Response) => response);
     }
     // addQuestion(data: any): Observable<any> {
     //   return this._http.post('/api/admin/question/add', data, this.jwt()).map((response: Response) => response.json());

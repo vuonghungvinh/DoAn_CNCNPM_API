@@ -10,22 +10,22 @@ constructor(private _httpclient: HttpClient) {
 }
 
     getMaMon() {
-      return this._httpclient.get('/api/admin/mon', this.jwt()).map((response: Response) => response.json());
+      return this._httpclient.get('/api/admin/mon', this.jwt()).map((response: Response) => response);
     }
     getCauHoi() {
-      return this._httpclient.get('/api/admin/question/listquestion', this.jwt()).map((response: Response) => response.json());
+      return this._httpclient.get('/api/admin/question/listquestion', this.jwt()).map((response: Response) => response);
     }
     addQuestion(data: any): Observable<any> {
-      return this._httpclient.post('/api/admin/question/add', data, this.jwt()).map((response: Response) => response.json());
+      return this._httpclient.post('/api/admin/question/add', data, this.jwt()).map((response: Response) => response);
     }
     deleteQuestion(data: any): Observable<any> {
-      return this._httpclient.delete('api/admin/question/' + data + '/delete', this.jwt()).map((response: Response) => response.json());
+      return this._httpclient.delete('api/admin/question/' + data + '/delete', this.jwt()).map((response: Response) => response);
     }
     updateQuestion(data: any, id: any) {
-      return this._httpclient.put('api/admin/question/update/' + id, data, this.jwt()).map((response: Response) => response.json());
+      return this._httpclient.put('api/admin/question/update/' + id, data, this.jwt()).map((response: Response) => response);
     }
     getCauHoiId(data: any) {
-      return this._httpclient.get('/api/admin/question/listquestion/' + data,  this.jwt()).map((response: Response) => response.json());
+      return this._httpclient.get('/api/admin/question/listquestion/' + data,  this.jwt()).map((response: Response) => response);
     }
 
 	// getUser() {

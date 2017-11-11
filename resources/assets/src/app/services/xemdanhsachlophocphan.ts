@@ -10,10 +10,10 @@ constructor(private _httpclient: HttpClient) {
 }
 
     getLopHocPhan() {
-        return this._httpclient.get('/api/admin/mon', this.jwt()).map((result: Response) => result.json());
+        return this._httpclient.get('/api/admin/mon', this.jwt()).map((result: Response) => result);
     }
     deleteLopHP(data: any): Observable<any> {
-      return this._httpclient.delete('api/admin/mon/delete/' + data , this.jwt()).map((result: Response) => result.json());
+      return this._httpclient.delete('api/admin/mon/delete/' + data , this.jwt()).map((result: Response) => result);
     }
 
 	// getUser() {

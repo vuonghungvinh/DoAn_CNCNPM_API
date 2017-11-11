@@ -10,13 +10,13 @@ constructor(private _httpclient: HttpClient) {
 }
 
     getStudents() {
-        return this._httpclient.get('/api/admin/students', this.jwt()).map((result: Response) => result.json());
+        return this._httpclient.get('/api/admin/students', this.jwt()).map((result: Response) => result);
     }
     getSinhVienLop(data: any) {
-      return this._httpclient.get('/api/admin/students/lop/' + data, this.jwt()).map((result: Response) => result.json());
+      return this._httpclient.get('/api/admin/students/lop/' + data, this.jwt()).map((result: Response) => result);
     }
     deleteSinhVien(data: any) {
-      return this._httpclient.delete('/api/admin/students/delete/' + data, this.jwt()).map((result: Response) => result.json());
+      return this._httpclient.delete('/api/admin/students/delete/' + data, this.jwt()).map((result: Response) => result);
     }
 	// getUser() {
 	// 	let currentUser = JSON.parse(localStorage.getItem('currentUser'));

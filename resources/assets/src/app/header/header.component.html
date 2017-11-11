@@ -1,5 +1,5 @@
           <!-- Navigation -->
-          <nav *ngIf="authencativeService.checkLogin()" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <nav  class="navbar navbar-inverse navbar-fixed-top" role="navigation">
               <!-- Brand and toggle get grouped for better mobile display -->
               <div class="navbar-header">
                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -36,10 +36,11 @@
                               <li><a [routerLink]="['/importexcel']">Thêm từ file</a></li>
                           </ul>
                       </li>
+                      <li><a [routerLink]="['/xemdanhsachlopsinhvien']"><i class="fa fa-fw fa-wrench"></i>Quản lí lớp</a></li>
                       <li >
                           <a  href="javascript:;"  data-toggle="collapse" data-target="#quanlilophp"><i class="fa fa-fw fa-arrows-v"></i>Quản lí lớp học phần<b class="caret"></b></a>
                           <ul id="quanlilophp" class="collapse">
-                              <li><a [routerLink]="['/xemdanhsachlop']">Xem danh sách lớp học phần</a></li>
+                              <li><a [routerLink]="['/xemdanhsachlopsinhvien']">Xem danh sách lớp học phần</a></li>
                               <li><a [routerLink]="['/themlophocphan']">Thêm sinh viên vào lớp học phần</a></li>
                               <li><a [routerLink]="['/themmonhoc']">Thêm lớp học phần</a></li>
                           </ul>
