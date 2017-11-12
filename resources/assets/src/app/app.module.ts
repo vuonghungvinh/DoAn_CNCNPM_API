@@ -18,7 +18,7 @@ import { ListExamComponent } from './quanlidethi/xemdethi/listexam.component';
 import { ExamComponent } from './quanlidethi/taodethi/exam.component';
 import { AccountComponent } from './quanlitaikhoan/taikhoan.component';
 import { UpdateQuestionComponent } from './quanlicauhoi/updatequestion/updatequestion.component';
-import { Themlophocphan } from './ThemSinhVienVaoLopHocPhan/themlophocphan.component';
+import { ThemsinhvienvaolophocphanComponent } from './ThemSinhVienVaoLopHocPhan/themsinhvienvaolophocphan.component';
 import { XemDanhSachComponent } from './XemDanhSachSinhVien/xemdanhsachsinhvien.component';
 import { LopComponent } from './quanlilop/xemdanhsachlop/xemdanhsachlop.component';
 import { ThemSinhVien } from './ThemSinhVien/themsinhvien.component';
@@ -27,15 +27,16 @@ import { Xemlichthi } from './Xemlichthi/xemlichthi.component';
 import { DangkilichthiComponent } from './Dangkilichthi/dangkilichthi.component';
 import { LoginComponent } from './login/login.component';
 import { DanhsachsinhvienCuaLopHPComponent } from './Sinhvienoflophocphan/danhsachsinhviencualopHP.component';
-import { ThemMonHocComponent } from './Themmonhoc/themonhoc.component';
+import { ThemLopHPComponent } from './themlophocphan/themlophocphan.component';
 import { AlertService } from './services/alert.service';
 import { AuthGurad } from './guards/auth.guard';
 import { AlertComponent } from './alert/alert.component';
 import { SinhVienTotNghiepComponent } from './XemDanhSachSinhVien/sinhvientotnghiep/sinhvientotnghiep.component';
 import { AuthenticationService } from './services/authentication.service';
+import { XemdanhsachmonComponent } from './quanlimonhoc/xemdanhsachmonhoc/xemdanhsachmonhoc.component';
 import { NoopInterceptor } from './services/httpinterceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-
+import { ThemMonHocComponent } from './quanlimonhoc/themmonhoc.component';
 
 @NgModule({
   imports: [
@@ -48,6 +49,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     CKEditorModule,
   ],
   declarations: [
+    ThemMonHocComponent,
+    XemdanhsachmonComponent,
     SinhVienTotNghiepComponent,
     SinhVienBoHocComponent,
     AppComponent,
@@ -64,7 +67,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     XemDanhSachComponent,
     ThemSinhVien,
     XemdanhsachlopHPComponent,
-    Themlophocphan,
+    ThemsinhvienvaolophocphanComponent,
     Xemlichthi,
     DangkilichthiComponent,
     HeaderComponent,
@@ -72,7 +75,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     DanhsachsinhvienCuaLopHPComponent,
     UpdateQuestionComponent,
     SinhVienExcelComponent,
-    ThemMonHocComponent
+    ThemLopHPComponent
   ],
   providers: [
     AlertService,

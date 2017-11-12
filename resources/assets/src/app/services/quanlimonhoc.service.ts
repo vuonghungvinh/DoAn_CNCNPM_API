@@ -4,13 +4,16 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class LopHocPhan {
+export class QuanLiMonHocService {
 constructor(private _httpclient: HttpClient) {
 
 }
 
-    getLopHocPhan() {
+    getMonHoc() {
         return this._httpclient.get('/api/admin/mon', this.jwt()).map((result: Response) => result);
+    }
+    addMonHoc(data: any) {
+      return this._httpclient.post('/api/admin/mon/themmon', data, this.jwt()).map((response: Response) => response);
     }
     deleteLopHP(data: any): Observable<any> {
       return this._httpclient.delete('api/admin/mon/delete/' + data , this.jwt()).map((result: Response) => result);

@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header text-center">
+            Danh Sách Môn Học
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-table "></i>Xem danh sách
+            </li>
+            <li>
+                <i class="fa fa-dashboard"></i> <a [routerLink]="['/themmonhoc']">Thêm môn học </a>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+      <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên Môn</th>
+                    <!-- <th>#</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let mon of mon; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{mon.tenmon}}</td>
+                    <!-- <td><a href="javascript:void(0)" (click)="xoamon(mon.mon)">   <span class="glyphicon glyphicon-trash"></span></a></td> -->
+              </tr>
+            </tbody>
+          </table>
+      </div>
+  </div>
+</div>

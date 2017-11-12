@@ -22,6 +22,7 @@ export class ThemSinhVien  {
     public myFile: File;
     public selectkhoa = true;
     public khoahoc: any[];
+    public submit = true;
     public lopcuakhoa: any[];
 
     // tslint:disable-next-line:use-life-cycle-interface
@@ -46,12 +47,16 @@ export class ThemSinhVien  {
   addstudents(value) {
     value['gioitinh'] = this.setgioitinh;
     console.log(value);
-    this.sinhvienservice.addstudents(value).subscribe(data => {
-      console.log(data);
-      alert('Thêm sinh viên thành công');
-      this.router.navigate(['/xemdanhsach']);
-     }, error => {
-      alert('Có lỗi');
-     });
+    if (this.submit) {
+      this.submit = false;
+      this.sinhvienservice.addstudents(value).subscribe(data => {
+        console.log(data);
+        alert('Thêm sinh viên thành công');
+        this.router.navigate(['/xemdanhsach']);
+       }, error => {
+        alert('Có lỗi');
+       });
+    }
+
   }
 }

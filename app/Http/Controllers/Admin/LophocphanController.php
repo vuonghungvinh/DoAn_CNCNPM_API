@@ -20,20 +20,21 @@ class LophocphanController extends Controller
     public function index()
     {
         $lophocphan = DB::table('lophocphan')->join('mon','lophocphan.mamon', '=', 'mon.id')
-        ->select("lophocphan.malophp","mon.tenmon")->distinct()->orderByRaw('lophocphan.malophp')->get();
+        ->select("lophocphan.malophp","mon.tenmon","lophocphan.mamon")->distinct()->orderByRaw('lophocphan.malophp')->get();
         return response()->json(['lophocphan' => $lophocphan]);
     }
-    public function sinhvienkhongthuocmon(Request $request)
+    public function sinhvienkhongthuoclophp($id)
     {
         // $sinhvien = User::with(["mon"])->whereHas('mon', function($query) use($request){
         //   $query->where("mamon", "<>", $request->id);
         // })->get();
         $sinhvien2 = DB::table('lophocphan')
-        ->where('mamon', $request->id)->get(['mssv'])->pluck('mssv');
+        ->where('malophp', $id)->get(['mssv'])->pluck('mssv');
         $sinhvien = DB::table('users')
         ->whereNotIn('mssv', $sinhvien2)
-        ->orderBy('lop')
-        ->get(['mssv','name', 'lop']);
+        ->join('lop','lop.id','=','users.malop')
+        ->orderBy('malop')
+        ->get(['users.mssv','users.name', 'lop.tenlop']);
         return response()->json(['sinhvien' => $sinhvien]);
     }
     public function danhsachsinhvien(Request $request)
@@ -88,11 +89,18 @@ class LophocphanController extends Controller
     {
         //
       $mamon = $request->mamon;
+      $malophp = $request->malophp;
+      $lophp = DB::table('lophocphan')->select('mssv')->where('malophp', 'like', $malophp)->get();
+      if ($lophp->pluck('mssv')[0]=="null"){
+        $da = LopHocPhan::where("malophp","=",$malophp);
+        $da->delete();
+      }
       $index = 0;
       foreach((array)$request->listsinhvien as $mssv){
         $lophocphan = new LopHocPhan;
         $lophocphan->mamon = $mamon;
         $lophocphan->mssv = $mssv;
+        $lophocphan->malophp = $malophp;
         $lophocphan->save();
         $index++;
       }
@@ -103,9 +111,10 @@ class LophocphanController extends Controller
 
     public function themlophocphan(Request $request)
     {
-      $monhoc = new Mon;
-      $monhoc->tenmon = $request->name;
-      $monhoc->save();
+      $lophp = new LopHocPhan;
+      $lophp->mamon = $request->idmon;
+      $lophp->malophp = $request->lophp;
+      $lophp->save();
       return Response(['status' => 200]);
     }
     /**
@@ -148,9 +157,24 @@ class LophocphanController extends Controller
      * @param  \App\LopHocPhan  $lopHocPhan
      * @return \Illuminate\Http\Response
      */
-    public function delete($id, $mssv)
+    public function deletelopHP($id)
     {
-      $da = LopHocPhan::where("mamon","=", $id)->where("mssv", "=", $mssv);
+      $delelte = LopHocPhan::where("malophp", "=", $id)->where("dkthi", "=",0);
+      $delelte->delete();
+      return Response(['status' => 200]);
+    }
+
+    public function deletesinhviencualophp($id, $mssv)
+    {
+      $da = LopHocPhan::where("malophp","=", $id)->where("mssv", "=", $mssv);
+      $lophp = LopHocPhan::where("malophp", "=", $id)->get();
+      if (count($lophp)==1){
+        $mamon = $lophp->pluck('mamon')[0];
+        $lophocphan = new LopHocPhan;
+        $lophocphan->mamon = $mamon;
+        $lophocphan->malophp = $id;
+        $lophocphan->save();
+      }
       $da->delete();
       return Response(['status' => 200]);
     }

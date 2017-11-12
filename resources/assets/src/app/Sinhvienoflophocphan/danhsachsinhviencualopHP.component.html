@@ -1,6 +1,19 @@
-	<div id="header" >
-		<h1 *ngIf="listdanhsach" class="text-center">Danh Sách Sinh Viên Lớp {{listdanhsach[0].malophp}}</h1>
-	</div>
+<div class="row">
+    <div class="col-lg-12">
+		<h1 *ngIf="listdanhsach" class="text-center">Danh Sách Sinh Viên Lớp {{listdanhsach[0].malophp}} {{listdanhsach[0].mon.tenmon}}</h1>
+        <ol class="breadcrumb">
+            <li>
+                <i class="fa fa-table "></i><a [routerLink]="['/xemdanhsachlophocphan']">Xem danh sách </a>->Xem Sinh Viên
+            </li>
+            <li class="active">
+                <i class="fa fa-dashboard"></i><a [routerLink]="['/themsinhvienvaolophocphan']">Thêm sinh viên</a>
+            </li>
+            <li>
+              <i class="fa fa-dashboard"></i><a [routerLink]="['/themlophocphan']">Thêm lớp học phần </a>
+          </li>
+        </ol>
+    </div>
+</div>
 	<div class="col-lg-12">
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
