@@ -15,6 +15,9 @@ constructor(private _httpclient: HttpClient) {
     getCauHoi() {
       return this._httpclient.get('/api/admin/question/listquestion', this.jwt()).map((response: Response) => response);
     }
+    getCauHoiBiXoa() {
+      return this._httpclient.get('/api/admin/question/listquestionbixoa', this.jwt()).map((response: Response) => response);
+    }
     addQuestion(data: any): Observable<any> {
       return this._httpclient.post('/api/admin/question/add', data, this.jwt()).map((response: Response) => response);
     }
@@ -23,6 +26,9 @@ constructor(private _httpclient: HttpClient) {
     }
     updateQuestion(data: any, id: any) {
       return this._httpclient.put('api/admin/question/update/' + id, data, this.jwt()).map((response: Response) => response);
+    }
+    phuchoicauhoi(data: any) {
+      return this._httpclient.get('/api/admin/question/listquestion/khoiphuc/' + data,  this.jwt()).map((response: Response) => response);
     }
     getCauHoiId(data: any) {
       return this._httpclient.get('/api/admin/question/listquestion/' + data,  this.jwt()).map((response: Response) => response);

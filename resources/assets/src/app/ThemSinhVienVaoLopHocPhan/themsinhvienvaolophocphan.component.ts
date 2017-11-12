@@ -20,7 +20,7 @@ export class ThemsinhvienvaolophocphanComponent {
     public malophp: string;
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
-    this.lophocphan.getlophocphan().subscribe( data => {
+    this.lophocphan.getlophocphanchuadkthi().subscribe( data => {
       this.mon = data['lophocphan'];
     });
   }

@@ -22,6 +22,7 @@ export class SinhVienExcelComponent {
   files: FileList;
   filestring: string;
   public formData: FormData;
+  public submit = true;
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
 
@@ -47,10 +48,23 @@ export class SinhVienExcelComponent {
     }
   }
   addstudents(value: any) {
-    this.sinhivienservice.uploadFile(this.formData).subscribe( data => {
-      alert('success');
-      this.router.navigate(['xemdanhsach']);
-    });
+    if (this.formData == null) {
+      alert('Vui lòng chọn file');
+      this.submit = false;
+    }
+    else {
+      this.submit = true;
+    }
+    if (this.submit) {
+      this.submit = false;
+      this.sinhivienservice.uploadFile(this.formData).subscribe( data => {
+        alert('Import thành công');
+        this.router.navigate(['xemdanhsach']);
+      }, error => {
+        alert('Có lỗi, vui lòng kiểm tra cẩn thận.');
+      });
+    }
+
  }
 }
 

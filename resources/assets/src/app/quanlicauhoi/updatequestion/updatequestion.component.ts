@@ -25,14 +25,14 @@ export class UpdateQuestionComponent {
   ngOnInit() {
     this.activateRouter.params.subscribe(params => {
       this.id = params.id;
-    })
+    });
     this.updatequestion.getCauHoiId(this.id).subscribe( data => {
       this.cauhoi = data['cauhoi'];
       let dapantrue = true;
       const arr_dapan = this.cauhoi[0].dapan.split(',');
       this.cauhoi[0].listdapan.forEach(element => {
-        if (arr_dapan.indexOf(element.id.toString()) >= 0){ dapantrue = true;}
-        else {dapantrue = false;}
+        if (arr_dapan.indexOf(element.id.toString()) >= 0) { dapantrue = true; }
+        else {dapantrue = false; }
         this.list_dapan.push({id: element.id,
         ten: element.tendapan,
         noi_dung: element.noidungdapan,
@@ -40,11 +40,11 @@ export class UpdateQuestionComponent {
       });
     });
   }
-  updateQuestion(value: any){
+  updateQuestion(value: any) {
     this.id = 0;
     value['listdapan'] = this.list_dapan;
     this.list_dapan.forEach(element => {
-      if (element.is_true) { this.id++;}
+      if (element.is_true) { this.id++; }
     });
     if (this.id === 0) {
       alert('Vui lòng chọn 1 đáp án đúng');

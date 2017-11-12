@@ -26,10 +26,15 @@ class QuestionController extends Controller
         // ->join('dapan', 'cauhoi.id', '=', 'dapan.macauhoi')
         // ->select('cauhoi.noidungcauhoi','cauhoi.dapan','cauhoi.mucdo','mon.id','mon.tenmon','dapan.tendapan','dapan.noidungdapan','dapan.id','dapan.macauhoi')
         // ->get();
-        $listquestion = Question::with(['listdapan', 'mon'])->get();
+        $listquestion = Question::with(['listdapan', 'mon'])->where('trangthai','=',1)->get();
         return response()->json(['listquestion'=>$listquestion]);
     }
 
+    public function getcauhoibixoa()
+    {
+      $listquestion = Question::with(['listdapan', 'mon'])->where('trangthai','=',0)->get();
+      return response()->json(['listquestion'=>$listquestion]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -99,10 +104,17 @@ class QuestionController extends Controller
     }
     public function delete( $id )
     {
-      $da = DapAn::where("macauhoi","=",$id);
-      $da->delete();
-      $question = Question::where("id","=",$id);
-      $question->delete();
+      // $da = DapAn::where("macauhoi","=",$id);
+      // $da->delete();
+      $question = DB::table('cauhoi')->where("id","=",$id)->update(['trangthai' => 0]);
+      // $question->delete();
+      return Response(['status' => 200]);
+    }
+
+    public function khoiphuccauhoi($id)
+    {
+      $question = DB::table('cauhoi')->where("id","=",$id)->update(['trangthai' => 1]);
+      // $question->delete();
       return Response(['status' => 200]);
     }
     /**

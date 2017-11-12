@@ -37,6 +37,7 @@ import { XemdanhsachmonComponent } from './quanlimonhoc/xemdanhsachmonhoc/xemdan
 import { NoopInterceptor } from './services/httpinterceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ThemMonHocComponent } from './quanlimonhoc/themmonhoc.component';
+import { KhoiPhucCauHoiComponent } from './quanlicauhoi/khoiphuccauhoi/khoiphuccauhoi.component';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { ThemMonHocComponent } from './quanlimonhoc/themmonhoc.component';
     CKEditorModule,
   ],
   declarations: [
+    KhoiPhucCauHoiComponent,
     ThemMonHocComponent,
     XemdanhsachmonComponent,
     SinhVienTotNghiepComponent,

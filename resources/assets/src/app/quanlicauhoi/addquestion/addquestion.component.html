@@ -1,6 +1,20 @@
 <div class="row">
     <div class="col-lg-12">
-        <h2 class="text-center">Tạo Mới Câu Hỏi</h2>
+        <h1 class="page-header text-center">
+            Tạo Mới Câu Hỏi
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <i class="fa fa-table "></i><a [routerLink]="['/question']">Xem danh sách</a>
+            </li>
+            <li class="active">
+                <i class="fa fa-dashboard"></i>Thêm Câu Hỏi
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
         <form  (ngSubmit)="addQuestion(f.value)" #f="ngForm"  role='form' >
             <div class='form-group has-success'>
                 <label class='control-label' for='idchonmon'>Chọn môn</label>

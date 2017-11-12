@@ -33,6 +33,8 @@ Route::prefix('admin')->group(function () {
   });
     Route::group(['prefix' => 'lophocphan', 'middleware' => ['jwt.auth']], function () {
         Route::get('/', 'Admin\LophocphanController@index');
+        Route::put('/update/{id}', 'Admin\LophocphanController@update');
+        Route::get('/chuadkthi', 'Admin\LophocphanController@getlophpchuadkthi');
         Route::get('/danhsachsinhvien/{id}', 'Admin\LophocphanController@danhsachsinhvien');
         Route::get('/danhsachsinhvien/tongcauhoi/{id}', 'Admin\LophocphanController@tongcauhoi');
         Route::get('/mon/danhsachsinhvien/{id}', 'Admin\LophocphanController@sinhvienkhongthuoclophp');
@@ -50,6 +52,8 @@ Route::prefix('admin')->group(function () {
     Route::group(['prefix' => 'question', 'middleware' => ['jwt.auth']], function () {
         Route::post('/add','Admin\QuestionController@store');
         Route::get('/listquestion', 'Admin\QuestionController@index');
+        Route::get('/listquestion/khoiphuc/{id}', 'Admin\QuestionController@khoiphuccauhoi');
+        Route::get('/listquestionbixoa', 'Admin\QuestionController@getcauhoibixoa');
         Route::delete('/{id}/delete', 'Admin\QuestionController@delete');
         Route::put('/update/{id}', 'Admin\QuestionController@update');
         Route::get('/listquestion/{id}', 'Admin\QuestionController@show');

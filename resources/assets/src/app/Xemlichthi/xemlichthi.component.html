@@ -6,6 +6,7 @@
                 <thead>
                     <tr>
                         <th>STT</th>
+                        <th>Mã lớp HP</th>
                         <th>Môn Thi</th>
                         <th>Ngày Thi</th>
                         <th>Thời gian</th>
@@ -17,12 +18,13 @@
                 <tbody>
                     <tr *ngFor="let lichthi of listlichthi; let i = index;">
                         <td>{{i+1}}</td>
+                        <td>{{lichthi.malophp}}</td>
                         <td>{{lichthi.get_mon.tenmon}}</td>
                         <td>{{lichthi.thoigianbatdauthi}}</td>
                         <td>{{lichthi.thoigianthi}}</td>
                         <td>{{lichthi.tongcauhoi}}</td>
                         <td>{{lichthi.phong}}</td>
-                        <td><a [routerLink]="['/danhsachsinhvien/'+lichthi.get_mon.id]">Xem</a><a href="javascript:void(0)" id="hrefdelete" (click)="deleteLichthi(lichthi.id)">   <span class="glyphicon glyphicon-trash"></span></a></td>
+                        <td><a [routerLink]="['/danhsachsinhvien/'+lichthi.malophp]">Xem</a><a href="javascript:void(0)" id="hrefdelete" (click)="deleteLichthi(lichthi.id)">   <span class="glyphicon glyphicon-trash"></span></a></td>
                       </tr>
                 </tbody>
               </table>

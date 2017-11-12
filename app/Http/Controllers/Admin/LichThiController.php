@@ -42,11 +42,13 @@ class LichThiController extends Controller
     public function store(Request $request)
     {
         //
-
+        DB::table('lophocphan')->where('malophp', '=', $request->malophp)
+        ->where('dkthi','=',0)->update(['dkthi'=>1]);
         $lichthi = new LichThi;
         $lichthi->mamon = $request->mamon;
         $lichthi->thoigianbatdauthi = $request->ngaydangki;
         $lichthi->phong = $request->phongthi;
+        $lichthi->malophp = $request->malophp;
         $lichthi->thoigianthi = $request->thoigianthi;
         $lichthi->tongcauhoi = $request->tongcauhoi;
         $lichthi->save();

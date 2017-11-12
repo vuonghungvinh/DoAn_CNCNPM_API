@@ -97,8 +97,8 @@ class StudentsController extends Controller
                               // $students->save();
                               $insert = array();
                               $malop = DB::table('lop')->select('id')->where('tenlop', 'like', $v['lop'])->get();
-                              $insert[] = ['name' => $v['name'], 'mssv' => $v['mssv'], 'ngaysinh' => $v['ngaysinh'],
-                              'gioitinh' =>  $v['gioitinh'],'diachi'=>  $v['diachi'],'malop' =>  $malop->pluck('id')[0],'trangthai' => $v['trangthai'],'password' => bcrypt('123456') ];
+                              $insert[] = ['name' => $v['ten'], 'mssv' => $v['mssv'], 'ngaysinh' => $v['ngaysinh'],
+                              'gioitinh' =>  $v['gioitinh'],'diachi'=>  $v['diachi'],'malop' =>  $malop->pluck('id')[0],'trangthai' => 1,'password' => bcrypt('123456') ];
                                Students::insert($insert);
                             }
                         }

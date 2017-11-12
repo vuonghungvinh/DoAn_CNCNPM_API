@@ -3,13 +3,13 @@
                     <h1 class="text-center">Đăng kí lịch thi</h1>
                     <form class="form" id="dangkilichthi" (ngSubmit)="themLichThi(f.value)" #f="ngForm" role="form"  >
                             <div class="form-group has-success">
-                                <label class="control-label">Chọn môn</label>
-                                <select (change)="getIdmon($event)" class="form-control" name="mamon" required #mamon="ngModel" ngModel >
-                                    <option disabled>Chọn môn</option>
-                                    <option *ngFor="let mon of mon" [value]="mon.id">{{mon.id }} {{mon.tenmon}}</option>
+                                <label class="control-label">Chọn lớp HP</label>
+                                <select (change)="getmalophp($event)" class="form-control" name="malophp" required #malophp="ngModel" ngModel >
+                                    <option disabled>Chọn lớp HP</option>
+                                    <option *ngFor="let mon of mon" [value]="mon.malophp">{{mon.malophp }} {{mon.tenmon}}</option>
                                 </select>
-                                <div *ngIf="mamon.errors  && (mamon.dirty || mamon.touched)" class="alert alert-danger">
-                                    <div [hidden]="!mamon.errors.required">
+                                <div *ngIf="malophp.errors  && (malophp.dirty || malophp.touched)" class="alert alert-danger">
+                                    <div [hidden]="!malophp.errors.required">
                                       Bạn chưa chọn.
                                     </div>
                                 </div>
@@ -77,7 +77,9 @@
                                     <td>{{i+1}}</td>
                                     <td>{{sinhvien.mssv}}</td>
                                     <td>{{sinhvien.student.name}}</td>
-                                    <td>{{sinhvien.student.lop}}</td>
+                                    <div *ngFor="let lop of lop">
+                                        <td *ngIf="sinhvien.student.malop==lop.id">{{lop.tenlop}}</td>
+                                    </div>
                                 </tr>
                             </tbody>
                         </table>

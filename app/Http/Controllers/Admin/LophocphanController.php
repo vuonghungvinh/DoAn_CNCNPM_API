@@ -23,6 +23,14 @@ class LophocphanController extends Controller
         ->select("lophocphan.malophp","mon.tenmon","lophocphan.mamon")->distinct()->orderByRaw('lophocphan.malophp')->get();
         return response()->json(['lophocphan' => $lophocphan]);
     }
+
+    public function getlophpchuadkthi() {
+      $lophocphan = DB::table('lophocphan')->join('mon','lophocphan.mamon', '=', 'mon.id')
+      ->select("lophocphan.malophp","mon.tenmon","lophocphan.mamon")->where('lophocphan.dkthi', '=', 0)
+      ->distinct()->orderByRaw('lophocphan.malophp')->get();
+      return response()->json(['lophocphan' => $lophocphan]);
+    }
+
     public function sinhvienkhongthuoclophp($id)
     {
         // $sinhvien = User::with(["mon"])->whereHas('mon', function($query) use($request){
@@ -43,11 +51,13 @@ class LophocphanController extends Controller
         ->where('malophp',$request->id)->get();
         return response()->json(['lophocphan' => $lophocphan]);
     }
-    public function tongcauhoi(Request $request)
+    public function tongcauhoi($id)
     {
-
+        $mamon = DB::table('lophocphan')
+        ->select('mamon')
+        ->where('malophp', '=', $id)->offset(0)->limit(1)->get()->pluck('mamon')[0];
         $tongcauhoi = DB::table('cauhoi')
-        ->where('mamon',$request->id)->count();
+        ->where('mamon',$mamon)->count();
         return response()->json(['tongcauhoi' => $tongcauhoi]);
     }
 

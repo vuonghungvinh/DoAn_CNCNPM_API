@@ -26,9 +26,11 @@ import { SinhVienBoHocComponent } from './XemDanhSachSinhVien/sinhvienbohoc/xemd
 import { SinhVienTotNghiepComponent } from './XemDanhSachSinhVien/sinhvientotnghiep/sinhvientotnghiep.component';
 import { XemdanhsachmonComponent } from './quanlimonhoc/xemdanhsachmonhoc/xemdanhsachmonhoc.component';
 import { ThemMonHocComponent } from './quanlimonhoc/themmonhoc.component';
+import { KhoiPhucCauHoiComponent } from './quanlicauhoi/khoiphuccauhoi/khoiphuccauhoi.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'khoiphuccauhoi',  component: KhoiPhucCauHoiComponent, canActivate: [AuthGurad] },
   { path: 'sinhviennghihoc',  component: SinhVienBoHocComponent, canActivate: [AuthGurad] },
   { path: 'themmonhoc',  component: ThemMonHocComponent, canActivate: [AuthGurad] },
   { path: 'xemdanhsachmon',  component: XemdanhsachmonComponent, canActivate: [AuthGurad] },

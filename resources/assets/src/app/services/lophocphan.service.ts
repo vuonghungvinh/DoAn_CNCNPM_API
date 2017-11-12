@@ -11,6 +11,9 @@ constructor(private _httpclient: HttpClient) {
   getlophocphan() {
     return this._httpclient.get('/api/admin/lophocphan', this.jwt()).map((response: Response) => response);
   }
+  getlophocphanchuadkthi() {
+    return this._httpclient.get('/api/admin/lophocphan/chuadkthi', this.jwt()).map((response: Response) => response);
+  }
   getMon() {
     return this._httpclient.get('/api/admin/lophocphan/themsinhvienmon', this.jwt()).map((response: Response) => response);
   }
@@ -23,6 +26,9 @@ constructor(private _httpclient: HttpClient) {
   deleteSinhvien(data: any, mssv: any): Observable<any> {
     // tslint:disable-next-line:max-line-length
     return this._httpclient.delete('api/admin/lophocphan/delete/' + data + '/' + mssv, this.jwt()).map((response: Response) => response);
+  }
+  updateLopHP(id: any) {
+    return this._httpclient.put('api/admin/lophocphan/update/' + id, this.jwt()).map((response: Response) => response);
   }
   getdetail(data: any) {
     return this._httpclient.get('/api/admin/lophocphan/danhsachsinhvien/' + data, this.jwt()).map((response: Response) => response);
