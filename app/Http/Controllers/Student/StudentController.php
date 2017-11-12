@@ -24,7 +24,7 @@ class StudentController extends Controller
     {
       $user = Auth::user();
       $lophp = Mon::with(['lichThi', 'lopHp'])->whereHas('lopHp', function($query) use ($user){
-        $query->where('mssv', $user->mssv)->where('dkthi', 0);
+        $query->where('mssv', $user->mssv)->where('dkthi', 1);
       })->has("lichThi")->get();
       return response()->json($lophp);
     }
@@ -62,20 +62,24 @@ class StudentController extends Controller
         $dethicauhoi->macauhoi = $question->id;
         $dethicauhoi->save();
       }
-      LopHocPhan::where('mamon', $lichthi->mamon)->where('mssv', $user->mssv)->update(['dkthi'=>1]);
+      LopHocPhan::where('mamon', $lichthi->mamon)->where('mssv', $user->mssv)->update(['dkthi'=>2]);
       $result = (object) array('start_time' => date('Y-m-d H:i:s'), 'madethi' => $madethi, 'questions' => $questions,'thoigianthi' => $lichthi->thoigianthi);
       return response()->json($result);
     }
 
     private function processString($str=''){
       $str = trim($str);
-      if(substr($str, count($str)-2, 1) == ',') {
-        return substr($str, 0, count($str)-2);
+      if(substr($str, strlen($str)-2, 1) == ',') {
+        return substr($str, 0, strlen($str)-2);
       }
       return $str;
     }
 
     public function nopBaiThi(Request $request) {
+      //return $request;
+      // return response()->json($request);
+      //$request = json_decode($request);
+      //return $request->questions;
       if (count($request->questions)<1) {
         return '';
       }
@@ -85,16 +89,17 @@ class StudentController extends Controller
       $diem = 0;
       $diem_moi_cau = 10.0/count($request->questions);
 
-      foreach($request->questions as $question) {
-        $dapan=''.$question->id.':'.$this->processString($question->answer);
-        if(count($dapan_str) < 1){
+      for($i=0;$i<count($request->questions); $i++) {
+        $question = $request->questions[$i];
+        $dapan=''.$question["id"].':'.$this->processString($question["answer"]);
+        if(strlen($dapan_str) < 1){
           $dapan_str = $dapan;
         } else {
           $dapan_str = $dapan_str.';'.$dapan;
         }
         $dapan_arr = explode(',', $this->processString($question->dapan));
         $answer_arr = explode(',', $this->processString($question->answer));
-        if (count($answer_arr) > count($dapan_arr)){
+        if (strlen($answer_arr) > strlen($dapan_arr)){
           continue;
         } else {
           foreach($answer_arr as $answer){
