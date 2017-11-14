@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CKEditorModule } from 'ng2-ckeditor';
 
+
+import { SinhVienCuaLopComponent } from './quanlilop/xemdanhsachsinhvienlop/danhsachsinhvienlop.component';
 import { SinhVienBoHocComponent } from './XemDanhSachSinhVien/sinhvienbohoc/xemdanhsachsinhvienbohoc.component';
 import { SinhVienExcelComponent } from './ThemSinhVien/themtufileexcel/sinhvienexcelcomponent';
 import { AppRoutingModule } from './app-routing.module';
@@ -38,7 +40,7 @@ import { NoopInterceptor } from './services/httpinterceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ThemMonHocComponent } from './quanlimonhoc/themmonhoc.component';
 import { KhoiPhucCauHoiComponent } from './quanlicauhoi/khoiphuccauhoi/khoiphuccauhoi.component';
-
+import { ThemLopComponent } from './quanlilop/themlop/themlop.component';
 @NgModule({
   imports: [
     HttpClientModule,
@@ -50,6 +52,8 @@ import { KhoiPhucCauHoiComponent } from './quanlicauhoi/khoiphuccauhoi/khoiphucc
     CKEditorModule,
   ],
   declarations: [
+    ThemLopComponent,
+    SinhVienCuaLopComponent,
     KhoiPhucCauHoiComponent,
     ThemMonHocComponent,
     XemdanhsachmonComponent,

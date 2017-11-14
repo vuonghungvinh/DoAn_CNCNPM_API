@@ -11,4 +11,16 @@ class Lop extends Model
     {
       return $this->hasmany('App\Students','malop');
     }
+    public function SinhVienDangHoc()
+    {
+      return $this->hasmany('App\Students','malop')->where('trangthai', '=', 1);
+    }
+    public function SinhVienTotNghiep()
+    {
+      return $this->hasmany('App\Students','malop')->where('trangthai', '=', 0);
+    }
+    public function SinhVienNghiHoc()
+    {
+      return $this->hasmany('App\Students','malop')->where('trangthai', '=', 2);
+    }
 }

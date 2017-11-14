@@ -28,6 +28,7 @@ Route::prefix('admin')->group(function () {
     Route::group(['prefix' => 'lop', 'middleware' => ['jwt.auth']], function () {
       Route::get('/', 'Admin\LopController@index');
       Route::get('/khoa', 'Admin\LopController@getKhoa');
+      Route::get('/tongsosinhvien', 'Admin\LopController@getsoluongsinhvien');
       Route::get('/{id}', 'Admin\LopController@show');
       Route::get('/khoa/{id}', 'Admin\LopController@getLopCuaKhoa');
   });

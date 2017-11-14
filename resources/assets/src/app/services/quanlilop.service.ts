@@ -15,6 +15,9 @@ constructor(private _httpclient: HttpClient) {
   getSinhVienLop(data: any) {
     return this._httpclient.get('/api/admin/lop/' + data, this.jwt()).map((response: Response) => response);
   }
+  getdanhsachloptongsinhvien() {
+    return this._httpclient.get('/api/admin/lop/tongsosinhvien', this.jwt()).map((response: Response) => response);
+  }
   getKhoa() {
     return this._httpclient.get('/api/admin/lop/khoa', this.jwt()).map((response: Response) => response);
   }

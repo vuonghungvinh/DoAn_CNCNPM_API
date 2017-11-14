@@ -27,9 +27,13 @@ import { SinhVienTotNghiepComponent } from './XemDanhSachSinhVien/sinhvientotngh
 import { XemdanhsachmonComponent } from './quanlimonhoc/xemdanhsachmonhoc/xemdanhsachmonhoc.component';
 import { ThemMonHocComponent } from './quanlimonhoc/themmonhoc.component';
 import { KhoiPhucCauHoiComponent } from './quanlicauhoi/khoiphuccauhoi/khoiphuccauhoi.component';
+import { SinhVienCuaLopComponent } from './quanlilop/xemdanhsachsinhvienlop/danhsachsinhvienlop.component';
+import { ThemLopComponent } from './quanlilop/themlop/themlop.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'themlopmoi',  component: ThemLopComponent, canActivate: [AuthGurad] },
+  { path: 'xemdanhsachlopsinhvien/toanbosinhvienlop/:id',  component: SinhVienCuaLopComponent, canActivate: [AuthGurad] },
   { path: 'khoiphuccauhoi',  component: KhoiPhucCauHoiComponent, canActivate: [AuthGurad] },
   { path: 'sinhviennghihoc',  component: SinhVienBoHocComponent, canActivate: [AuthGurad] },
   { path: 'themmonhoc',  component: ThemMonHocComponent, canActivate: [AuthGurad] },
@@ -52,7 +56,7 @@ const routes: Routes = [
   { path: 'themlophocphan', component: ThemLopHPComponent, canActivate: [AuthGurad] },
   { path: 'importexcel', component: SinhVienExcelComponent, canActivate: [AuthGurad] },
   { path: 'themsinhvien', component: ThemSinhVien, canActivate: [AuthGurad] },
-  { path: 'danhsachsinhvien/:id', component: DanhsachsinhvienCuaLopHPComponent, canActivate: [AuthGurad] },
+  { path: 'xemdanhsachlophocphan/danhsachsinhvien/:id', component: DanhsachsinhvienCuaLopHPComponent, canActivate: [AuthGurad] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Lop;
+use App\Students;
 use DB;
 class LopController extends Controller
 {
@@ -29,6 +30,17 @@ class LopController extends Controller
         //
     }
 
+
+
+    public function getsoluongsinhvien()
+    {
+      $lop = Lop::withCount(['SinhVienLop as tongsinhvien'])
+      ->withCount(['SinhVienDangHoc as danghoc'])
+      ->withCount(['SinhVienTotNghiep as totnghiep'])
+      ->withCount(['SinhVienNghiHoc as nghihoc'])
+      ->orderByRaw('khoa')->get();
+      return response()->json(['danhsachlop' => $lop]);
+    }
 
     public function getKhoa()
     {
@@ -60,7 +72,7 @@ class LopController extends Controller
     public function show($id)
     {
         //
-        $sinhvienlop = Lop::with(['SinhVienLop'])->where('id', '=', $id)->get();
+        $sinhvienlop = Lop::with(['SinhVienLop'])->where('tenlop', '=', $id)->get();
         return response()->json(['sinhvienlop' => $sinhvienlop]);
     }
 

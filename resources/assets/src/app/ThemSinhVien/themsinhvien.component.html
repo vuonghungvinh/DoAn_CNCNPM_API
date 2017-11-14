@@ -76,9 +76,9 @@
                   </div>
             </div>
             <div class="form-group has-success" id="formchonlop">
-              <label  class="control-label">Chọn Khóa</label>
+              <label  class="control-label" for="sel1">Chọn Khóa</label>
                   <select required #khoa="ngModel" class="form-control" (change)="changeKhoa($event)" name="khoa" id="sel1" ngModel>
-                      <option *ngFor="let khoahoc of khoahoc;let i = index" [value]="khoahoc.khoa"  >{{khoahoc.khoa}}</option>
+                    <option *ngFor="let khoahoc of khoahoc;let i = index" [value]="khoahoc.khoa"  >{{khoahoc.khoa}}</option>
                   </select>
                   <div *ngIf="khoa.errors && (khoa.dirty || khoa.touched)" class="text text-danger text-left">
                       <div [hidden]="!khoa.errors.required">

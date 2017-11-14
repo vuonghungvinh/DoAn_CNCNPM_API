@@ -1,0 +1,51 @@
+<div class="row">
+    <div *ngIf="danhsachlop" class="col-lg-12">
+        <h1 class="page-header text-center">
+            Xem Danh Sách Sinh Viên Lớp {{danhsachlop[0].tenlop}}
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active" *ngIf="danhsachlop">
+                <i class="fa fa-table "></i><a [routerLink]="['/xemdanhsachlopsinhvien']"> Xem Danh Sách</a> => {{danhsachlop[0].tenlop}}
+            </li>
+            <li>
+                <i class="fa fa-table "></i><a [routerLink]="['/themlopmoi']">Tạo Mới Lớp</a>
+            </li>
+        </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>MSSV</th>
+                    <th>Họ Tên</th>
+                    <th>Lớp</th>
+                    <th>Ngày Sinh</th>
+                    <th>Giới Tính</th>
+                    <th>Trạng Thái</th>
+                    <!-- <th>#</th> -->
+                </tr>
+                </thead>
+                <tbody *ngFor="let danhsachlop of danhsachlop">
+                  <tr *ngFor="let student of danhsachlop.sinh_vien_lop | filter:search; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{student.mssv}}</td>
+                    <td>{{student.name}}</td>
+                    <td>{{danhsachlop.tenlop}}</td>
+                    <td>{{student.ngaysinh}}</td>
+                    <td *ngIf="student.gioitinh==1">Nam</td>
+                    <td *ngIf="student.gioitinh!=1">Nữ</td>
+                    <td *ngIf="student.trangthai==1">Đang học</td>
+                    <td *ngIf="student.trangthai==2">Nghỉ học</td>
+                    <td *ngIf="student.trangthai==0">Tốt Nghiệp</td>
+                    <!-- <td><a href="javascript:void(0)" (click)="deleteSinhVien(student.mssv)">   <span class="glyphicon glyphicon-trash"></span></a></td> -->
+                  </tr>
+                </tbody>
+
+              </table>
+        </div>
+      </div>
+</div>
