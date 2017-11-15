@@ -69,6 +69,13 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function thongtinsinhvien($id)
+    {
+      $students = Students::all()->where('mssv','=', $id);
+      return response()->json(['students' => $students]);
+    }
+
+
     public function show($id)
     {
         //

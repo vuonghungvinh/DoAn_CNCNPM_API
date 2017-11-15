@@ -44,7 +44,7 @@
             </div>
             <div class="form-group  has-success" id="formngaysinh">
               <label class=" control-label">Ngày sinh</label>
-                <input type="date" placeholder="yyyy-MM-dd"  class="form-control" min="1993-01-01"  max="1999-12-3
+                <input type="date" placeholder="yyyy-MM-dd"  class="form-control" min="1990-01-01"  max="1999-12-3
                 1" #ngaysinh="ngModel" name="ngaysinh" ngModel>
                 <div *ngIf="ngaysinh.errors && (ngaysinh.dirty || ngaysinh.touched)" class="text text-danger text-left">
                   <div [hidden]="!ngaysinh.errors.required">

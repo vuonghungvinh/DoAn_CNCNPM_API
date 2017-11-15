@@ -18,6 +18,7 @@ Route::prefix('admin')->group(function () {
     Route::post('info', 'Admin\LoginController@getAuthUser');
     Route::group(['prefix' => 'students', 'middleware' => ['jwt.auth']], function () {
         Route::get('/', 'Admin\StudentsController@index');
+        Route::get('/{id}', 'Admin\StudentsController@thongtinsinhvien');
         Route::post('/create', 'Admin\StudentsController@store');
         Route::get('/lop/{id}', 'Admin\StudentsController@show');
         Route::delete('/delete/{id}', 'Admin\StudentsController@destroy');

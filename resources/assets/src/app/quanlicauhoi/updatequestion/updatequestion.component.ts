@@ -42,6 +42,7 @@ export class UpdateQuestionComponent {
   }
   updateQuestion(value: any) {
     this.id = 0;
+    console.log(value);
     value['listdapan'] = this.list_dapan;
     this.list_dapan.forEach(element => {
       if (element.is_true) { this.id++; }

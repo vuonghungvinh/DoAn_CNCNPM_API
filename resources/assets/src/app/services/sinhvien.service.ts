@@ -18,6 +18,9 @@ getdanhsachsinhvien() {
 	// addstudents(data: any): Observable<any>{
 	// 	return this._http.post("/api/admin/students/create", data, this.jwt()).map((response: Response) => response.json());
   // }
+  getThongTinSinhVien(data: any) {
+    return this._httpclient.get('/api/admin/students/' + data, this.jwt()).map((result: Response) => result);
+  }
   getSinhVienTotNghiep() {
     return this._httpclient.get('/api/admin/students/sinhvientotnghiep', this.jwt()).map((result: Response) => result);
   }

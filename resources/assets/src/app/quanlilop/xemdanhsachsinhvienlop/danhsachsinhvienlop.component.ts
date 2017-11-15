@@ -1,22 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LopService } from '../../services/quanlilop.service';
+import { SinhvienService } from '../../services/sinhvien.service';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'lop-component',
   templateUrl: './danhsachsinhvienlop.component.html',
   styleUrls: ['./danhsachsinhvienlop.component.scss'],
-  providers: [LopService]
+  providers: [LopService, SinhvienService]
 })
 
 export class SinhVienCuaLopComponent {
   constructor(private lopservice: LopService,
     private router: Router,
-    private activerouter: ActivatedRoute
+    private activerouter: ActivatedRoute,
+    private sinhvienservice: SinhvienService
   ) {
   }
   public danhsachlop: any[];
   public tenlop: string;
+  public thongtinsinhvien: any[];
+  public sinhvienluutru: any[];
+  public mssv: string;
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
     this.activerouter.params.subscribe( params => {
@@ -25,5 +30,17 @@ export class SinhVienCuaLopComponent {
     this.lopservice.getSinhVienLop(this.tenlop).subscribe( data => {
       this.danhsachlop = data['sinhvienlop'];
     });
+  }
+  selectsinhvien(item: any) {
+    this.mssv = item.mssv;
+    this.thongtinsinhvien = item;
+    console.log(this.thongtinsinhvien);
+  }
+  reset() {
+    this.thongtinsinhvien = null;
+    this.ngOnInit();
+  }
+  updatesinhvien(value) {
+    console.log(this.thongtinsinhvien);
   }
 }

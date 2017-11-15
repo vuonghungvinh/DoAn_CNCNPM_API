@@ -13,6 +13,57 @@
         </ol>
     </div>
   </div>
+  <div class="col-lg-12">
+      <form *ngIf="thongtinsinhvien" role="form" id="sinhvien" (ngSubmit)="updatesinhvien(f.value)" #f="ngForm" >
+              <div class="form-group has-success col-lg-6" id="FormMssv">
+                  <label class="control-label" for="mssv">MSSV</label>
+                  <input type="text" [(ngModel)]="thongtinsinhvien.mssv" class="form-control" name="mssv" value="thongtinsinhvien.mssv" disabled>
+              </div>
+              <div class="form-group has-success col-lg-6" id="FormTen">
+                  <label class="control-label" for="tensv">Tên</label>
+                  <input required #name="ngModel" type="text" [(ngModel)]="thongtinsinhvien.name" min="" class="form-control" name="name" value="thongtinsinhvien.name">
+                  <div *ngIf="name.errors" class="text text-danger text-left">
+                      <div [hidden]="!name.errors.required" >
+                          Vui lòng nhập tên
+                      </div>
+                  </div>
+                </div>
+              <div class="form-group has-success col-lg-6" id="FormNgaySinh">
+                  <label class="control-label" for="ngaysinh">Ngày Sinh</label>
+                  <input type="date" required #ngaysinh="ngModel"
+                    placeholder="yyyy-MM-dd" [(ngModel)]="thongtinsinhvien.ngaysinh" class="form-control" name="ngaysinh"
+                  maxlength="10" min="1990-01-01"  max="2000-12-31" value="thongtinsinhvien.ngaysinh" >
+
+             </div>
+              <div class="form-group has-success col-lg-6" id="FormDiaChi">
+                <label class="control-label" for="diachi">Địa Chỉ</label>
+                <input type="text" [(ngModel)]="thongtinsinhvien.diachi" class="form-control" name="diachi" value="thongtinsinhvien.diachi">
+            </div>
+            <div class="form-group has-success col-lg-6" id="FormTrangThai">
+                <label class="control-label" for="trangthai">Trạng thái học tập</label>
+                <select *ngIf="thongtinsinhvien.trangthai==1" [(ngModel)]="thongtinsinhvien.trangthai" name="thongtinsinhvien.trangthai" class="form-control">
+                    <option value="1" selected>Đang học</option>
+                    <option value="0" >Tốt Nghiệp</option>
+                    <option value="2">Nghỉ Học</option>
+                </select>
+                <select *ngIf="thongtinsinhvien.trangthai==0" [(ngModel)]="thongtinsinhvien.trangthai" name="thongtinsinhvien.trangthai" class="form-control">
+                    <option value="1" >Đang học</option>
+                    <option value="0" selected >Tốt Nghiệp</option>
+                    <option value="2">Nghỉ Học</option>
+                </select>
+                <select *ngIf="thongtinsinhvien.trangthai==2" [(ngModel)]="thongtinsinhvien.trangthai" name="thongtinsinhvien.trangthai" class="form-control">
+                    <option value="1" >Đang học</option>
+                    <option value="0" >Tốt Nghiệp</option>
+                    <option value="2" selected>Nghỉ Học</option>
+                </select>
+            </div>
+              <div class="col-lg-12">
+                  <button type="submit" class='btn btn-primary' [disabled]="!f.form.valid">Save</button>
+                  <input type="button" class='btn btn-primary' (click)="reset()" value="Cancel">
+              </div>
+
+      </form>
+  </div>
   <div class="row">
     <div class="col-lg-12">
         <div class="table-responsive">
@@ -25,12 +76,13 @@
                     <th>Lớp</th>
                     <th>Ngày Sinh</th>
                     <th>Giới Tính</th>
+                    <th>Địa Chỉ</th>
                     <th>Trạng Thái</th>
                     <!-- <th>#</th> -->
                 </tr>
                 </thead>
                 <tbody *ngFor="let danhsachlop of danhsachlop">
-                  <tr *ngFor="let student of danhsachlop.sinh_vien_lop | filter:search; let i = index">
+                  <tr *ngFor="let student of danhsachlop.sinh_vien_lop | filter:search; let i = index" (click)="selectsinhvien(student)" [class.highlighted]="1">
                     <td>{{i+1}}</td>
                     <td>{{student.mssv}}</td>
                     <td>{{student.name}}</td>
@@ -38,13 +90,13 @@
                     <td>{{student.ngaysinh}}</td>
                     <td *ngIf="student.gioitinh==1">Nam</td>
                     <td *ngIf="student.gioitinh!=1">Nữ</td>
+                    <td>{{student.diachi}}</td>
                     <td *ngIf="student.trangthai==1">Đang học</td>
                     <td *ngIf="student.trangthai==2">Nghỉ học</td>
                     <td *ngIf="student.trangthai==0">Tốt Nghiệp</td>
                     <!-- <td><a href="javascript:void(0)" (click)="deleteSinhVien(student.mssv)">   <span class="glyphicon glyphicon-trash"></span></a></td> -->
                   </tr>
                 </tbody>
-
               </table>
         </div>
       </div>
