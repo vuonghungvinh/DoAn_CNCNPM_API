@@ -19,7 +19,7 @@ getdanhsachsinhvien() {
 	// 	return this._http.post("/api/admin/students/create", data, this.jwt()).map((response: Response) => response.json());
   // }
   getThongTinSinhVien(data: any) {
-    return this._httpclient.get('/api/admin/students/' + data, this.jwt()).map((result: Response) => result);
+    return this._httpclient.get('/api/admin/students/thongtinsinhvien' + data, this.jwt()).map((result: Response) => result);
   }
   getSinhVienTotNghiep() {
     return this._httpclient.get('/api/admin/students/sinhvientotnghiep', this.jwt()).map((result: Response) => result);
@@ -35,6 +35,9 @@ getdanhsachsinhvien() {
   }
   addstudents(data: any): Observable<any> {
   return this._httpclient.post('/api/admin/students/create', data, this.jwt()).map((response: Response) => response);
+  }
+  updateSinhVien(id: any,data: any) {
+    return this._httpclient.put('/api/admin/students/update/' + id, data, this.jwt()).map((responsive: Response) => responsive);
   }
   uploadFile(data: any) {
     return this._httpclient.post('/api/admin/students/uploadfile', data, this.jwt()).map((response: Response) => response);

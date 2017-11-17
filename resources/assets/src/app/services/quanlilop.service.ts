@@ -21,6 +21,9 @@ constructor(private _httpclient: HttpClient) {
   getKhoa() {
     return this._httpclient.get('/api/admin/lop/khoa', this.jwt()).map((response: Response) => response);
   }
+  themLop(data: any) {
+    return this._httpclient.post('/api/admin/lop/themlop', data, this.jwt()).map((response: Response) => response);
+  }
   getLopCuaKhoa(data: any) {
     return this._httpclient.get('/api/admin/lop/khoa/' + data, this.jwt()).map((response: Response) => response);
   }

@@ -18,19 +18,21 @@ Route::prefix('admin')->group(function () {
     Route::post('info', 'Admin\LoginController@getAuthUser');
     Route::group(['prefix' => 'students', 'middleware' => ['jwt.auth']], function () {
         Route::get('/', 'Admin\StudentsController@index');
-        Route::get('/{id}', 'Admin\StudentsController@thongtinsinhvien');
+        Route::get('/thongtinsinhvien/{id}', 'Admin\StudentsController@thongtinsinhvien');
         Route::post('/create', 'Admin\StudentsController@store');
         Route::get('/lop/{id}', 'Admin\StudentsController@show');
-        Route::delete('/delete/{id}', 'Admin\StudentsController@destroy');
-        Route::post('/uploadfile', 'Admin\StudentsController@uploadfile');
         Route::get('/sinhviennghihoc', 'Admin\StudentsController@getsinhviennghihoc');
         Route::get('/sinhvientotnghiep', 'Admin\StudentsController@getsinhvientotnghiep');
+        Route::delete('/delete/{id}', 'Admin\StudentsController@destroy');
+        Route::post('/uploadfile', 'Admin\StudentsController@uploadfile');
+        Route::put('/update/{id}', 'Admin\StudentsController@update');
     });
     Route::group(['prefix' => 'lop', 'middleware' => ['jwt.auth']], function () {
       Route::get('/', 'Admin\LopController@index');
       Route::get('/khoa', 'Admin\LopController@getKhoa');
       Route::get('/tongsosinhvien', 'Admin\LopController@getsoluongsinhvien');
       Route::get('/{id}', 'Admin\LopController@show');
+      Route::post('/themlop', 'Admin\LopController@store');
       Route::get('/khoa/{id}', 'Admin\LopController@getLopCuaKhoa');
   });
     Route::group(['prefix' => 'lophocphan', 'middleware' => ['jwt.auth']], function () {

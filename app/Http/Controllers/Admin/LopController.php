@@ -61,6 +61,11 @@ class LopController extends Controller
     public function store(Request $request)
     {
         //
+        $lop = new Lop;
+        $lop->tenlop = $request->tenlop;
+        $lop->khoa = $request->khoa;
+        $lop->save();
+        return response()->json(['status' => 200]);
     }
 
     /**

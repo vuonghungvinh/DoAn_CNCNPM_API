@@ -20,7 +20,6 @@ export class SinhVienCuaLopComponent {
   public danhsachlop: any[];
   public tenlop: string;
   public thongtinsinhvien: any[];
-  public sinhvienluutru: any[];
   public mssv: string;
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
@@ -41,6 +40,10 @@ export class SinhVienCuaLopComponent {
     this.ngOnInit();
   }
   updatesinhvien(value) {
-    console.log(this.thongtinsinhvien);
+    this.sinhvienservice.updateSinhVien(this.mssv, this.thongtinsinhvien).subscribe(data => {
+      alert('Cập nhập thành công');
+      this.thongtinsinhvien = null;
+      this.ngOnInit();
+    });
   }
 }

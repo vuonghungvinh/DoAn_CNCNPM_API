@@ -19,7 +19,9 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = Students::with(['lop'])->where('trangthai', '=', '1')->orderByRaw('mssv')->get();
+        $students = Students::with(['lop'])->where('trangthai', '=', 1)
+        ->select('mssv','name','ngaysinh','gioitinh','diachi','malop','trangthai')
+        ->orderByRaw('mssv')->get();
         return response()->json(['students' => $students]);
     }
 
@@ -34,11 +36,11 @@ class StudentsController extends Controller
     }
 
     public function getsinhvientotnghiep(){
-      $students = Students::with(['lop'])->where('trangthai', '=', '0')->orderByRaw('mssv')->get();
+      $students = Students::with(['lop'])->where('trangthai', '=', 0)->orderByRaw('mssv')->get();
       return response()->json(['students' => $students]);
     }
     public function getsinhviennghihoc(){
-      $students = Students::with(['lop'])->where('trangthai', '=', '2')->orderByRaw('mssv')->get();
+      $students = Students::with(['lop'])->where('trangthai', '=', 2)->orderByRaw('mssv')->get();
       return response()->json(['students' => $students]);
     }
     /**
@@ -136,6 +138,10 @@ class StudentsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        DB::table('users')->where('mssv', '=', $id)
+        ->update(['name' => $request->name, 'ngaysinh' => $request->ngaysinh,
+         'diachi'=> $request->diachi, 'trangthai' => $request->trangthai]);
+         return Response(['status' => 200]);
     }
 
     /**
