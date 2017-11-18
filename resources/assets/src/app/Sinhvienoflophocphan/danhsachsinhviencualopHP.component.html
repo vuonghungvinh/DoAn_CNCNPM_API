@@ -13,6 +13,9 @@
           </li>
         </ol>
     </div>
+    <div *ngIf="!selectmssv" class="text-center">
+        <h3>Chọn một sinh viên để chuyển lớp </h3>
+    </div>
 </div>
 <div *ngIf="selectmssv" class="col-lg-12">
     <form name="form" (ngSubmit)="chuyenlop(f.value)" #f="ngForm" >

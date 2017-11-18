@@ -37,6 +37,7 @@ Route::prefix('admin')->group(function () {
   });
     Route::group(['prefix' => 'lophocphan', 'middleware' => ['jwt.auth']], function () {
         Route::get('/', 'Admin\LophocphanController@index');
+        Route::get('/checkdkthi/{id}', 'Admin\LophocphanController@checkdk');
         Route::get('/lophptheomon/{id}', 'Admin\LophocphanController@getlophpcungmon');
         Route::put('/update/{id}', 'Admin\LophocphanController@update');
         Route::put('/chuyenlophp', 'Admin\LophocphanController@chuyenlophp');

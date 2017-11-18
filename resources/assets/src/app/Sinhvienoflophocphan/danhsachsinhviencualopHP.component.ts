@@ -55,7 +55,11 @@ export class DanhsachsinhvienCuaLopHPComponent {
     //       });
     }
     selectsinhvien(sinhvien: any) {
-      this.selectmssv = sinhvien.mssv;
+      this.Danhsachservice.checkdkthi(this._id).subscribe( data => {
+        this.selectmssv = sinhvien.mssv;
+      }, error => {
+        alert('Lớp đã đk thi, không thể chuyển lớp cho SV này');
+      });
       this.sinhvien = sinhvien;
       this.listlop.forEach(element => {
         if (element.id == sinhvien.student.malop) {

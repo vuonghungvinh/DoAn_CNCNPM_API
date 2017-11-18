@@ -24,11 +24,11 @@
               <th>SV Nghỉ Học</th>
               <th>SV Tốt Nghiệp</th>
               <th>Tổng</th>
-              <th>Xem DS</th>
+              <!-- <th>Xem DS</th> -->
           </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let lop  of danhsachlop | filter: search; let i = index">
+          <tr *ngFor="let lop  of danhsachlop | filter: search; let i = index" [routerLink]="['toanbosinhvienlop/'+lop.tenlop]">
               <td>{{i+1}}</td>
               <td>{{lop.khoa}}</td>
               <td>{{lop.tenlop}}</td>
@@ -36,9 +36,9 @@
               <td>{{lop.nghihoc_count}}</td>
               <td>{{lop.totnghiep_count}}</td>
               <td>{{lop.tongsinhvien_count}}</td>
-              <td>
+              <!-- <td>
                 <a [routerLink]="['toanbosinhvienlop/'+lop.tenlop]" >DS</a>
-            </td>
+            </td> -->
             </tr>
       </tbody>
   </table>

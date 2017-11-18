@@ -165,6 +165,14 @@ class LophocphanController extends Controller
         //
     }
 
+    public function checkdk($id)
+    {
+      $check = DB::table('lophocphan')->where('malophp',$id)->where('dkthi',1)->count();
+      if ($check > 0){
+        return response()->json(['Lớp đã DK thi, không thể chuyển lớp cho sinh viên này'], 422);
+      }
+      return  Response(['status' => 200]);
+    }
     public function chuyenlophp(Request $request)
     {
       DB::table('lophocphan')->where('malophp', $request->lopcu)->where('mssv',$request->mssv)->update(['malophp' => $request->lophp]);

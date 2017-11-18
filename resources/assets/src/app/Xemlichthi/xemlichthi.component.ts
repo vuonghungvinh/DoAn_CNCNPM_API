@@ -19,9 +19,6 @@ export class Xemlichthi {
       this.listlichthi = data['listlichthi'];
     });
   }
-  dangKi() {
-    this.route.navigate(['/dangkilichthi']);
-  }
   deleteLichthi(id: number) {
     if ((confirm('Bạn chắc chắn muốn xóa') === true)) {
       this.xemlichthi.deleteLichThi(id).subscribe( data => {

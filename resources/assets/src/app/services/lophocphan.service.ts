@@ -26,6 +26,9 @@ constructor(private _httpclient: HttpClient) {
   getLopHPCungMon(data: any) {
     return this._httpclient.get('/api/admin/lophocphan/lophptheomon/' + data, this.jwt()).map((response: Response) => response);
   }
+  checkdkthi(data: any) {
+    return this._httpclient.get('/api/admin/lophocphan/checkdkthi/' + data, this.jwt()).map((response: Response) => response);
+  }
   chuyenlophp(data: any) {
     return this._httpclient.put('api/admin/lophocphan/chuyenlophp' , data , this.jwt()).map((response: Response) => response);
   }
