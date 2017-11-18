@@ -25,15 +25,25 @@ export class ThemsinhvienvaolophocphanComponent {
     });
   }
   getMaLopHP(event) {
-    this.lophocphan.getSinhVienMonKhongThuocLopHP(event.target.value).subscribe( data => {
-      this.sinhvien = data ['sinhvien'];
-      this.malophp = event.target.value;
-      this.mon.forEach(element => {
-        if (element.malophp === this.malophp) {
+    this.mon.forEach(element => {
+      if (element.malophp === event.target.value) {
+        console.log(element);
+        this.lophocphan.getSinhVienMonKhongThuocLopHP(element).subscribe( data => {
+          this.sinhvien = data ['sinhvien'];
+          this.malophp = event.target.value;
           this.idmon = element.mamon;
-        }
-      });
+        });
+      }
     });
+    // this.lophocphan.getSinhVienMonKhongThuocLopHP(event.target.value).subscribe( data => {
+    //   this.sinhvien = data ['sinhvien'];
+    //   this.malophp = event.target.value;
+    //   this.mon.forEach(element => {
+    //     if (element.malophp === this.malophp) {
+    //       this.idmon = element.mamon;
+    //     }
+    //   });
+    // });
   }
   themSinhVien(value: any) {
     value['mamon'] = this.idmon;

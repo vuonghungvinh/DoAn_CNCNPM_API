@@ -30,14 +30,18 @@ class LophocphanController extends Controller
       ->distinct()->orderByRaw('lophocphan.malophp')->get();
       return response()->json(['lophocphan' => $lophocphan]);
     }
-
-    public function sinhvienkhongthuoclophp($id)
+    public function getlophpcungmon($id)
+    {
+      $lophocphan = DB::table('lophocphan')->where('mamon',$id)->select('malophp')->distinct()->get();
+      return response()->json(['mon_lophocphan' => $lophocphan]);
+    }
+    public function sinhvienkhongthuoclophp(Request $id)
     {
         // $sinhvien = User::with(["mon"])->whereHas('mon', function($query) use($request){
         //   $query->where("mamon", "<>", $request->id);
         // })->get();
         $sinhvien2 = DB::table('lophocphan')
-        ->where('malophp', $id)->get(['mssv'])->pluck('mssv');
+        ->where('malophp', $id->malophp)->orWhere('mamon', $id->mamon)->get(['mssv'])->pluck('mssv');
         $sinhvien = DB::table('users')
         ->whereNotIn('mssv', $sinhvien2)
         ->join('lop','lop.id','=','users.malop')
@@ -161,6 +165,11 @@ class LophocphanController extends Controller
         //
     }
 
+    public function chuyenlophp(Request $request)
+    {
+      DB::table('lophocphan')->where('malophp', $request->lopcu)->where('mssv',$request->mssv)->update(['malophp' => $request->lophp]);
+      return Response(['status' => 200]);
+    }
     /**
      * Remove the specified resource from storage.
      *

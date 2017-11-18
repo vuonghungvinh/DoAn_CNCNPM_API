@@ -16,12 +16,11 @@ class CreateMonTable extends Migration
         Schema::create('mon', function (Blueprint $table) {
             //
             $table->increments('id');
-            $table->string('tenmon', 20);
+            $table->string('tenmon', 20)->unique();
             $table->tinyInteger('trangthai')->default(1);
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

@@ -17,11 +17,17 @@ constructor(private _httpclient: HttpClient) {
   getMon() {
     return this._httpclient.get('/api/admin/lophocphan/themsinhvienmon', this.jwt()).map((response: Response) => response);
   }
-  getSinhVienMonKhongThuocLopHP(id) {
-    return this._httpclient.get('api/admin/lophocphan/mon/danhsachsinhvien/' + id, this.jwt()).map((response: Response) => response);
+  getSinhVienMonKhongThuocLopHP(id: any) {
+    return this._httpclient.post('api/admin/lophocphan/mon/danhsachsinhvien/', id , this.jwt()).map((response: Response) => response);
   }
   addSinhVienVaoLopHP(data: any): Observable<any> {
     return this._httpclient.post('/api/admin/lophocphan/addsinhvien', data, this.jwt()).map((response: Response) => response);
+  }
+  getLopHPCungMon(data: any) {
+    return this._httpclient.get('/api/admin/lophocphan/lophptheomon/' + data, this.jwt()).map((response: Response) => response);
+  }
+  chuyenlophp(data: any) {
+    return this._httpclient.put('api/admin/lophocphan/chuyenlophp' , data , this.jwt()).map((response: Response) => response);
   }
   deleteSinhvien(data: any, mssv: any): Observable<any> {
     // tslint:disable-next-line:max-line-length

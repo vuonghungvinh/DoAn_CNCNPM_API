@@ -14,30 +14,62 @@
         </ol>
     </div>
 </div>
-	<div class="col-lg-12">
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>MSSV</th>
-                    <th>Tên Sinh viên</th>
-                    <th>Lớp</th>
-                    <th>#</th>
-                  </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let danhsach of listdanhsach; let i = index">
-                    <td><span >{{i+1}}</span></td>
-                    <td><span>{{danhsach.mssv}}</span></td>
-                    <td>{{danhsach.student.name}}</td>
-                    <div *ngFor="let lop of listlop">
-                    <td *ngIf="danhsach.student.malop==lop.id">{{lop.tenlop}}</td>
-                    </div>
-                    <td><a href="javascript:void(0)" (click)="deleteSinhvien(danhsach.mssv)">   <span class="glyphicon glyphicon-trash"></span></a></td>
-                  </tr>
-            </tbody>
-          </table>
-    </div>
-
-	</div>
+<div *ngIf="selectmssv" class="col-lg-12">
+    <form name="form" (ngSubmit)="chuyenlop(f.value)" #f="ngForm" >
+        <div class="text-center col-lg-12">
+            <h1><label class="label-control">Chuyển lớp HP cho sinh viên</label></h1>
+        </div>
+        <div class="form-group has-success col-lg-12">
+            <label class="label-control">MSSV</label>
+            <input type="text" class="form-control" [(ngModel)]="selectmssv" name="mssv" [value]="selectmssv" disabled>
+        </div>
+        <div class="form-group has-success col-lg-12">
+            <label class="label-control">Tên sinh viên</label>
+            <input type="text" class="form-control" [(ngModel)]="sinhvien.student.name" name="name" [value]="sinhvien.student.name" disabled>
+        </div>
+        <div class="form-group has-success col-lg-12">
+            <label  class="label-control">Lớp sinh hoạt</label>
+            <input  type="text" class="form-control" name="lop" [value]="lop" disabled>
+        </div>
+        <div class="form-group has-success col-lg-12">
+            <label class="label-control">Chuyển sang lớp HP</label>
+            <select required #lophp="ngModel" name="lophp" class="form-control" ngModel>
+                <option *ngFor="let dslophp of danhsachlop_hp_cungmon" [value]="dslophp.malophp" >{{dslophp.malophp}}</option>
+            </select>
+            <div *ngIf="lophp.errors && (lophp.dirty || lophp.touched)" class="text text-danger text-left">
+                <div [hidden]="!lophp.errors.required">
+                    Bạn chưa chọn lớp
+                </div>
+              </div>
+        </div>
+        <div class="text-center" style="margin-top: 20px;">
+        <button type="submit" class="btn btn-primary" [disabled]="!f.form.valid">Save</button>
+        </div>
+    </form>
+</div>
+<div class="col-lg-12" style="margin-top: 30px;">
+  <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+          <thead>
+              <tr>
+                  <th>STT</th>
+                  <th>MSSV</th>
+                  <th>Tên Sinh viên</th>
+                  <th>Lớp</th>
+                  <th>#</th>
+                </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let danhsach of listdanhsach; let i = index" (click)="selectsinhvien(danhsach)">
+                  <td><span >{{i+1}}</span></td>
+                  <td><span>{{danhsach.mssv}}</span></td>
+                  <td>{{danhsach.student.name}}</td>
+                  <div *ngFor="let lop of listlop">
+                  <td *ngIf="danhsach.student.malop==lop.id">{{lop.tenlop}}</td>
+                  </div>
+                  <td><a href="javascript:void(0)" (click)="deleteSinhvien(danhsach.mssv)">   <span class="glyphicon glyphicon-trash"></span></a></td>
+                </tr>
+          </tbody>
+        </table>
+  </div>
+</div>

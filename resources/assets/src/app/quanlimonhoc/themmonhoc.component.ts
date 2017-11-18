@@ -34,11 +34,10 @@ export class ThemMonHocComponent  {
        this.monhocservice.addMonHoc(value).subscribe( data => {
           alert('Thêm thành công');
           this.router.navigate(['/xemdanhsachmon']);
-       });
-      }
-      else {
+       }, error => {
         alert('Môn đã tồn tại');
         this.submit = true;
+       });
       }
     }
 	// tslint:disable-next-line:indent

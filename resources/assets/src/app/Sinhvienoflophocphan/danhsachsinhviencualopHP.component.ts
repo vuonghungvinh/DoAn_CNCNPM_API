@@ -13,9 +13,13 @@ import { LopService } from '../services/quanlilop.service';
 export class DanhsachsinhvienCuaLopHPComponent {
     private subscription: any;
     public listdanhsach: any[];
+    public danhsachlop_hp_cungmon: any[];
     public _id: string;
     public listlop: any[];
     public xoasinhvien = [];
+    public lop: string;
+    public selectmssv: string;
+    public sinhvien: any;
     constructor(
       private Danhsachservice: LophocphanService,
       private activatedRouter: ActivatedRoute,
@@ -27,8 +31,12 @@ export class DanhsachsinhvienCuaLopHPComponent {
     ngOnInit() {
       this.activatedRouter.params.subscribe(params => {
          this._id = params['id'];
+
         this.Danhsachservice.getdetail(this._id).subscribe(data => {
           this.listdanhsach = data['lophocphan'];
+          this.Danhsachservice.getLopHPCungMon(this.listdanhsach[0].mamon).subscribe( data => {
+            this.danhsachlop_hp_cungmon = data['mon_lophocphan'];
+          });
           if (this.listdanhsach[0].mssv == 'null') {
             alert('Không có sinh viên');
             this.router.navigate(['xemdanhsachlophocphan']);
@@ -37,6 +45,7 @@ export class DanhsachsinhvienCuaLopHPComponent {
         this.lopservice.getLop().subscribe( data => {
             this.listlop = data['lop'];
         });
+
       });
       // this.lophocphanservice.getdetail().subscribe(data => {
       // 	console.log(data);
@@ -44,6 +53,34 @@ export class DanhsachsinhvienCuaLopHPComponent {
       // 	},error => {
     //           console.log(error);
     //       });
+    }
+    selectsinhvien(sinhvien: any) {
+      this.selectmssv = sinhvien.mssv;
+      this.sinhvien = sinhvien;
+      this.listlop.forEach(element => {
+        if (element.id == sinhvien.student.malop) {
+          this.lop = element.tenlop;
+        }
+      });
+      this.danhsachlop_hp_cungmon.forEach((element, index) => {
+        if (element.malophp == this.listdanhsach[0].malophp) {
+          this.danhsachlop_hp_cungmon.splice(index, 1);
+        }
+      });
+    }
+    chuyenlop(value: any) {
+      value['mssv'] = this.selectmssv;
+      value['lopcu'] = this.listdanhsach[0].malophp;
+      this.Danhsachservice.chuyenlophp(value).subscribe( data => {
+        alert('Chuyển thành công');
+        this.Danhsachservice.getdetail(this._id).subscribe( data2 => {
+          this.listdanhsach = null;
+          this.selectmssv = null;
+          this.listdanhsach = data2['lophocphan'];
+        });
+      });
+      console.log(this.listdanhsach);
+      console.log(value);
     }
     deleteSinhvien(mssv: string) {
       if (confirm('Bạn muốn xóa sinh viên này?') === true) {
