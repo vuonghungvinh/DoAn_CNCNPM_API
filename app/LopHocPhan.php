@@ -11,6 +11,9 @@ class LopHocPhan extends Model
 	public function mon(){
 		return $this->belongsTo('App\Mon', 'mamon','id');
 	}
+	public function lichthi(){
+		return $this->belongsTo('App\LichThi', 'malophp','malophp');
+	}
 	public function student(){
 		return $this->belongsTo('App\Students' , 'mssv','mssv');
   }

@@ -23,9 +23,10 @@ class StudentController extends Controller
     public function getDanhSachMonThi()
     {
       $user = Auth::user();
-      $lophp = Mon::with(['lichThi', 'lopHp'])->whereHas('lopHp', function($query) use ($user){
-        $query->where('mssv', $user->mssv)->where('dkthi', 1);
-      })->has("lichThi")->get();
+      // $lophp = Mon::with(['lichThi', 'lopHp'])->whereHas('lopHp', function($query) use ($user){
+      //   $query->where('mssv', $user->mssv)->where('dkthi', 1);
+      // })->has("lichThi")->get();
+      $lophp = LopHocPhan::with(['lichthi', 'mon'])->where('mssv', $user->mssv)->where('dkthi', 1)->get();
       return response()->json($lophp);
     }
 
@@ -78,8 +79,12 @@ class StudentController extends Controller
     public function nopBaiThi(Request $request) {
       //return $request;
       // return response()->json($request);
-      //$request = json_decode($request);
+      // return response()->json(json_decode($request['data']));
+      // $request = json_decode($request['data']);
+      // $request = json_decode($request);
+      // $request = json_decode($request);
       //return $request->questions;
+      // return response()->json($request);
       if (count($request->questions)<1) {
         return '';
       }
@@ -88,34 +93,37 @@ class StudentController extends Controller
       $dapan_str = '';//'id_cauhoi: id_dapan[, id_dapan];'
       $diem = 0;
       $diem_moi_cau = 10.0/count($request->questions);
-
       for($i=0;$i<count($request->questions); $i++) {
         $question = $request->questions[$i];
-        $dapan=''.$question["id"].':'.$this->processString($question["answer"]);
+        $dapan=''.$question['id'].':'.$this->processString($question['answer']);
         if(strlen($dapan_str) < 1){
           $dapan_str = $dapan;
         } else {
           $dapan_str = $dapan_str.';'.$dapan;
         }
-        $dapan_arr = explode(',', $this->processString($question->dapan));
-        $answer_arr = explode(',', $this->processString($question->answer));
-        if (strlen($answer_arr) > strlen($dapan_arr)){
+        $dapandung_arr = explode(',', $this->processString($question['dapan']));
+        $answer_arr = explode(',', $this->processString($question['answer']));
+        if (count($answer_arr) > count($dapandung_arr)){
           continue;
         } else {
           foreach($answer_arr as $answer){
-            if (in_array($answer, $dapan_arr)){
-              $diem=$diem+$diem_moi_cau/(float)count($dapan_arr);
+            if (in_array($answer, $dapandung_arr)){
+              $tongdapan = count($dapandung_arr);
+              if ($tongdapan < 1) {
+                $tongdapan = 1;
+              }
+              $diem=$diem+(float)$diem_moi_cau/$tongdapan;
             }
           }
         }
       }
-      $ketquathi = new KetQuaThi();
+      $ketquathi = new KetQuaThi;
       $ketquathi->mssv = $user->mssv;
       $ketquathi->diem = $diem;
       $ketquathi->madethi = $request->madethi;
       $ketquathi->thoigianlam = $request->thoigianlam;
-      $ketquathi->thoigian = $end_time;
-      $ketquathi->dapan = $dapan;
+      $ketquathi->thoigianbatdau = $end_time;
+      $ketquathi->dapan = $dapan_str;
       $ketquathi->save();
       return response()->json($diem);
       // return response()->json(explode(',', $tmp));
