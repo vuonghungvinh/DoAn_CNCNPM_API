@@ -24,11 +24,11 @@
                         <th>Thời gian</th>
                         <th>Tổng câu hỏi</th>
                         <th>Phòng Thi</th>
-                        <th>Xóa</th>
+                        <th>DS</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let lichthi of listlichthi; let i = index;" [routerLink]="['/xemdanhsachlophocphan/danhsachsinhvien/'+lichthi.malophp]">
+                    <tr *ngFor="let lichthi of listlichthi; let i = index;" >
                         <td>{{i+1}}</td>
                         <td>{{lichthi.malophp}}</td>
                         <td>{{lichthi.get_mon.tenmon}}</td>
@@ -36,7 +36,7 @@
                         <td>{{lichthi.thoigianthi}}</td>
                         <td>{{lichthi.tongcauhoi}}</td>
                         <td>{{lichthi.phong}}</td>
-                        <td><a href="javascript:void(0)" id="hrefdelete" (click)="deleteLichthi(lichthi.id)">   <span class="glyphicon glyphicon-trash"></span></a></td>
+                        <td><a [routerLink]="['/xemdanhsachlophocphan/danhsachsinhvien/'+lichthi.malophp]">DS</a> <a href="javascript:void(0)" id="hrefdelete" (click)="deleteLichthi(lichthi.id)">   <span class="glyphicon glyphicon-trash"></span></a></td>
                       </tr>
                 </tbody>
               </table>

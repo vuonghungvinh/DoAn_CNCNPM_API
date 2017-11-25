@@ -30,6 +30,12 @@ getdanhsachsinhvien() {
   getSinhVienLop(data: any) {
     return this._httpclient.get('/api/admin/students/lop/' + data, this.jwt()).map((result: Response) => result);
   }
+  getSinhVienLopNghiHoc(data: any) {
+    return this._httpclient.get('/api/admin/students/lopnghihoc/' + data, this.jwt()).map((result: Response) => result);
+  }
+  getSinhVienLopTotNghiep(data: any) {
+    return this._httpclient.get('/api/admin/students/loptotnghiep/' + data, this.jwt()).map((result: Response) => result);
+  }
   deleteSinhVien(data: any) {
     return this._httpclient.delete('/api/admin/students/delete/' + data, this.jwt()).map((result: Response) => result);
   }

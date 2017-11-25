@@ -1,18 +1,15 @@
 <div class="row">
-    <div class="col-lg-12">
+    <div  *ngIf="mon" class="col-lg-12">
         <h1 class="page-header text-center">
-            Danh Sách Lớp Học Phần
+            Danh Sách Lớp Học Phần Môn {{mon[0].tenmon}}
         </h1>
         <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-table "></i>Xem danh sách
-            </li>
+          <li>
+            <i class="fa fa-table "></i><a [routerLink]="['/xemdanhsachmon']">Xem danh sách môn học</a>->{{mon[0].tenmon}}
+        </li>
             <li>
-                <i class="fa fa-dashboard"></i> <a [routerLink]="['/themsinhvienvaolophocphan']">Thêm sinh viên </a>
+                <i class="fa fa-dashboard"></i> <a [routerLink]="['/themsinhvienvaolophocphan/'+id_mon]">Thêm sinh viên vào lớp học phần </a>
             </li>
-            <li>
-              <i class="fa fa-dashboard"></i><a [routerLink]="['/themlophocphan']">Thêm lớp học phần </a>
-          </li>
         </ol>
     </div>
 </div>
@@ -34,7 +31,7 @@
                     <td>{{i+1}}</td>
                     <td>{{lophocphan.malophp}}</td>
                     <td>{{lophocphan.tenmon}}</td>
-                    <td><a [routerLink]="['danhsachsinhvien/'+lophocphan.malophp]"> DS</a></td>
+                    <td><a [routerLink]="['/xemdanhsachlophocphan/danhsachsinhvien/'+lophocphan.malophp]"> DS</a></td>
                     <td><a href="javascript:void(0)" (click)="xoaLopHocPhan(lophocphan.malophp)">   <span class="glyphicon glyphicon-trash"></span></a></td>
               </tr>
             </tbody>

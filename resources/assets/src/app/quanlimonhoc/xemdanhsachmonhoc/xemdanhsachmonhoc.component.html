@@ -10,6 +10,9 @@
             <li>
                 <i class="fa fa-dashboard"></i> <a [routerLink]="['/themmonhoc']">Thêm môn học </a>
             </li>
+            <li>
+                <i class="fa fa-dashboard"></i><a [routerLink]="['/themlophocphan']">Thêm lớp học phần </a>
+            </li>
         </ol>
     </div>
 </div>
@@ -25,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let mon of mon; let i = index">
+                <tr *ngFor="let mon of mon; let i = index" [routerLink]="['xemdanhsachlophocphan/'+mon.id]">
                     <td>{{i+1}}</td>
                     <td>{{mon.tenmon}}</td>
                     <!-- <td><a href="javascript:void(0)" (click)="xoamon(mon.mon)">   <span class="glyphicon glyphicon-trash"></span></a></td> -->
