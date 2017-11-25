@@ -9,10 +9,16 @@ export class LophocphanService {
 constructor(private _httpclient: HttpClient) {
   }
   getlophocphan() {
-    return this._httpclient.get('/api/admin/lophocphan', this.jwt()).map((response: Response) => response);
+    return this._httpclient.get('/api/admin/lophocphan/' , this.jwt()).map((response: Response) => response);
   }
-  getlophocphanchuadkthi() {
-    return this._httpclient.get('/api/admin/lophocphan/chuadkthi', this.jwt()).map((response: Response) => response);
+  getlophocphanmon(data: any) {
+    return this._httpclient.get('/api/admin/lophocphan/lophpcuamon/' + data, this.jwt()).map((response: Response) => response);
+  }
+  getlophocphanchuadkthi(data: any) {
+    return this._httpclient.get('/api/admin/lophocphan/chuadkthi/' + data, this.jwt()).map((response: Response) => response);
+  }
+  getalllophocphanchuadkthi() {
+    return this._httpclient.get('/api/admin/lophocphan/allchuadkthi', this.jwt()).map((response: Response) => response);
   }
   getMon() {
     return this._httpclient.get('/api/admin/lophocphan/themsinhvienmon', this.jwt()).map((response: Response) => response);

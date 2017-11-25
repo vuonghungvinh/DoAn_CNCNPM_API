@@ -31,6 +31,9 @@ export class SinhVienCuaLopComponent {
     });
   }
   selectsinhvien(item: any) {
+    this.lopservice.getSinhVienLop(this.tenlop).subscribe( data => {
+      this.danhsachlop = data['sinhvienlop'];
+    });
     this.mssv = item.mssv;
     this.thongtinsinhvien = item;
     console.log(this.thongtinsinhvien);

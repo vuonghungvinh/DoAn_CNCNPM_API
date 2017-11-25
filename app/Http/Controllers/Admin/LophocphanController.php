@@ -23,8 +23,20 @@ class LophocphanController extends Controller
         ->select("lophocphan.malophp","mon.tenmon","lophocphan.mamon")->distinct()->orderByRaw('lophocphan.malophp')->get();
         return response()->json(['lophocphan' => $lophocphan]);
     }
-
-    public function getlophpchuadkthi() {
+    public function lophptheomon($id)
+    {
+      $lophocphan = DB::table('lophocphan')->join('mon','lophocphan.mamon', '=', 'mon.id')
+      ->select("lophocphan.malophp","mon.tenmon","lophocphan.mamon")->where("lophocphan.mamon", $id)->distinct()->orderByRaw('lophocphan.malophp')->get();
+      return response()->json(['lophocphan' => $lophocphan]);
+    }
+    public function getlophpchuadkthi($id) {
+      $lophocphan = DB::table('lophocphan')->join('mon','lophocphan.mamon', '=', 'mon.id')
+      ->select("lophocphan.malophp","mon.tenmon","lophocphan.mamon")->where('lophocphan.dkthi', '=', 0)
+      ->where("lophocphan.mamon", $id)
+      ->distinct()->orderByRaw('lophocphan.malophp')->get();
+      return response()->json(['lophocphan' => $lophocphan]);
+    }
+    public function getalllophpchuadkthi() {
       $lophocphan = DB::table('lophocphan')->join('mon','lophocphan.mamon', '=', 'mon.id')
       ->select("lophocphan.malophp","mon.tenmon","lophocphan.mamon")->where('lophocphan.dkthi', '=', 0)
       ->distinct()->orderByRaw('lophocphan.malophp')->get();
@@ -43,9 +55,10 @@ class LophocphanController extends Controller
         $sinhvien2 = DB::table('lophocphan')
         ->where('malophp', $id->malophp)->orWhere('mamon', $id->mamon)->get(['mssv'])->pluck('mssv');
         $sinhvien = DB::table('users')
+        ->where('trangthai','1')
         ->whereNotIn('mssv', $sinhvien2)
         ->join('lop','lop.id','=','users.malop')
-        ->orderBy('malop')
+        ->orderByRaw('users.mssv')
         ->get(['users.mssv','users.name', 'lop.tenlop']);
         return response()->json(['sinhvien' => $sinhvien]);
     }
@@ -175,6 +188,15 @@ class LophocphanController extends Controller
     }
     public function chuyenlophp(Request $request)
     {
+      $lophp = DB::table('lophocphan')->select('mssv')->where('malophp', 'like', $request->lophp)->get();
+      if ($lophp->pluck('mssv')[0]=="null"){
+        DB::table('lophocphan')
+        ->where('malophp',$request->lophp)
+        ->update(['mssv' => $request->mssv]);
+        $da = LopHocPhan::where("malophp","=",$request->lopcu)->where('mssv', $request->mssv);
+        $da->delete();
+        return Response(['status' => 200]);
+      }
       DB::table('lophocphan')->where('malophp', $request->lopcu)->where('mssv',$request->mssv)->update(['malophp' => $request->lophp]);
       return Response(['status' => 200]);
     }

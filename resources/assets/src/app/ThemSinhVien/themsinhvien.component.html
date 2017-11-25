@@ -20,11 +20,15 @@
     <form role="form" id="themsinhvien" (ngSubmit)="addstudents(f.value)" #f = "ngForm" enctype="multipart/form-data" >
             <div class="form-group has-success" id="formmssv">
               <label class="control-label" for="inputSuccess">Mã số sinh viên</label>
-                <input type="text" class="form-control" required   #mssv="ngModel" id="inputSuccess"  name="mssv" ngModel >
+                <input type="text" class="form-control" required minlength="9" maxlength="10"   #mssv="ngModel" id="inputSuccess"  name="mssv" ngModel >
                 <div *ngIf="mssv.errors && (mssv.dirty || mssv.touched)" class="text text-danger text-left">
                   <div [hidden]="!mssv.errors.required">
                       Bạn chưa nhập mã số sinh viên
                   </div>
+                  <div *ngIf="mssv.errors.minlength">
+                    MSSV có ít nhất 9-10 kí tự
+                </div>
+
                 </div>
             </div>
             <div class="form-group has-success" id="formten">
@@ -44,14 +48,12 @@
             </div>
             <div class="form-group  has-success" id="formngaysinh">
               <label class=" control-label">Ngày sinh</label>
-                <input type="date" placeholder="yyyy-MM-dd"  class="form-control" min="1990-01-01"  max="1999-12-3
-                1" #ngaysinh="ngModel" name="ngaysinh" ngModel>
+
+                <input type="date"   class="form-control" required  #ngaysinh="ngModel" placeholder="yyyy-MM-dd"
+                maxlength="10" min="1990-01-01"  max="1999-12-31"  name="ngaysinh" ngModel>
                 <div *ngIf="ngaysinh.errors && (ngaysinh.dirty || ngaysinh.touched)" class="text text-danger text-left">
                   <div [hidden]="!ngaysinh.errors.required">
-                    Bạn chưa chọn ngày sinh
-                  </div>
-                  <div [hidden]="!ngaysinh.errors.date">
-                    Nhập độ tuổi phù hợp.
+                    Bạn chưa nhập ngày sinh
                   </div>
                 </div>
             </div>

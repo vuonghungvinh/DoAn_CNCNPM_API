@@ -20,7 +20,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/', 'Admin\StudentsController@index');
         Route::get('/thongtinsinhvien/{id}', 'Admin\StudentsController@thongtinsinhvien');
         Route::post('/create', 'Admin\StudentsController@store');
-        Route::get('/lop/{id}', 'Admin\StudentsController@show');
+        Route::get('/lop/{id}', 'Admin\StudentsController@lopsinhviendanghoc');
+        Route::get('/lopnghihoc/{id}', 'Admin\StudentsController@lopsinhviennghihoc');
+        Route::get('/loptotnghiep/{id}', 'Admin\StudentsController@lopsinhvientotnghiep');
         Route::get('/sinhviennghihoc', 'Admin\StudentsController@getsinhviennghihoc');
         Route::get('/sinhvientotnghiep', 'Admin\StudentsController@getsinhvientotnghiep');
         Route::delete('/delete/{id}', 'Admin\StudentsController@destroy');
@@ -36,12 +38,14 @@ Route::prefix('admin')->group(function () {
       Route::get('/khoa/{id}', 'Admin\LopController@getLopCuaKhoa');
   });
     Route::group(['prefix' => 'lophocphan', 'middleware' => ['jwt.auth']], function () {
+        Route::get('/lophpcuamon/{id}', 'Admin\LophocphanController@lophptheomon');
         Route::get('/', 'Admin\LophocphanController@index');
         Route::get('/checkdkthi/{id}', 'Admin\LophocphanController@checkdk');
         Route::get('/lophptheomon/{id}', 'Admin\LophocphanController@getlophpcungmon');
         Route::put('/update/{id}', 'Admin\LophocphanController@update');
         Route::put('/chuyenlophp', 'Admin\LophocphanController@chuyenlophp');
-        Route::get('/chuadkthi', 'Admin\LophocphanController@getlophpchuadkthi');
+        Route::get('/allchuadkthi', 'Admin\LophocphanController@getalllophpchuadkthi');
+        Route::get('/chuadkthi/{id}', 'Admin\LophocphanController@getlophpchuadkthi');
         Route::get('/danhsachsinhvien/{id}', 'Admin\LophocphanController@danhsachsinhvien');
         Route::get('/danhsachsinhvien/tongcauhoi/{id}', 'Admin\LophocphanController@tongcauhoi');
         Route::post('/mon/danhsachsinhvien', 'Admin\LophocphanController@sinhvienkhongthuoclophp');

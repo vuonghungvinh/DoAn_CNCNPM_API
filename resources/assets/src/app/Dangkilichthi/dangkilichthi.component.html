@@ -13,7 +13,7 @@
 </div>
 <div class="row">
     <div class="col-lg-6">
-        <form class="form" id="dangkilichthi" (ngSubmit)="themLichThi(f.value)" #f="ngForm" role="form"  >
+        <form class="form" name="myForm" id="dangkilichthi" (ngSubmit)="themLichThi(f.value)" #f="ngForm" role="form"  >
                 <div class="form-group has-success">
                     <label class="control-label">Chọn lớp HP</label>
                     <select (change)="getmalophp($event)" class="form-control" name="malophp" required #malophp="ngModel" ngModel >
@@ -28,7 +28,8 @@
                 </div>
                 <div class="form-group has-success">
                     <label class="control-label">Chọn ngày</label>
-                    <input type="datetime-local" class="form-control" required #ngaydangki="ngModel" name="ngaydangki" ngModel >
+                    <input type="datetime-local" class="form-control" required #ngaydangki="ngModel"
+                     max="2999-11-16T21:25:33" name="ngaydangki" ngModel >
                     <div *ngIf="ngaydangki.errors && (ngaydangki.dirty || ngaydangki.touched)" class="text text-danger text-left">
                         <div [hidden]="!ngaydangki.errors.required">
                             Bạn chưa chọn ngày
@@ -45,8 +46,8 @@
                     </div>
                 </div>
                 <div class="form-group has-success">
-                    <label class="control-label">Thời gian thi</label>
-                    <input class="form-control" type="number" required #thoigianthi="ngModel" name="thoigianthi" min="20" max="120" ngModel >
+                    <label class="control-label">Thời gian thi/ Phút</label>
+                    <input class="form-control" type="number" required #thoigianthi="ngModel"  name="thoigianthi" min="0" max="100" step="5" ngModel >
                     <div *ngIf="thoigianthi.errors && (thoigianthi.dirty || thoigianthi.touched)" class="text text-danger text-left">
                         <div [hidden]="!thoigianthi.errors.required">
                             Bạn chưa nhập
@@ -54,15 +55,13 @@
                     </div>
                 </div>
                 <div class="form-group has-success">
+                    <label *ngIf="!tong_cauhoi" class="control-label">Tổng câu hỏi</label>
                     <label *ngIf="tong_cauhoi" class="control-label">Tổng câu hỏi {{tong_cauhoi}}</label>
                     <input class="form-control" type="number"   required #tongcauhoi="ngModel" name="tongcauhoi" value="tongcauhoi" min="10" max="60" ngModel >
                     <div *ngIf="tongcauhoi.errors && (tongcauhoi.dirty || tongcauhoi.touched)" class="text text-danger text-left">
                       <div [hidden]="!tongcauhoi.errors.required">
                           Bạn chưa nhập
                       </div>
-                      <div [hidden]="!tongcauhoi.errors.min">
-                        Bạn chưa nhập
-                    </div>
                   </div>
                 </div>
                 <div class="form-group has-success">

@@ -20,6 +20,7 @@ export class DanhsachsinhvienCuaLopHPComponent {
     public lop: string;
     public selectmssv: string;
     public sinhvien: any;
+    public checkdkthi = false;
     constructor(
       private Danhsachservice: LophocphanService,
       private activatedRouter: ActivatedRoute,
@@ -31,15 +32,17 @@ export class DanhsachsinhvienCuaLopHPComponent {
     ngOnInit() {
       this.activatedRouter.params.subscribe(params => {
          this._id = params['id'];
-
+         this.Danhsachservice.checkdkthi(this._id).subscribe( data => {
+           this.checkdkthi = true;
+        });
         this.Danhsachservice.getdetail(this._id).subscribe(data => {
           this.listdanhsach = data['lophocphan'];
-          this.Danhsachservice.getLopHPCungMon(this.listdanhsach[0].mamon).subscribe( data => {
-            this.danhsachlop_hp_cungmon = data['mon_lophocphan'];
+          this.Danhsachservice.getLopHPCungMon(this.listdanhsach[0].mamon).subscribe( data2 => {
+            this.danhsachlop_hp_cungmon = data2['mon_lophocphan'];
           });
           if (this.listdanhsach[0].mssv == 'null') {
             alert('Không có sinh viên');
-            this.router.navigate(['xemdanhsachlophocphan']);
+            this.router.navigate(['xemdanhsachmon']);
           }
         });
         this.lopservice.getLop().subscribe( data => {

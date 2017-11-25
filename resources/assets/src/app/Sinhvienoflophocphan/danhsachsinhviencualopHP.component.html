@@ -3,14 +3,8 @@
 		<h1 *ngIf="listdanhsach" class="text-center">Danh Sách Sinh Viên Lớp {{listdanhsach[0].malophp}} {{listdanhsach[0].mon.tenmon}}</h1>
         <ol class="breadcrumb">
             <li>
-                <i class="fa fa-table "></i><a [routerLink]="['/xemdanhsachlophocphan']">Xem danh sách </a>->Xem Sinh Viên
+                <i class="fa fa-table "></i><a [routerLink]="['/xemdanhsachmon']">Xem danh sách môn học</a>
             </li>
-            <li class="active">
-                <i class="fa fa-dashboard"></i><a [routerLink]="['/themsinhvienvaolophocphan']">Thêm sinh viên</a>
-            </li>
-            <li>
-              <i class="fa fa-dashboard"></i><a [routerLink]="['/themlophocphan']">Thêm lớp học phần </a>
-          </li>
         </ol>
     </div>
     <div *ngIf="!selectmssv" class="text-center">
@@ -59,7 +53,7 @@
                   <th>MSSV</th>
                   <th>Tên Sinh viên</th>
                   <th>Lớp</th>
-                  <th>#</th>
+                  <th *ngIf="checkdkthi">#</th>
                 </tr>
           </thead>
           <tbody>
@@ -70,7 +64,7 @@
                   <div *ngFor="let lop of listlop">
                   <td *ngIf="danhsach.student.malop==lop.id">{{lop.tenlop}}</td>
                   </div>
-                  <td><a href="javascript:void(0)" (click)="deleteSinhvien(danhsach.mssv)">   <span class="glyphicon glyphicon-trash"></span></a></td>
+                  <td *ngIf="checkdkthi" ><a href="javascript:void(0)" (click)="deleteSinhvien(danhsach.mssv)">   <span class="glyphicon glyphicon-trash"></span></a></td>
                 </tr>
           </tbody>
         </table>

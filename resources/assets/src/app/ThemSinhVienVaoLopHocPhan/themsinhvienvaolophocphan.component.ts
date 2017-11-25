@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LophocphanService } from '../services/lophocphan.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'them-lop',
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ThemsinhvienvaolophocphanComponent {
   constructor(
+    private activerouter: ActivatedRoute,
     private lophocphan: LophocphanService,
     private router: Router) {
     }
@@ -18,9 +19,13 @@ export class ThemsinhvienvaolophocphanComponent {
     public idmon: number;
     public submit = true;
     public malophp: string;
+    public id_mon: any;
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
-    this.lophocphan.getlophocphanchuadkthi().subscribe( data => {
+    this.activerouter.params.subscribe(params => {
+      this.id_mon = params['id'];
+    });
+    this.lophocphan.getlophocphanchuadkthi(this.id_mon).subscribe( data => {
       this.mon = data['lophocphan'];
     });
   }
@@ -52,7 +57,7 @@ export class ThemsinhvienvaolophocphanComponent {
       this.submit = false;
       this.lophocphan.addSinhVienVaoLopHP(value).subscribe( data => {
         alert('Thêm  thành công.');
-        this.router.navigate(['/xemdanhsachlophocphan']);
+        this.router.navigate(['/xemdanhsachmon']);
       });
     }
 

@@ -40,7 +40,7 @@ export class ThemLopHPComponent  {
       this.submit = false;
      this.lophocphanservice.addLopHP(value).subscribe( data => {
         alert('Thêm thành công');
-        this.router.navigate(['/xemdanhsachlophocphan']);
+        this.router.navigate(['/xemdanhsachmon']);
      });
     }
     else {
