@@ -10,6 +10,8 @@ import { XemLaiBaiThi } from '../services/xemlaibaithi.service';
 export class ReViewTestComponent implements OnInit {
   public datas;
   public isready: boolean;
+  public listketquathi = [];
+  public mssv = '';
   constructor(
     private xemlaibaihiService: XemLaiBaiThi
   ) {
@@ -19,6 +21,7 @@ export class ReViewTestComponent implements OnInit {
   ngOnInit() {
     this.xemlaibaihiService.list().subscribe(datas => {
       this.datas = datas;
+      this.listketquathi = datas['listketquathi'];
       this.isready = true;
     });
   }
@@ -41,5 +44,18 @@ export class ReViewTestComponent implements OnInit {
       }
     });
     return tenmon;
+  }
+  search_mssv() {
+    console.log(this.mssv);
+    if (this.mssv.length > 0) {
+      this.listketquathi = [];
+      this.listketquathi = this.datas['listketquathi'].filter(kqt => {
+        if (kqt.mssv.indexOf(this.mssv) >= 0){
+          return kqt;
+        }
+      });
+    } else {
+      this.listketquathi = this.datas['listketquathi'];
+    }
   }
 }

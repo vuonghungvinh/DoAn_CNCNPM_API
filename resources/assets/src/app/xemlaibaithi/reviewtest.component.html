@@ -7,9 +7,9 @@
               </button>
 
           </div>
-          <input type="text" class="form-control" name="x" placeholder="Nhap MSSV">
+          <input type="text" [(ngModel)] = "mssv" class="form-control" name="x" placeholder="Nhap MSSV">
           <span class="input-group-btn">
-              <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+              <button class="btn btn-default" (click)="search_mssv()" type="button"><span class="glyphicon glyphicon-search"></span></button>
           </span>
         </div>
     </div>
@@ -38,7 +38,7 @@
                 </tr>
             </thead>
             <tbody *ngIf="isready">
-                <tr *ngFor="let kqt of datas.listketquathi; let i=index;">
+                <tr *ngFor="let kqt of listketquathi; let i=index;">
                     <td>{{(i+1)}}</td>
                     <td>{{kqt.mssv}}</td>
                     <td>{{kqt.sinhvien.name}}</td>
