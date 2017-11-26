@@ -21,9 +21,12 @@ export class DangkilichthiComponent {
   public listsinhvien: any[];
   public mon: any[];
   public lop: any[];
-  public submit = true;
+  public submit = false;
   public tong_cauhoi: number;
   public date = new Date();
+  public checkday = false;
+  public checkcauhoi = false;
+  public checkthoigianthi = false;
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
     this.sinhvienlophocphan.getalllophocphanchuadkthi().subscribe( data => {
@@ -43,26 +46,53 @@ export class DangkilichthiComponent {
     (this.date.setHours(this.date.getHours() + 6) ) ;
     console.log(this.date.toJSON().split('Z')[0] ) ;
   }
+  checkthoigian(event) {
+    if (event.target.value < 10 ) {
+      this.checkthoigianthi = true;
+    }
+    else {
+      this.checkthoigianthi = false;
+      this.submit = true;
+    }
+  }
+  validatengaythi(event) {
+    if (event.target.value.toLocaleString() > this.date.toJSON().split('Z')[0]) {
+      this.checkday = false;
+    }
+    else {
+      this.checkday = true;
+      this.submit = true;
+    }
+  }
+  checktongcauhoi(event) {
+    if (event.target.value <= this.tong_cauhoi && event.target.value >= 5) {
+      this.checkcauhoi = false;
+    }
+    else {
+      this.checkcauhoi = true;
+      this.submit = true;
+    }
+  }
   themLichThi(value: any) {
+    if ( this.checkday) {
+      alert('Nhập lại thời gian thi phù hợp');
+      this.submit = false;
+    }
+    if (this.checkcauhoi) {
+      alert('Nhập lại số lượng câu hỏi phù hợp');
+      this.submit = false;
+    }
+    if (this.checkthoigianthi) {
+      this.submit = false;
+      alert('Nhập lại tổng thời gian thi');
+    }
     if (this.submit) {
       this.submit = false;
-      if (value['ngaydangki'].toLocaleString() > this.date.toJSON().split('Z')[0]) {
-        if (value['tongcauhoi'] <= this.tong_cauhoi && value['tongcauhoi'] >= 5) {
           value['mamon'] = this.listsinhvien[0].mon.id;
           this.lichthi.dangKiLichThi(value).subscribe( data => {
             alert('Đăng kí thành công');
             this.router.navigate(['/xemlichthi']);
           });
-        }
-        else {
-          alert('Số lượng câu hỏi lớn hơn 5 và nhỏ hơn tổng câu hỏi');
-          this.submit = true;
-        }
-      }
-      else {
-        alert('Vui lòng chọn thời gian thi hợp lí');
-        this.submit = true;
-      }
     }
   }
 }

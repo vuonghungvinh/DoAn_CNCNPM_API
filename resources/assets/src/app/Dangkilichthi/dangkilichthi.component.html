@@ -28,12 +28,15 @@
                 </div>
                 <div class="form-group has-success">
                     <label class="control-label">Chọn ngày</label>
-                    <input type="datetime-local" class="form-control" required #ngaydangki="ngModel"
+                    <input type="datetime-local" class="form-control" (change)="validatengaythi($event)" required #ngaydangki="ngModel"
                      max="2999-11-16T21:25:33" name="ngaydangki" ngModel >
                     <div *ngIf="ngaydangki.errors && (ngaydangki.dirty || ngaydangki.touched)" class="text text-danger text-left">
                         <div [hidden]="!ngaydangki.errors.required">
                             Bạn chưa chọn ngày
                         </div>
+                    </div>
+                    <div *ngIf="checkday" class="text text-danger text-left">
+                          Vui lòng chọn ngày thi lớn hơn thời gian hiện tại.
                     </div>
                 </div>
                 <div class="form-group has-success">
@@ -47,21 +50,27 @@
                 </div>
                 <div class="form-group has-success">
                     <label class="control-label">Thời gian thi/ Phút</label>
-                    <input class="form-control" type="number" required #thoigianthi="ngModel"  name="thoigianthi" min="0" max="100" step="5" ngModel >
+                    <input class="form-control" type="number" (change)="checkthoigian($event)" required #thoigianthi="ngModel"  name="thoigianthi" min="0" max="100" step="5" ngModel >
                     <div *ngIf="thoigianthi.errors && (thoigianthi.dirty || thoigianthi.touched)" class="text text-danger text-left">
                         <div [hidden]="!thoigianthi.errors.required">
                             Bạn chưa nhập
                         </div>
                     </div>
+                    <div class="text text-danger text-left" *ngIf="checkthoigianthi">
+                        Thời gian thi lớn hơn 10 phút.
+                    </div>
                 </div>
                 <div class="form-group has-success">
                     <label *ngIf="!tong_cauhoi" class="control-label">Tổng câu hỏi</label>
                     <label *ngIf="tong_cauhoi" class="control-label">Tổng câu hỏi {{tong_cauhoi}}</label>
-                    <input class="form-control" type="number"   required #tongcauhoi="ngModel" name="tongcauhoi" value="tongcauhoi" min="10" max="60" ngModel >
+                    <input class="form-control" type="number" (change)="checktongcauhoi($event)"  required #tongcauhoi="ngModel" name="tongcauhoi" value="tongcauhoi" min="10" max="60" ngModel >
                     <div *ngIf="tongcauhoi.errors && (tongcauhoi.dirty || tongcauhoi.touched)" class="text text-danger text-left">
                       <div [hidden]="!tongcauhoi.errors.required">
                           Bạn chưa nhập
                       </div>
+                  </div>
+                  <div *ngIf="checkcauhoi" class="text text-danger text-left">
+                      Số câu hỏi lớn hơn 5 và nhỏ hơn tổng câu hỏi;
                   </div>
                 </div>
                 <div class="form-group has-success">

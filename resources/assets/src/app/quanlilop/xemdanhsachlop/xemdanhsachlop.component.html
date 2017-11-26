@@ -14,7 +14,8 @@
   </div>
 </div>
 <div class="table-responsive">
-  <table class="table table-bordered table-hover">
+    <input type="button" (click)="tableToExcel('testTable', 'W3C Example Table')" value="Export to Excel">
+  <table class="table table-bordered table-hover" id="testTable" rules="groups" frame="hsides">
       <thead>
           <tr>
               <th>STT</th>

@@ -24,6 +24,8 @@ export class ThemSinhVien  {
     public khoahoc: any[];
     public submit = true;
     public lopcuakhoa: any[];
+    public maxday = new Date();
+    public checkday = false;
 
     // tslint:disable-next-line:use-life-cycle-interface
     ngOnInit() {
@@ -31,12 +33,22 @@ export class ThemSinhVien  {
         this.khoahoc = data['khoa'];
         console.log(this.khoahoc);
       });
+      this.maxday.setFullYear(this.maxday.getFullYear()-18);
+      // tslint:disable-next-line:no-unused-expression
     }
   changeKhoa(event) {
     this.selectkhoa = false;
     this.lopservice.getLopCuaKhoa(event.target.value).subscribe( data => {
       this.lopcuakhoa = data['lopcuakhoa'];
     });
+  }
+  hello(event) {
+    if (event.target.value > this.maxday.toJSON().split('T')[0]) {
+      this.checkday = true;
+    }
+    else { this.checkday = false; }
+    // console.log(event.target.value);
+    // console.log(this.maxday.toJSON().split('T')[0]);
   }
   setGioiTinh(gender: boolean) {
     this.setgioitinh = gender;
@@ -47,6 +59,11 @@ export class ThemSinhVien  {
   addstudents(value) {
     value['gioitinh'] = this.setgioitinh;
     console.log(value);
+    if (this.checkday) {
+      this.submit = false;
+      alert('Vui lòng nhập lại ngày sinh');
+    }
+    else { this.submit = true; }
     if (this.submit) {
       this.submit = false;
       this.sinhvienservice.addstudents(value).subscribe(data => {

@@ -39,6 +39,7 @@ class LophocphanController extends Controller
     public function getalllophpchuadkthi() {
       $lophocphan = DB::table('lophocphan')->join('mon','lophocphan.mamon', '=', 'mon.id')
       ->select("lophocphan.malophp","mon.tenmon","lophocphan.mamon")->where('lophocphan.dkthi', '=', 0)
+      ->whereNotIn("lophocphan.mssv",["null"])
       ->distinct()->orderByRaw('lophocphan.malophp')->get();
       return response()->json(['lophocphan' => $lophocphan]);
     }
