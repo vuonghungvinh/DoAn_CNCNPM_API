@@ -18,7 +18,7 @@ class CreateKetquathiTable extends Migration
             $table->string('mssv', 10);
             $table->float('diem', 2, 2);
             $table->string('madethi', 10);
-            $table->string('thoiganlam', 10);
+            $table->string('thoigianlam', 10);
             $table->date('thoigianbatdau');
             $table->string('dapan', 255);
             $table->timestamps();
