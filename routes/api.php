@@ -29,6 +29,9 @@ Route::prefix('admin')->group(function () {
         Route::post('/uploadfile', 'Admin\StudentsController@uploadfile');
         Route::put('/update/{id}', 'Admin\StudentsController@update');
     });
+    Route::group(['prefix' => 'xemlaibaithi', 'middleware' => ['jwt.auth']], function () {
+        Route::get('/', 'Admin\XemLaiBaiThiController@list');
+    });
     Route::group(['prefix' => 'lop', 'middleware' => ['jwt.auth']], function () {
       Route::get('/', 'Admin\LopController@index');
       Route::get('/khoa', 'Admin\LopController@getKhoa');

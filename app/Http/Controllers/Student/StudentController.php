@@ -77,8 +77,8 @@ class StudentController extends Controller
     }
 
     public function nopBaiThi(Request $request) {
-      //return $request;
-      // return response()->json($request);
+      // return $request;
+      // return response()->json(count(json_decode($request->questions)));
       // return response()->json(json_decode($request['data']));
       // $request = json_decode($request['data']);
       // $request = json_decode($request);
@@ -92,15 +92,18 @@ class StudentController extends Controller
       $end_time = date('Y-m-d H:i:s');
       $dapan_str = '';//'id_cauhoi: id_dapan[, id_dapan];'
       $diem = 0;
-      $diem_moi_cau = 10.0/count($request->questions);
-      for($i=0;$i<count($request->questions); $i++) {
-        $question = $request->questions[$i];
+      $questions = ($request->questions);
+      $diem_moi_cau = 10.0/count($questions);
+      for($i=0;$i<count($questions); $i++) {
+        $question = $questions[$i];
         $dapan=''.$question['id'].':'.$this->processString($question['answer']);
         if(strlen($dapan_str) < 1){
           $dapan_str = $dapan;
         } else {
           $dapan_str = $dapan_str.';'.$dapan;
         }
+
+      
         $dapandung_arr = explode(',', $this->processString($question['dapan']));
         $answer_arr = explode(',', $this->processString($question['answer']));
         if (count($answer_arr) > count($dapandung_arr)){
@@ -117,13 +120,22 @@ class StudentController extends Controller
           }
         }
       }
+      // return response()->json((($dapan_str)));
+      // $ketquathi = new KetQuaThi;
+      // $ketquathi->mssv = "'".$user->mssv."'";
+      // $ketquathi->diem = "'".number_format((float)$diem, 2, '.', '')."'";
+      // $ketquathi->madethi = "'".$request->madethi."'";
+      // $ketquathi->thoigianlam = "'".$request->thoigianlam."'";
+      // $ketquathi->thoigianbatdau = "'".$end_time."'";
+      // $ketquathi->dapan = "'".str_replace(',', ' ', $dapan_str)."'";
+
       $ketquathi = new KetQuaThi;
       $ketquathi->mssv = $user->mssv;
-      $ketquathi->diem = $diem;
+      $ketquathi->diem = number_format((float)$diem, 2, '.', '');
       $ketquathi->madethi = $request->madethi;
       $ketquathi->thoigianlam = $request->thoigianlam;
       $ketquathi->thoigianbatdau = $end_time;
-      $ketquathi->dapan = $dapan_str;
+      $ketquathi->dapan = str_replace(',', ' ', $dapan_str);
       $ketquathi->save();
       return response()->json($diem);
       // return response()->json(explode(',', $tmp));
