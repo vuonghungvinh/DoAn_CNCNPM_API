@@ -96,16 +96,16 @@ class StudentController extends Controller
       $diem_moi_cau = 10.0/count($questions);
       for($i=0;$i<count($questions); $i++) {
         $question = $questions[$i];
-        $dapan=''.$question['id'].':'.$this->processString($question['answer']);
+        $dapan=''.$question->id.':'.$this->processString($question->answer);
         if(strlen($dapan_str) < 1){
           $dapan_str = $dapan;
         } else {
           $dapan_str = $dapan_str.';'.$dapan;
         }
 
-      
-        $dapandung_arr = explode(',', $this->processString($question['dapan']));
-        $answer_arr = explode(',', $this->processString($question['answer']));
+
+        $dapandung_arr = explode(',', $this->processString($question->dapan));
+        $answer_arr = explode(',', $this->processString($question->answer));
         if (count($answer_arr) > count($dapandung_arr)){
           continue;
         } else {

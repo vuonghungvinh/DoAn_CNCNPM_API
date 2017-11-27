@@ -266,7 +266,10 @@ ul.alert-dropdown {
 .panel-yellow a:hover {
   color: #df8a13;
 }
-
+.table tr.active td {
+  background-color:#123456 !important;
+  color: white;
+}
 /*
 Copyright 2017 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
