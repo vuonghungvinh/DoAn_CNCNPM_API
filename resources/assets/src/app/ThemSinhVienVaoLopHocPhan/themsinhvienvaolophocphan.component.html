@@ -40,27 +40,40 @@
                     <div class="col-md-2">Lop</div>
                   </div> -->
 
-                <div class="form-group has-success">
+                <div *ngIf="sinhvien" class="form-group has-success">
                     <h1 class="page-header text-center">
                         Danh Sách Sinh Viên
                     </h1>
-                  <select multiple required #lishsinhvien="ngModel" class="form-control input-large container bg-view" [(ngModel)]="listsinhvien" size="15" name="listsinhvien" >
-                      <option *ngFor="let sinhvien of sinhvien; let i = index" [value]="sinhvien.mssv">
-                        <!-- <div class="col-md-1">{{i+1}}</div>
-                        <div class="col-md-3">{{sinhvien.mssv}}</div> -->
-                        <!-- <div class="col-md-6">{{sinhvien.name}}</div> -->
-                        <!-- <div class="col-md-2">{{sinhvien.lop}}</div> -->
-                          --{{i+1}} ----------------------------
-                        {{sinhvien.mssv}} -----------------------
-                        {{sinhvien.name}} ---------------------------
-                        {{sinhvien.tenlop}}
-                      </option>
-                    </select>
+
+                    <div class="col-lg-12">
+                        <div class="table-responsive">
+                          <input type="button" (click)="chontatca()" [value]="namebutton">
+                            <table class="table table-bordered table-hover">
+                              <thead>
+                                  <tr>
+                                      <th>STT</th>
+                                      <th>MSSV</th>
+                                      <th>Tên</th>
+                                      <th>Lớp</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let sinhvien of sinhvien; let i = index" (click)="alllistsinhvien(sinhvien.mssv)"[class.active]="listsinhvien.indexOf(sinhvien.mssv)!= -1">
+                                      <td>{{i+1}}</td>
+                                      <td>{{sinhvien.mssv}}</td>
+                                      <td>{{sinhvien.name}}</td>
+                                      <td>{{sinhvien.tenlop}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                      </div>
                 </div>
                 <div class="button-group text-center ">
                     <button class="btn btn-primary"   type="submit" [disabled]="!f.form.valid" >Thêm Sinh Viên</button>
                 </div>
         </form>
   </div>
+
 </div>
 
