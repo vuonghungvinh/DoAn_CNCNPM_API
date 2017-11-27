@@ -29,6 +29,7 @@ import { ThemMonHocComponent } from './quanlimonhoc/themmonhoc.component';
 import { KhoiPhucCauHoiComponent } from './quanlicauhoi/khoiphuccauhoi/khoiphuccauhoi.component';
 import { SinhVienCuaLopComponent } from './quanlilop/xemdanhsachsinhvienlop/danhsachsinhvienlop.component';
 import { ThemLopComponent } from './quanlilop/themlop/themlop.component';
+import { XemChiTietBaiThi } from './xemchitietbaithi/xemchitietbaithi.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'question',  component: QuestionComponent, canActivate: [AuthGurad] },
   { path: 'addquestion',  component: AddQuestionComponent, canActivate: [AuthGurad] },
   { path: 'reviewtest',  component: ReViewTestComponent, canActivate: [AuthGurad] },
+  { path: 'reviewtest/:id',  component: XemChiTietBaiThi, canActivate: [AuthGurad] },
   { path: 'score',  component: ScoreComponent, canActivate: [AuthGurad] },
   { path: 'listexam',  component: ListExamComponent, canActivate: [AuthGurad] },
   { path: 'createxam',  component: ExamComponent, canActivate: [AuthGurad] },

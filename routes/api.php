@@ -31,6 +31,7 @@ Route::prefix('admin')->group(function () {
     });
     Route::group(['prefix' => 'xemlaibaithi', 'middleware' => ['jwt.auth']], function () {
         Route::get('/', 'Admin\XemLaiBaiThiController@list');
+        Route::get('/{id}', 'Admin\XemLaiBaiThiController@detail');
     });
     Route::group(['prefix' => 'lop', 'middleware' => ['jwt.auth']], function () {
       Route::get('/', 'Admin\LopController@index');

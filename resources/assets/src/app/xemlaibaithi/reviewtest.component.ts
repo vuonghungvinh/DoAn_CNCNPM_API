@@ -46,11 +46,10 @@ export class ReViewTestComponent implements OnInit {
     return tenmon;
   }
   search_mssv() {
-    console.log(this.mssv);
     if (this.mssv.length > 0) {
       this.listketquathi = [];
       this.listketquathi = this.datas['listketquathi'].filter(kqt => {
-        if (kqt.mssv.indexOf(this.mssv) >= 0){
+        if (kqt.mssv.indexOf(this.mssv) >= 0) {
           return kqt;
         }
       });

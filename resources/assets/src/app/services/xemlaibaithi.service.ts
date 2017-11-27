@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { Response } from '@angular/http/src/static_response';
 
 
 @Injectable()
@@ -13,6 +14,10 @@ export class XemLaiBaiThi {
 
     list() {
         return this._httpclient.get('/api/admin/xemlaibaithi', this.jwt()).map((result: Response) => result);
+    }
+
+    detail(id) {
+        return this._httpclient.get('/api/admin/xemlaibaithi/' + id, this.jwt()).map((result: Response) => result);
     }
 
     private jwt() {

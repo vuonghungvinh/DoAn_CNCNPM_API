@@ -41,6 +41,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ThemMonHocComponent } from './quanlimonhoc/themmonhoc.component';
 import { KhoiPhucCauHoiComponent } from './quanlicauhoi/khoiphuccauhoi/khoiphuccauhoi.component';
 import { ThemLopComponent } from './quanlilop/themlop/themlop.component';
+import { XemChiTietBaiThi } from './xemchitietbaithi/xemchitietbaithi.component';
+
 @NgModule({
   imports: [
     HttpClientModule,
@@ -81,7 +83,8 @@ import { ThemLopComponent } from './quanlilop/themlop/themlop.component';
     DanhsachsinhvienCuaLopHPComponent,
     UpdateQuestionComponent,
     SinhVienExcelComponent,
-    ThemLopHPComponent
+    ThemLopHPComponent,
+    XemChiTietBaiThi
   ],
   providers: [
     AlertService,
