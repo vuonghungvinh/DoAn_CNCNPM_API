@@ -45,6 +45,9 @@ constructor(private _httpclient: HttpClient) {
   updateLopHP(id: any) {
     return this._httpclient.put('api/admin/lophocphan/update/' + id, this.jwt()).map((response: Response) => response);
   }
+  gettongsinhvientheolophp(data: any) {
+    return this._httpclient.get('api/admin/lophocphan/tongsinhvientheolop/' + data, this.jwt()).map((response: Response) => response);
+  }
   getdetail(data: any) {
     return this._httpclient.get('/api/admin/lophocphan/danhsachsinhvien/' + data, this.jwt()).map((response: Response) => response);
   }

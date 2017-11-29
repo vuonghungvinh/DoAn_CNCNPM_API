@@ -18,6 +18,8 @@ Route::prefix('admin')->group(function () {
     Route::post('info', 'Admin\LoginController@getAuthUser');
     Route::group(['prefix' => 'students', 'middleware' => ['jwt.auth']], function () {
         Route::get('/', 'Admin\StudentsController@index');
+        Route::get('/tongsinhvien/lop/{id}', 'Admin\StudentsController@tongsinhvienlop');
+        Route::get('/tongsoluongsinhvien', 'Admin\StudentsController@tongsoluongsinhvien');
         Route::get('/thongtinsinhvien/{id}', 'Admin\StudentsController@thongtinsinhvien');
         Route::post('/create', 'Admin\StudentsController@store');
         Route::get('/lop/{id}', 'Admin\StudentsController@lopsinhviendanghoc');
@@ -52,6 +54,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/chuadkthi/{id}', 'Admin\LophocphanController@getlophpchuadkthi');
         Route::get('/danhsachsinhvien/{id}', 'Admin\LophocphanController@danhsachsinhvien');
         Route::get('/danhsachsinhvien/tongcauhoi/{id}', 'Admin\LophocphanController@tongcauhoi');
+        Route::get('/tongsinhvientheolop/{id}', 'Admin\LophocphanController@tongsinhvientheolop');
         Route::post('/mon/danhsachsinhvien', 'Admin\LophocphanController@sinhvienkhongthuoclophp');
         Route::post('/addsinhvien', 'Admin\LophocphanController@store');
         Route::post('/themlophocphan', 'Admin\LophocphanController@themlophocphan');

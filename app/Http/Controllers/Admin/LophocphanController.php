@@ -75,10 +75,15 @@ class LophocphanController extends Controller
         ->select('mamon')
         ->where('malophp', '=', $id)->offset(0)->limit(1)->get()->pluck('mamon')[0];
         $tongcauhoi = DB::table('cauhoi')
-        ->where('mamon',$mamon)->count();
+        ->where('mamon',$mamon)->where('trangthai',1)->count();
         return response()->json(['tongcauhoi' => $tongcauhoi]);
     }
 
+    public function tongsinhvientheolop($id)
+    {
+      $tongsinhvien = DB::table('lophocphan')->where('malophp',$id)->count();
+      return response()->json(['tongsinhvien' => $tongsinhvien]);
+    }
     /**
      * Show the form for creating a new resource.
      *

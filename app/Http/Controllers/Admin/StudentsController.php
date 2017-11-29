@@ -152,6 +152,21 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function tongsoluongsinhvien()
+    {
+      $tongsinhvien =DB::table('users')->where('trangthai',1)
+      ->count();
+      return response()->json(['tongsinhvien' => $tongsinhvien]);
+    }
+
+
+    public function tongsinhvienlop($id)
+    {
+      $tongsinhvien =DB::table('users')->where('trangthai',1)
+      ->where('malop', $id)->count();
+      return response()->json(['tongsinhvien' => $tongsinhvien]);
+    }
+
     public function update(Request $request, $id)
     {
         //

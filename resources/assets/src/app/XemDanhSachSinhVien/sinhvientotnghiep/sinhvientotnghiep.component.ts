@@ -39,38 +39,41 @@ export class SinhVienTotNghiepComponent implements OnInit {
     // });
     }
     change(value) {
-
+      this.studentservice.getSinhVienTotNghiep().subscribe(data => {
+        this.allstudents = data['students'];
+      });
          // tslint:disable-next-line:one-line
 
          // tslint:disable-next-line:one-line
-          if (this.ngayketthuc > this.maxday) {
-          this.checkendday = true;
-          if (this.ngaybatdau > this.maxday) {
-            this.checkstartday = true;
-           }
-           this.students.splice(0, this.students.length);
-          return false;
-         }
-         // tslint:disable-next-line:one-line
-         if (this.ngayketthuc < this.ngaybatdau   ) {
-          alert('Vui lòng chọn khoảng thời gian hợp lí');
-          this.students.splice(0, this.students.length);
-          return false;
+      if (this.ngayketthuc > this.maxday) {
+      this.checkendday = true;
+      if (this.ngaybatdau > this.maxday) {
+        this.checkstartday = true;
         }
-         else {
-           this.checkstartday = false;
-           this.checkendday = false;
-           this.students.splice(0, this.students.length);
-           console.log(new Date((new Date(this.ngayketthuc)).getTime() + (60 * 60 * 24 * 1000)).toJSON().split('T')[0]);
-           for (const da in this.allstudents) {
-            // tslint:disable-next-line:max-line-length
-            if (this.allstudents[da]['updated_at'] < new Date((new Date(this.ngayketthuc)).getTime() + (60 * 60 * 24 * 1000)).toJSON().split('T')[0] &&
-             this.allstudents[da]['updated_at'] > this.ngaybatdau) {
-              this.students.push(this.allstudents[da]);
-            }
-          }
-         }
+        this.students.splice(0, this.students.length);
+      return false;
+      }
+      // tslint:disable-next-line:one-line
+      if (this.ngayketthuc < this.ngaybatdau   ) {
+      alert('Vui lòng chọn khoảng thời gian hợp lí');
+      this.students.splice(0, this.students.length);
+      return false;
+      }
+      // tslint:disable-next-line:one-line
+      else {
+        this.checkstartday = false;
+        this.checkendday = false;
+        this.students.splice(0, this.students.length);
+        console.log(new Date((new Date(this.ngayketthuc)).getTime() + (60 * 60 * 24 * 1000)).toJSON().split('T')[0]);
+        for (const da in this.allstudents) {
+        // tslint:disable-next-line:max-line-length
+        if (this.allstudents[da]['updated_at'] < new Date((new Date(this.ngayketthuc)).getTime() + (60 * 60 * 24 * 1000)).toJSON().split('T')[0] &&
+          this.allstudents[da]['updated_at'] > this.ngaybatdau) {
+          this.students.push(this.allstudents[da]);
         }
+      }
+      }
+    }
   // xemTheoLop(event) {
   //   console.log(event.target.value);
   //   this.studentservice.getSinhVienLopTotNghiep(event.target.value).subscribe( data => {

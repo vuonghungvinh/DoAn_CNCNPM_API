@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="form-group has-success">
-                    <label *ngIf="!tong_cauhoi" class="control-label">Tổng câu hỏi</label>
+                    <label *ngIf="!tong_cauhoi" class="control-label">Tổng câu hỏi 0</label>
                     <label *ngIf="tong_cauhoi" class="control-label">Tổng câu hỏi {{tong_cauhoi}}</label>
                     <input class="form-control" type="number" (change)="checktongcauhoi($event)"  required #tongcauhoi="ngModel" name="tongcauhoi" value="tongcauhoi" min="10" max="60" ngModel >
                     <div *ngIf="tongcauhoi.errors && (tongcauhoi.dirty || tongcauhoi.touched)" class="text text-danger text-left">
@@ -82,7 +82,7 @@
     </div>
     <div class="col-lg-6">
         <h5 class="text-center">Danh sách sinh viên của lớp.</h5>
-        <div class="table-responsive">
+        <div *ngIf="tongsoluong" class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -94,15 +94,21 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let sinhvien of listsinhvien; let i = index;">
-                        <td>{{i+1}}</td>
-                        <td>{{sinhvien.mssv}}</td>
-                        <td>{{sinhvien.student.name}}</td>
+                        <td *ngIf="i+1>hienthileft && i<hienthiright">{{i+1}}</td>
+                        <td *ngIf="i+1>hienthileft && i<hienthiright">{{sinhvien.mssv}}</td>
+                        <td *ngIf="i+1>hienthileft && i<hienthiright">{{sinhvien.student.name}}</td>
                         <div *ngFor="let lop of lop">
-                            <td *ngIf="sinhvien.student.malop==lop.id">{{lop.tenlop}}</td>
+                            <td *ngIf="i+1>hienthileft && i<hienthiright && sinhvien.student.malop==lop.id">{{lop.tenlop}}</td>
                         </div>
                     </tr>
                 </tbody>
             </table>
+            <ul class="pager">
+                <li *ngIf="checkleft" class="disabled"><a href="javascript:void(0)">Previous</a></li>
+                <li *ngIf="!checkleft" ><a href="javascript:void(0)" (click)="previous()">Previous</a></li>
+                <li *ngIf="checkright" class="disabled"><a href="javascript:void(0)">Next</a></li>
+                <li *ngIf="!checkright"><a href="javascript:void(0)" (click)="next()">Next</a></li>
+              </ul>
         </div>
     </div>
 </div>

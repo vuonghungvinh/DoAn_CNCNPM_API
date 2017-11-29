@@ -17,6 +17,7 @@ export class QuestionComponent {
   public mon: any[];
   public listcauhoi: any[];
   public dapandung: any[];
+  public checkclick = false;
   public allcauhoi: any[];
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
@@ -35,6 +36,7 @@ export class QuestionComponent {
         for (const da in this.allcauhoi) {
           if (this.allcauhoi[da]['id'] === value) {
             console.log(value);
+            // tslint:disable-next-line:radix
             this.allcauhoi.splice(parseInt(da), 1);
             break;
           }
@@ -43,15 +45,18 @@ export class QuestionComponent {
        });
     }
   }
-  getCauHoiMon(value: number) {
+  getCauHoiMon(event) {
+    console.log(event.target.value);
+    this.checkclick = true;
     this.listcauhoi.splice(0, this.listcauhoi.length);
     this.listcauhoi = this.allcauhoi.filter(function(item){
-      if (item['mamon'] === value) {
+      if (item['mamon'].toString() === event.target.value) {
         return item;
       }
     });
   }
   getAllMon() {
+    this.checkclick = true;
     this.listcauhoi = [...this.allcauhoi];
   }
   getDapan(listdapan, dapan) {

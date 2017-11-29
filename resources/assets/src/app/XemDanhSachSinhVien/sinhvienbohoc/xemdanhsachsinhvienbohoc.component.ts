@@ -28,13 +28,14 @@ export class SinhVienBoHocComponent implements OnInit {
     this.studentservice.getSinhVienNghiHoc().subscribe(data => {
       this.allstudents = data['students'];
       this.students = [...this.allstudents];
-      console.log('get data success');
     }, error => {
         console.log(error);
     });
   }
   change(value) {
-
+    this.studentservice.getSinhVienNghiHoc().subscribe(data => {
+      this.allstudents = data['students'];
+    });
    // tslint:disable-next-line:one-line
 
    // tslint:disable-next-line:one-line
@@ -52,6 +53,7 @@ export class SinhVienBoHocComponent implements OnInit {
     this.students.splice(0, this.students.length);
     return false;
   }
+   // tslint:disable-next-line:one-line
    else {
      this.checkstartday = false;
      this.checkendday = false;

@@ -11,25 +11,21 @@
     </div>
 </div>
 <div class="row">
-    <div class="text-center col-lg-4" if="all">
-        <button type="button" (click)="getAllMon()" class="btn btn-primary btn-lg active" style="font-size: 15px">Xem tất cả</button>
-    </div>
-    <div class="text-center btn-group col-lg-4" >
-        <button type="button"  style="padding: 8px 12px ; font-size: 15px" class="btn btn-primary dropdown-toggle text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Xem theo môn <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" >
-          <li *ngFor="let mon of mon"><a href="javascript:void(0)" (click)="getCauHoiMon(mon.id)" >{{mon.tenmon}}</a></li>
-        </ul>
-    </div>
-    <div class="col-lg-4">
-        <div class="form-inline" >
-            <label for="exampleInpuQuestion">Tìm kiếm </label>
-            <input type="text" class="form-control" id="exampleInputQuestion" name='search' [(ngModel)]="search" placeholder="...">
-        </div>
-    </div>
+  <form>
+      <div class="col-lg-6" >
+          <label class="label-control">Xem theo môn</label>
+          <select class="form-control"  name="xemtheomon" (change)="getCauHoiMon($event)">
+              <option disabled></option>
+              <option  *ngFor="let mon of mon" [value]="mon.id">{{mon.tenmon}}</option>
+          </select>
+      </div>
+      <div class="col-lg-6">
+          <label for="exampleInpuQuestion" class="label-control">Tìm kiếm </label>
+          <input type="text" class="form-control" id="exampleInputQuestion" name='search' [(ngModel)]="search" placeholder="...">
+      </div>
+  </form>
 </div>
-<div class="table-responsive">
+<div class="table-responsive" style="margin-top: 50px">
   <table class="table table-bordered table-hover">
       <thead>
           <tr>

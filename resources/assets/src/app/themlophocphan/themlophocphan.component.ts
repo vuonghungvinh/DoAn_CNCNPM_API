@@ -43,6 +43,7 @@ export class ThemLopHPComponent  {
         this.router.navigate(['/xemdanhsachmon']);
      });
     }
+    // tslint:disable-next-line:one-line
     else {
       alert('Lớp HP đã tồn tại');
       this.submit = true;

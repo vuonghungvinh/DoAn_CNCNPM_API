@@ -12,14 +12,20 @@ constructor(
     ) {
 }
 
-getdanhsachsinhvien() {
-  return this._httpclient.get('/api/admin/students', this.jwt()).map((result: Response) => result);
-}
+  getsoluongsinhvientheolop(data: any) {
+    return this._httpclient.get('/api/admin/students/tongsinhvien/lop/' + data, this.jwt()).map((result: Response) => result);
+  }
+  gettongsoluongsinhvien() {
+    return this._httpclient.get('/api/admin/students/tongsoluongsinhvien', this.jwt()).map((result: Response) => result);
+  }
+  getdanhsachsinhvien() {
+    return this._httpclient.get('/api/admin/students', this.jwt()).map((result: Response) => result);
+  }
 	// addstudents(data: any): Observable<any>{
 	// 	return this._http.post("/api/admin/students/create", data, this.jwt()).map((response: Response) => response.json());
   // }
   getThongTinSinhVien(data: any) {
-    return this._httpclient.get('/api/admin/students/thongtinsinhvien' + data, this.jwt()).map((result: Response) => result);
+    return this._httpclient.get('/api/admin/students/thongtinsinhvien/' + data, this.jwt()).map((result: Response) => result);
   }
   getSinhVienTotNghiep() {
     return this._httpclient.get('/api/admin/students/sinhvientotnghiep', this.jwt()).map((result: Response) => result);

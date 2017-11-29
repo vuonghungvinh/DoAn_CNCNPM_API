@@ -35,10 +35,10 @@ export class KhoiPhucCauHoiComponent {
       });
     }
   }
-  getCauHoiMon(value: number) {
+  getCauHoiMon(event) {
     this.listcauhoi.splice(0, this.listcauhoi.length);
     this.listcauhoi = this.allcauhoi.filter(function(item){
-      if (item['mamon'] === value) {
+      if (item['mamon'].toString() === event.target.value) {
         return item;
       }
     });
