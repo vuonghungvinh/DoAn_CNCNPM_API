@@ -39,7 +39,7 @@ ngOnInit() {
       this.lopHocPhan.deleteLopHP(value).subscribe( data => {
         this.ngOnInit();
       }, error => {
-        alert('Không thể xóa lớp này');
+        alert('Lớp đã đk thi, không thể xóa');
       });
     }
   }

@@ -60,7 +60,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/themlophocphan', 'Admin\LophocphanController@themlophocphan');
         Route::get('/themsinhvienmon', 'Admin\LophocphanController@getMon');
         Route::delete('/delete/{id}/{mssv}', 'Admin\LophocphanController@deletesinhviencualophp');
-        Route::delete('/delete/{id}', 'Admin\LophocphanController@deletelopHP');
+        Route::delete('/deletelophp/{id}', 'Admin\LophocphanController@deletelopHP');
     });
     Route::group(['prefix' => 'mon', 'middleware' => ['jwt.auth']], function () {
       Route::get('/', 'Admin\MonController@index');

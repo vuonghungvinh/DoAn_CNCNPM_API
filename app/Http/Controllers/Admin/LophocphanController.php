@@ -214,9 +214,14 @@ class LophocphanController extends Controller
      */
     public function deletelopHP($id)
     {
+      if (LopHocPhan::where("malophp", $id)->where("dkthi",1)->count()> 0){
+        return response()->json(['Lớp đã đk thi, không thể xóa.'], 422);
+      }
+      else {
       $delelte = LopHocPhan::where("malophp", "=", $id)->where("dkthi", "=",0);
       $delelte->delete();
       return Response(['status' => 200]);
+      }
     }
 
     public function deletesinhviencualophp($id, $mssv)

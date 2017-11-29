@@ -56,7 +56,7 @@ constructor(private _httpclient: HttpClient) {
     return this._httpclient.get('/api/admin/lophocphan/danhsachsinhvien/tongcauhoi/' + data, this.jwt()).map((response: Response) => response);
   }
   deleteLopHP(data: any) {
-    return this._httpclient.delete('api/admin/lophocphan/delete/' + data , this.jwt()).map((result: Response) => result);
+    return this._httpclient.delete('api/admin/lophocphan/deletelophp/' + data , this.jwt()).map((result: Response) => result);
   }
   addLopHP(data: any) {
     return this._httpclient.post('/api/admin/lophocphan/themlophocphan', data, this.jwt()).map((response: Response) => response);
