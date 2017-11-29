@@ -1,0 +1,21 @@
+.content-question {
+    border: 2px solid #ccc;
+    padding: 8px;
+    border-radius: 9px;
+    margin-bottom: 10px;
+    ul {
+        list-style: none;
+    }
+}
+
+.wrong {
+    color: red;
+}
+
+.right {
+    color: green;
+}
+
+.correct {
+    color: yellow;
+}
