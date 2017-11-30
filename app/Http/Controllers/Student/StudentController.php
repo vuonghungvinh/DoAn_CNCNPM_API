@@ -70,8 +70,8 @@ class StudentController extends Controller
 
     private function processString($str=''){
       $str = trim($str);
-      if(substr($str, strlen($str)-2, 1) == ',') {
-        return substr($str, 0, strlen($str)-2);
+      if(substr($str, strlen($str)-1, 1) == ',') {
+        return substr($str, 0, strlen($str)-1);
       }
       return $str;
     }
@@ -92,11 +92,13 @@ class StudentController extends Controller
       $end_time = date('Y-m-d H:i:s');
       $dapan_str = '';//'id_cauhoi: id_dapan[, id_dapan];'
       $diem = 0;
-      $questions = ($request->questions);
+      $questions = $request->questions;
       $diem_moi_cau = 10.0/count($questions);
       for($i=0;$i<count($questions); $i++) {
         $question = $questions[$i];
-        $dapan=''.$question->id.':'.$this->processString($question->answer);
+        // $dapan=''.$question->id.':'.$this->processString($question->answer);
+
+        $dapan=''.$question['id'].':'.$this->processString($question['answer']);
         if(strlen($dapan_str) < 1){
           $dapan_str = $dapan;
         } else {
@@ -104,8 +106,8 @@ class StudentController extends Controller
         }
 
 
-        $dapandung_arr = explode(',', $this->processString($question->dapan));
-        $answer_arr = explode(',', $this->processString($question->answer));
+        $dapandung_arr = explode(',', $this->processString($question['dapan']));
+        $answer_arr = explode(',', $this->processString($question['answer']));
         if (count($answer_arr) > count($dapandung_arr)){
           continue;
         } else {
@@ -115,7 +117,7 @@ class StudentController extends Controller
               if ($tongdapan < 1) {
                 $tongdapan = 1;
               }
-              $diem=$diem+(float)$diem_moi_cau/$tongdapan;
+              $diem=$diem+((float)$diem_moi_cau/$tongdapan);
             }
           }
         }
