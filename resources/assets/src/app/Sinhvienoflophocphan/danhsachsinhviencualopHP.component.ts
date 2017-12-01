@@ -65,15 +65,24 @@ export class DanhsachsinhvienCuaLopHPComponent {
       });
       this.sinhvien = sinhvien;
       this.listlop.forEach(element => {
-        if (element.id == sinhvien.student.malop) {
+        if (element.id === sinhvien.student.malop) {
           this.lop = element.tenlop;
         }
       });
       this.danhsachlop_hp_cungmon.forEach((element, index) => {
-        if (element.malophp == this.listdanhsach[0].malophp) {
+        if (element.malophp === this.listdanhsach[0].malophp) {
           this.danhsachlop_hp_cungmon.splice(index, 1);
         }
       });
+    }
+    getLop(malop) {
+      let tenlop = '';
+      this.listlop.map( lop => {
+        if (lop.id === malop) {
+          tenlop = lop.tenlop;
+        }
+      });
+      return tenlop;
     }
     chuyenlop(value: any) {
       value['mssv'] = this.selectmssv;
@@ -92,7 +101,7 @@ export class DanhsachsinhvienCuaLopHPComponent {
     deleteSinhvien(mssv: string) {
       if (confirm('Bạn muốn xóa sinh viên này?') === true) {
         this.Danhsachservice.deleteSinhvien(this._id, mssv).subscribe( data => {
-          if (this.listdanhsach.length == 1) {
+          if (this.listdanhsach.length === 1) {
               this.router.navigate(['xemdanhsachlophocphan']);
           }
           this.ngOnInit();

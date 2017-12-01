@@ -63,9 +63,9 @@
                   <td><span >{{i+1}}</span></td>
                   <td><span>{{danhsach.mssv}}</span></td>
                   <td>{{danhsach.student.name}}</td>
-                  <div *ngFor="let lop of listlop">
-                  <td *ngIf="danhsach.student.malop==lop.id">{{lop.tenlop}}</td>
-                  </div>
+                  <!-- <div *ngFor="let lop of listlop"> -->
+                  <td *ngIf="danhsach.student.malop">{{getLop(danhsach.student.malop)}}</td>
+                  <!-- </div> -->
                   <td *ngIf="checkdkthi"><a href="javascript:void(0)"(click)="selectsinhvien(danhsach)">Chọn</a></td>
                   <td *ngIf="checkdkthi" ><a href="javascript:void(0)" (click)="deleteSinhvien(danhsach.mssv)">   <span class="glyphicon glyphicon-trash"></span></a></td>
                 </tr>

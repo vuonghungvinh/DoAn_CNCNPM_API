@@ -11,15 +11,17 @@ use App\KetQuaThi;
 use App\Mon;
 use App\DeThiCauHoi;
 use App\Question;
+use App\LichThi;
 
 class XemLaiBaiThiController extends Controller
 {
     public function list()
     {
+        $listlichthi = LichThi::all();
         $listmon = Mon::all();
         $listlop = Lop::all();
-        $kqt = KetQuaThi::with(['dethi', 'sinhvien'])->get();
-        return response()->json(['listmon' => $listmon, 'listketquathi' => $kqt, 'listlop' => $listlop]);
+        $kqt = KetQuaThi::with(['dethi', 'sinhvien', 'dethi_lichthi'])->get();
+        return response()->json(['listmon' => $listmon, 'listlichthi' =>$listlichthi, 'listketquathi' => $kqt, 'listlop' => $listlop]);
     }
 
     public function detail(Request $requests)

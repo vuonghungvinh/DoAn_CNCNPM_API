@@ -97,9 +97,7 @@
                         <td *ngIf="i+1>hienthileft && i<hienthiright">{{i+1}}</td>
                         <td *ngIf="i+1>hienthileft && i<hienthiright">{{sinhvien.mssv}}</td>
                         <td *ngIf="i+1>hienthileft && i<hienthiright">{{sinhvien.student.name}}</td>
-                        <div *ngFor="let lop of lop">
-                            <td *ngIf="i+1>hienthileft && i<hienthiright && sinhvien.student.malop==lop.id">{{lop.tenlop}}</td>
-                        </div>
+                        <td *ngIf="i+1>hienthileft && i<hienthiright && sinhvien.student.malop">{{getLop(sinhvien.student.malop)}}</td>
                     </tr>
                 </tbody>
             </table>

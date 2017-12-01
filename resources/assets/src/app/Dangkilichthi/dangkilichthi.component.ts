@@ -65,6 +65,15 @@ export class DangkilichthiComponent {
     this.hienthiright += 10;
     this.hienthileft += 10;
   }
+  getLop(malop) {
+    let tenlop = '';
+    this.lop.map( lop => {
+      if (lop.id === malop) {
+        tenlop = lop.tenlop;
+      }
+    });
+    return tenlop;
+  }
   getmalophp(event) {
     this.hienthileft = 0;
     this.hienthiright = 10;
