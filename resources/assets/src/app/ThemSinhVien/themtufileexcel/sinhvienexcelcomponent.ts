@@ -23,6 +23,7 @@ export class SinhVienExcelComponent {
   filestring: string;
   public formData: FormData;
   public submit = true;
+  public load = false;
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
 
@@ -53,6 +54,7 @@ export class SinhVienExcelComponent {
       this.submit = false;
     }
     else {
+      this.load = true;
       this.submit = true;
     }
     if (this.submit) {

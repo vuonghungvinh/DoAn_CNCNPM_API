@@ -44,7 +44,10 @@
                     <h1 class="page-header text-center">
                         Danh Sách Sinh Viên
                     </h1>
-
+                    <div class="form-group col-lg-12" >
+                      <label for="exampleInputEmail1" class="label-control">Tìm kiếm sinh viên</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1"  name='search' [(ngModel)]="search" placeholder="nhap mssv, ten, lớp ...">
+                  </div>
                     <div class="col-lg-12">
                         <div class="">
                           <input type="button" (click)="chontatca()" [value]="namebutton">
@@ -58,7 +61,7 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr *ngFor="let sinhvien of sinhvien; let i = index" (click)="alllistsinhvien(sinhvien.mssv)"[class.active]="listsinhvien.indexOf(sinhvien.mssv)!= -1">
+                                  <tr *ngFor="let sinhvien of sinhvien  | filter:search; let i = index" (click)="alllistsinhvien(sinhvien.mssv)"[class.active]="listsinhvien.indexOf(sinhvien.mssv)!= -1">
                                       <td>{{i+1}}</td>
                                       <td>{{sinhvien.mssv}}</td>
                                       <td>{{sinhvien.name}}</td>

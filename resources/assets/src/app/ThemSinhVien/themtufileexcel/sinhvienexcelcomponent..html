@@ -43,6 +43,9 @@
             </tbody>
           </table>
     </div>
+    <div *ngIf="load" class="text-center">
+      <h3>Đang import</h3>
+  </div>
 </div>
 <div>
   <form role="form" (ngSubmit)="addstudents(f.value)" #f = "ngForm" enctype="multipart/form-data">
