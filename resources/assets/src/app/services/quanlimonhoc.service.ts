@@ -12,7 +12,7 @@ constructor(private _httpclient: HttpClient) {
     getMonHoc() {
         return this._httpclient.get('/api/admin/mon', this.jwt()).map((result: Response) => result);
     }
-    addMonHoc(data: any) {
+    addMonHoc(data: any): Observable<any> {
       return this._httpclient.post('/api/admin/mon/themmon', data, this.jwt()).map((response: Response) => response);
     }
     deleteLopHP(data: any): Observable<any> {

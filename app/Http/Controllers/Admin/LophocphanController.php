@@ -45,7 +45,9 @@ class LophocphanController extends Controller
     }
     public function getlophpcungmon($id)
     {
-      $lophocphan = DB::table('lophocphan')->where('mamon',$id)->select('malophp')->distinct()->get();
+      $lophocphan = DB::table('lophocphan')->where('mamon',$id)
+      ->where('dkthi',0)
+      ->select('malophp')->distinct()->get();
       return response()->json(['mon_lophocphan' => $lophocphan]);
     }
     public function sinhvienkhongthuoclophp(Request $id)

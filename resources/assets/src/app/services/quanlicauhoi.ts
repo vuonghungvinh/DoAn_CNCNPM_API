@@ -24,7 +24,7 @@ constructor(private _httpclient: HttpClient) {
     deleteQuestion(data: any): Observable<any> {
       return this._httpclient.delete('api/admin/question/' + data + '/delete', this.jwt()).map((response: Response) => response);
     }
-    updateQuestion(data: any, id: any) {
+    updateQuestion(data: any, id: any): Observable<any> {
       return this._httpclient.put('api/admin/question/update/' + id, data, this.jwt()).map((response: Response) => response);
     }
     phuchoicauhoi(data: any) {

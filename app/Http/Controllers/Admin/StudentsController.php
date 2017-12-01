@@ -20,7 +20,7 @@ class StudentsController extends Controller
     public function index()
     {
         $students = Students::with(['lop'])->where('trangthai', '=', 1)
-        ->select('mssv','name','ngaysinh','gioitinh','diachi','malop','trangthai')
+        ->select('mssv','name','ngaysinh','gioitinh','malop','trangthai')
         ->orderByRaw('mssv')->get();
         return response()->json(['students' => $students]);
     }

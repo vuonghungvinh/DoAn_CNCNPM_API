@@ -59,9 +59,9 @@ export class ThemsinhvienvaolophocphanComponent {
     }
   }
   getMaLopHP(event) {
+    console.log(event.target.value);
     this.mon.forEach(element => {
       if (element.malophp === event.target.value) {
-        console.log(element);
         this.lophocphan.getSinhVienMonKhongThuocLopHP(element).subscribe( data => {
           this.sinhvien = data ['sinhvien'];
           this.malophp = event.target.value;

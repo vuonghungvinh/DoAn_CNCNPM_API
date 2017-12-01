@@ -15,7 +15,7 @@ constructor(private _httpclient: HttpClient) {
     getSinhVienLop(data: any) {
       return this._httpclient.get('/api/admin/students/lop/' + data, this.jwt()).map((result: Response) => result);
     }
-    deleteSinhVien(data: any) {
+    deleteSinhVien(data: any): Observable<any> {
       return this._httpclient.delete('/api/admin/students/delete/' + data, this.jwt()).map((result: Response) => result);
     }
 	// getUser() {

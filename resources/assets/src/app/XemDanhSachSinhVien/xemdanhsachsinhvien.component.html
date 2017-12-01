@@ -33,7 +33,7 @@
 <div class="col-md-6">
   <div class="form-group" >
       <label for="exampleInputEmail1">Tìm kiếm sinh viên</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" name='search' [(ngModel)]="search" placeholder="nhap mssv, ten ...">
+      <input type="text" class="form-control" id="exampleInputEmail1"  name='search' [(ngModel)]="search" placeholder="nhap mssv, ten ...">
   </div>
 </div>
 <div class="row">
@@ -43,29 +43,29 @@
               <tr>
                     <th>STT</th>
                     <th>MSSV</th>
-                    <th>Ten</th>
-                    <th>Lop</th>
-                    <th>NgaySinh</th>
-                    <th>GioiTinh</th>
+                    <th>Tên</th>
+                    <th>Lớp</th>
+                    <th>Ngày sinh</th>
+                    <th>Giới tính</th>
                     <!-- <th>#</th> -->
                 </tr>
                 <tr *ngFor="let student of students | filter:search; let i = index">
-                  <td *ngIf="i+1> hienthileft && i<hienthiright">{{i+1}}</td>
-                  <td  *ngIf="i+1> hienthileft && i<hienthiright">{{student.mssv}}</td>
-                  <td *ngIf="i+1> hienthileft && i<hienthiright">{{student.name}}</td>
-                  <td *ngIf="student.lop && i+1> hienthileft && i<hienthiright">{{student.lop.tenlop}}</td>
-                  <td *ngIf="i+1> hienthileft && i<hienthiright">{{student.ngaysinh}}</td>
-                  <td *ngIf="student.gioitinh==1 && i+1> hienthileft && i<hienthiright">Nam</td>
-                  <td *ngIf="student.gioitinh!=1 && i+1> hienthileft && i<hienthiright" >Nữ</td>
+                  <td>{{i+1}}</td>
+                  <td>{{student.mssv}}</td>
+                  <td>{{student.name}}</td>
+                  <td *ngIf="student.lop">{{student.lop.tenlop}}</td>
+                  <td >{{student.ngaysinh}}</td>
+                  <td *ngIf="student.gioitinh==1">Nam</td>
+                  <td *ngIf="student.gioitinh!=1" >Nữ</td>
                   <!-- <td><a href="javascript:void(0)" (click)="deleteSinhVien(student.mssv)">   <span class="glyphicon glyphicon-trash"></span></a></td> -->
                 </tr>
             </table>
-            <ul class="pager">
+            <!-- <ul class="pager">
                 <li *ngIf="checkleft" class="disabled"><a href="javascript:void(0)">Previous</a></li>
                 <li *ngIf="!checkleft" ><a href="javascript:void(0)" (click)="previous()">Previous</a></li>
                 <li *ngIf="checkright" class="disabled"><a href="javascript:void(0)">Next</a></li>
                 <li *ngIf="!checkright"><a href="javascript:void(0)" (click)="next()">Next</a></li>
-              </ul>
+              </ul> -->
       </div>
     </div>
 </div>

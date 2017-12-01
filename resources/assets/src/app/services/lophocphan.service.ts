@@ -23,8 +23,8 @@ constructor(private _httpclient: HttpClient) {
   getMon() {
     return this._httpclient.get('/api/admin/lophocphan/themsinhvienmon', this.jwt()).map((response: Response) => response);
   }
-  getSinhVienMonKhongThuocLopHP(id: any) {
-    return this._httpclient.post('api/admin/lophocphan/mon/danhsachsinhvien/', id , this.jwt()).map((response: Response) => response);
+  getSinhVienMonKhongThuocLopHP(id: any): Observable<any>  {
+    return this._httpclient.post('api/admin/lophocphan/mon/danhsachsinhvien', id , this.jwt()).map((response: Response) => response);
   }
   addSinhVienVaoLopHP(data: any): Observable<any> {
     return this._httpclient.post('/api/admin/lophocphan/addsinhvien', data, this.jwt()).map((response: Response) => response);
@@ -35,14 +35,14 @@ constructor(private _httpclient: HttpClient) {
   checkdkthi(data: any) {
     return this._httpclient.get('/api/admin/lophocphan/checkdkthi/' + data, this.jwt()).map((response: Response) => response);
   }
-  chuyenlophp(data: any) {
+  chuyenlophp(data: any): Observable<any> {
     return this._httpclient.put('api/admin/lophocphan/chuyenlophp' , data , this.jwt()).map((response: Response) => response);
   }
   deleteSinhvien(data: any, mssv: any): Observable<any> {
     // tslint:disable-next-line:max-line-length
     return this._httpclient.delete('api/admin/lophocphan/delete/' + data + '/' + mssv, this.jwt()).map((response: Response) => response);
   }
-  updateLopHP(id: any) {
+  updateLopHP(id: any): Observable<any> {
     return this._httpclient.put('api/admin/lophocphan/update/' + id, this.jwt()).map((response: Response) => response);
   }
   gettongsinhvientheolophp(data: any) {
@@ -55,10 +55,10 @@ constructor(private _httpclient: HttpClient) {
     // tslint:disable-next-line:max-line-length
     return this._httpclient.get('/api/admin/lophocphan/danhsachsinhvien/tongcauhoi/' + data, this.jwt()).map((response: Response) => response);
   }
-  deleteLopHP(data: any) {
+  deleteLopHP(data: any): Observable<any> {
     return this._httpclient.delete('api/admin/lophocphan/deletelophp/' + data , this.jwt()).map((result: Response) => result);
   }
-  addLopHP(data: any) {
+  addLopHP(data: any): Observable<any> {
     return this._httpclient.post('/api/admin/lophocphan/themlophocphan', data, this.jwt()).map((response: Response) => response);
   }
   private jwt() {

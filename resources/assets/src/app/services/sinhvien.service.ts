@@ -42,16 +42,16 @@ constructor(
   getSinhVienLopTotNghiep(data: any) {
     return this._httpclient.get('/api/admin/students/loptotnghiep/' + data, this.jwt()).map((result: Response) => result);
   }
-  deleteSinhVien(data: any) {
+  deleteSinhVien(data: any): Observable<any> {
     return this._httpclient.delete('/api/admin/students/delete/' + data, this.jwt()).map((result: Response) => result);
   }
   addstudents(data: any): Observable<any> {
   return this._httpclient.post('/api/admin/students/create', data, this.jwt()).map((response: Response) => response);
   }
-  updateSinhVien(id: any,data: any) {
+  updateSinhVien(id: any, data: any): Observable<any> {
     return this._httpclient.put('/api/admin/students/update/' + id, data, this.jwt()).map((responsive: Response) => responsive);
   }
-  uploadFile(data: any) {
+  uploadFile(data: any): Observable<any> {
     return this._httpclient.post('/api/admin/students/uploadfile', data, this.jwt()).map((response: Response) => response);
   }
 
