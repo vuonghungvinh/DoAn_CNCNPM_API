@@ -103,11 +103,17 @@ class LichThiController extends Controller
     {
         //
         $mamon = LichThi::find($id);
-        DB::table('lophocphan')
-        ->where('mamon','=',$mamon->mamon)
-        ->update(['dkthi' => 0]);
-        $lichthi = LichThi::where('id','=',$id);
-        $lichthi->delete();
-        return Response(['status' => 200]);
+        $check = DB::table('lophocphan')->where('malophp',$mamon->malophp)->where('dkthi',2)->count();
+        if ($check > 0){
+          return response()->json(['Lớp đã DK thi'], 422);
+        }
+        else {
+          DB::table('lophocphan')
+          ->where('malophp', $mamon->malophp)
+          ->update(['dkthi' => 0]);
+          $lichthi = LichThi::where('id','=',$id);
+          $lichthi->delete();
+          return Response(['status' => 200]);
+        }
     }
 }

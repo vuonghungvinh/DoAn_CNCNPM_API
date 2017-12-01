@@ -14,6 +14,7 @@ export class Xemlichthi {
     private route: Router) {
     }
   public listlichthi: any[];
+  // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
     this.xemlichthi.getDanhSachLichThi().subscribe( data => {
       this.listlichthi = data['listlichthi'];
@@ -23,6 +24,8 @@ export class Xemlichthi {
     if ((confirm('Bạn chắc chắn muốn xóa') === true)) {
       this.xemlichthi.deleteLichThi(id).subscribe( data => {
         this.ngOnInit();
+      }, error => {
+        alert('Lớp này đã thi, không thể xóa');
       });
     }
   }
