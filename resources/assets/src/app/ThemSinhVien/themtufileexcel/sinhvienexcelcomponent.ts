@@ -15,7 +15,7 @@ import * as XLSX from 'xlsx';
 })
 
 export class SinhVienExcelComponent {
-  constructor(private sinhivienservice: SinhvienService,
+  constructor(private sinhvienservice: SinhvienService,
               private router: Router,
               public http: Http) {
    }
@@ -23,6 +23,7 @@ export class SinhVienExcelComponent {
   filestring: string;
   public formData: FormData;
   public submit = true;
+  public load = false;
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
 
@@ -53,11 +54,13 @@ export class SinhVienExcelComponent {
       this.submit = false;
     }
     else {
+      this.load = true;
       this.submit = true;
     }
     if (this.submit) {
       this.submit = false;
-      this.sinhivienservice.uploadFile(this.formData).subscribe( data => {
+      console.log(this.formData);
+      this.sinhvienservice.uploadFile(this.formData).subscribe( data => {
         alert('Import thành công');
         this.router.navigate(['xemdanhsach']);
       }, error => {

@@ -51,7 +51,7 @@ constructor(
   updateSinhVien(id: any, data: any): Observable<any> {
     return this._httpclient.put('/api/admin/students/update/' + id, data, this.jwt()).map((responsive: Response) => responsive);
   }
-  uploadFile(data: any): Observable<any> {
+  uploadFile(data: any) {
     return this._httpclient.post('/api/admin/students/uploadfile', data, this.jwt()).map((response: Response) => response);
   }
 
