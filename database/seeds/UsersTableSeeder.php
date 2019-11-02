@@ -16,8 +16,20 @@ class UsersTableSeeder extends Seeder
             'mssv' => '102130054',
             'ngaysinh' => '1995-03-24',
             'gioitinh' => true,
-            'lop' => "13T1",
+            'malop' => "1",
+            'trangthai' =>'1',
             'diachi' => 'Huế',
+            'password' => bcrypt('123456'),
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Nguyễn Đức An',
+            'mssv' => '102130056',
+            'ngaysinh' => '1995-08-06',
+            'gioitinh' => true,
+            'malop' => "2",
+            'trangthai' =>'1',
+            'diachi' => 'Nghệ AN',
             'password' => bcrypt('123456'),
         ]);
     }

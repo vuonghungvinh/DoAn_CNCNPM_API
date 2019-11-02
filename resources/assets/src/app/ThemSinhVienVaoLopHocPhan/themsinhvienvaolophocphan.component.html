@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header text-center">
+            Thêm Sinh Viên Vào Lớp Học Phần
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <i class="fa fa-table "></i><a [routerLink]="['/xemdanhsachmon']">Xem danh sách môn học</a>
+            </li>
+            <li>
+                <i class="fa fa-table "></i><a [routerLink]="['/xemdanhsachmon/xemdanhsachlophocphan/'+id_mon]">Xem danh sách lớp học phần </a>
+            </li>
+            <li class="active">
+                <i class="fa fa-dashboard"></i>Thêm sinh viên
+            </li>
+        </ol>
+    </div>
+</div>
+  <div class="row">
+      <div class="col-lg-12">
+        <form class="form-horizontal" id="formthemsinhvien" (ngSubmit)="themSinhVien(f.value)" #f="ngForm" class='form-horizontal col-md-12' role='form' novalidate>
+                <div class="form-group has-success">
+                  <label  class="control-label" for="inputSuccess" >Chọn Lớp HP</label>
+                    <select required #idmon="ngModel" name="idmon" class="form-control" id="inputSuccess" (change)="getMaLopHP($event)" ngModel>
+                      <option disabled>Chọn Lớp HP</option>
+                      <option *ngFor="let mon of mon;" [value]="mon.malophp"  >
+                        {{mon.malophp}} {{mon.tenmon}}
+                      </option>
+                    </select>
+                    <div *ngIf="idmon.errors && (idmon.dirty || idmon.touched)" class="text text-danger text-left">
+                        <div [hidden]="!idmon.errors.required">
+                            Bạn chưa chọn lớp HP
+                        </div>
+                      </div>
+                </div>
+                <!-- <div class="form-inline has-success" id="form">
+                    <div class="col-md-2">STT </div>
+                    <div class="col-md-2">MSSV</div>
+                    <div class="col-md-3"> Name</div>
+                    <div class="col-md-2">Lop</div>
+                  </div> -->
+
+                <div *ngIf="sinhvien" class="form-group has-success">
+                    <h1 class="page-header text-center">
+                        Danh Sách Sinh Viên
+                    </h1>
+
+                    <div class="col-lg-12">
+                        <div class="">
+                          <input type="button" (click)="chontatca()" [value]="namebutton">
+                            <table class="table table-bordered table-hover table-responsive">
+                              <thead>
+                                  <tr>
+                                      <th>STT</th>
+                                      <th>MSSV</th>
+                                      <th>Tên</th>
+                                      <th>Lớp</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let sinhvien of sinhvien; let i = index" (click)="alllistsinhvien(sinhvien.mssv)"[class.active]="listsinhvien.indexOf(sinhvien.mssv)!= -1">
+                                      <td>{{i+1}}</td>
+                                      <td>{{sinhvien.mssv}}</td>
+                                      <td>{{sinhvien.name}}</td>
+                                      <td>{{sinhvien.tenlop}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                      </div>
+                </div>
+                <div class="button-group text-center ">
+                    <button class="btn btn-primary"   type="submit" [disabled]="!f.form.valid" >Thêm Sinh Viên</button>
+                </div>
+        </form>
+  </div>
+
+</div>
+

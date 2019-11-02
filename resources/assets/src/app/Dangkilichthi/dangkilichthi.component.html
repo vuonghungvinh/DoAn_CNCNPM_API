@@ -1,0 +1,114 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="text-center">Đăng kí lịch thi</h1>
+        <ol class="breadcrumb">
+            <li>
+                <i class="fa fa-table "></i><a [routerLink]="['/xemlichthi']"> Xem Danh Sách sinh viên</a>
+            </li>
+            <li class="active">
+                <i class="fa fa-table "></i>Đăng kí lịch thi
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <form class="form" name="myForm" id="dangkilichthi" (ngSubmit)="themLichThi(f.value)" #f="ngForm" role="form"  >
+                <div class="form-group has-success">
+                    <label class="control-label">Chọn lớp HP</label>
+                    <select (change)="getmalophp($event)" class="form-control" name="malophp" required #malophp="ngModel" ngModel >
+                        <option disabled>Chọn lớp HP</option>
+                        <option *ngFor="let mon of mon" [value]="mon.malophp">{{mon.malophp }} {{mon.tenmon}}</option>
+                    </select>
+                    <div *ngIf="malophp.errors  && (malophp.dirty || malophp.touched)" class="alert alert-danger">
+                        <div [hidden]="!malophp.errors.required">
+                          Bạn chưa chọn.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group has-success">
+                    <label class="control-label">Chọn ngày</label>
+                    <input type="datetime-local" class="form-control" (change)="validatengaythi($event)" required #ngaydangki="ngModel"
+                     max="2999-11-16T21:25:33" name="ngaydangki" ngModel >
+                    <div *ngIf="ngaydangki.errors && (ngaydangki.dirty || ngaydangki.touched)" class="text text-danger text-left">
+                        <div [hidden]="!ngaydangki.errors.required">
+                            Bạn chưa chọn ngày
+                        </div>
+                    </div>
+                    <div *ngIf="checkday" class="text text-danger text-left">
+                          Vui lòng chọn ngày thi lớn hơn thời gian hiện tại.
+                    </div>
+                </div>
+                <div class="form-group has-success">
+                    <label class="control-label">Nhập phòng</label>
+                    <input class="form-control"  type="text" required #phongthi="ngModel" name="phongthi" ngModel>
+                    <div *ngIf="phongthi.errors && (phongthi.dirty || phongthi.touched)" class="text text-danger text-left">
+                        <div [hidden]="!phongthi.errors.required">
+                            Bạn chưa nhập phòng
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group has-success">
+                    <label class="control-label">Thời gian thi/ Phút</label>
+                    <input class="form-control" type="number" (change)="checkthoigian($event)" required #thoigianthi="ngModel"  name="thoigianthi" min="0" max="100" step="5" ngModel >
+                    <div *ngIf="thoigianthi.errors && (thoigianthi.dirty || thoigianthi.touched)" class="text text-danger text-left">
+                        <div [hidden]="!thoigianthi.errors.required">
+                            Bạn chưa nhập
+                        </div>
+                    </div>
+                    <div class="text text-danger text-left" *ngIf="checkthoigianthi">
+                        Thời gian thi lớn hơn 10 phút.
+                    </div>
+                </div>
+                <div class="form-group has-success">
+                    <label *ngIf="!tong_cauhoi" class="control-label">Tổng câu hỏi 0</label>
+                    <label *ngIf="tong_cauhoi" class="control-label">Tổng câu hỏi {{tong_cauhoi}}</label>
+                    <input class="form-control" type="number" (change)="checktongcauhoi($event)"  required #tongcauhoi="ngModel" name="tongcauhoi" value="tongcauhoi" min="10" max="60" ngModel >
+                    <div *ngIf="tongcauhoi.errors && (tongcauhoi.dirty || tongcauhoi.touched)" class="text text-danger text-left">
+                      <div [hidden]="!tongcauhoi.errors.required">
+                          Bạn chưa nhập
+                      </div>
+                  </div>
+                  <div *ngIf="checkcauhoi" class="text text-danger text-left">
+                      Số câu hỏi lớn hơn 5 và nhỏ hơn tổng câu hỏi;
+                  </div>
+                </div>
+                <div class="form-group has-success">
+                    <div class="text-center">
+                      <button class="form-control" type="submit" class="btn btn-primary btn-lg" [disabled]="!f.form.valid" >Thêm</button>
+                    </div>
+                </div>
+        </form>
+    </div>
+    <div class="col-lg-6">
+        <h5 class="text-center">Danh sách sinh viên của lớp.</h5>
+        <div *ngIf="tongsoluong" class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>MSSV</th>
+                        <th>Tên</th>
+                        <th>Lớp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let sinhvien of listsinhvien; let i = index;">
+                        <td *ngIf="i+1>hienthileft && i<hienthiright">{{i+1}}</td>
+                        <td *ngIf="i+1>hienthileft && i<hienthiright">{{sinhvien.mssv}}</td>
+                        <td *ngIf="i+1>hienthileft && i<hienthiright">{{sinhvien.student.name}}</td>
+                        <td *ngIf="i+1>hienthileft && i<hienthiright && sinhvien.student.malop">{{getLop(sinhvien.student.malop)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="pager">
+                <li *ngIf="checkleft" class="disabled"><a href="javascript:void(0)">Previous</a></li>
+                <li *ngIf="!checkleft" ><a href="javascript:void(0)" (click)="previous()">Previous</a></li>
+                <li *ngIf="checkright" class="disabled"><a href="javascript:void(0)">Next</a></li>
+                <li *ngIf="!checkright"><a href="javascript:void(0)" (click)="next()">Next</a></li>
+              </ul>
+        </div>
+    </div>
+</div>
+
+

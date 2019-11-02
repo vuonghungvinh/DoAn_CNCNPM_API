@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="page-header text-center">
+          Xem Danh Sách Lớp
+      </h1>
+      <ol class="breadcrumb">
+          <li class="active">
+              <i class="fa fa-table "></i>Xem Danh Sách
+          </li>
+          <li>
+              <i class="fa fa-table "></i><a [routerLink]="['/themlopmoi']">Tạo Mới Lớp</a>
+          </li>
+      </ol>
+  </div>
+</div>
+<div class="">
+    <!-- <input type="button" (click)="tableToExcel('testTable', 'W3C Example Table')" value="Export to Excel"> -->
+  <table class=" table table-bordered table-hover table-responsive" id="testTable" rules="groups" frame="hsides">
+      <thead>
+          <tr>
+              <th>STT</th>
+              <th>Khóa</th>
+              <th>Lớp</th>
+              <th>SV Đang Học</th>
+              <th>SV Nghỉ Học</th>
+              <th>SV Tốt Nghiệp</th>
+              <th>Tổng</th>
+              <!-- <th>Xem DS</th> -->
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let lop  of danhsachlop | filter: search; let i = index" [routerLink]="['toanbosinhvienlop/'+lop.tenlop]">
+              <td>{{i+1}}</td>
+              <td>{{lop.khoa}}</td>
+              <td>{{lop.tenlop}}</td>
+              <td>{{lop.danghoc_count}}</td>
+              <td>{{lop.nghihoc_count}}</td>
+              <td>{{lop.totnghiep_count}}</td>
+              <td>{{lop.tongsinhvien_count}}</td>
+              <!-- <td>
+                <a [routerLink]="['toanbosinhvienlop/'+lop.tenlop]" >DS</a>
+            </td> -->
+            </tr>
+      </tbody>
+  </table>
+</div>
+
+

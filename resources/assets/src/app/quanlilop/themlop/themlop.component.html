@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header text-center">
+            Tạo lớp
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a [routerLink]="['/xemdanhsachlopsinhvien']"><i class="fa fa-table "></i>Xem Danh Sách </a>
+            </li>
+            <li class="active">
+                <i class="fa fa-table "></i>Tạo Mới Lớp
+            </li>
+        </ol>
+    </div>
+  </div>
+
+<div class="col-lg-12">
+    <form role="form" id="themlop" (ngSubmit)="addlop(f.value)" #f = "ngForm" enctype="multipart/form-data" >
+          <div class="form-group has-success" style="text-align: center" id="form-check">
+            <label class="radio-inline">
+              <input type="radio" class="form-check-input" (click)="setkhoamoi(true)" name="khoa" value="1" checked>
+              Khóa cũ
+            </label>
+            <label class="radio-inline">
+              <input type="radio" class="form-check-input" (click)="setkhoamoi(false)" name="khoa" value="0" >
+              Khóa mới.
+            </label>
+          </div>
+          <div *ngIf="setkhoa" class="form-group has-success" id="formchonkhoa">
+            <label  class="control-label" for="sel1">Chọn Khóa</label>
+            <select required #khoa="ngModel" class="form-control"  name="khoa" id="sel1" ngModel>
+              <option *ngFor="let khoahoc of danhsachkhoa;let i = index" [value]="khoahoc.khoa"  >{{khoahoc.khoa}}</option>
+            </select>
+            <div *ngIf="khoa.errors && (khoa.dirty || khoa.touched)" class="text text-danger text-left">
+                <div [hidden]="!khoa.errors.required">
+                    Bạn chưa chọn Khóa
+                </div>
+              </div>
+          </div>
+          <div  *ngIf="!setkhoa" class="form-group has-success">
+              <label class="control-label">Tên Khóa</label>
+              <input class="form-control" type="text" [(ngModel)]="khoamoi" name="khoamoi" [value]="khoamoi" disabled>
+          </div>
+          <div class="form-group has-success">
+                  <label class="control-label">Nhập tên lớp</label>
+                  <input required #tenlop="ngModel" class="form-control" type="text" name="tenlop" ngModel>
+                  <div *ngIf="tenlop.errors && (tenlop.dirty || tenlop.touched)" class="text text-danger text-left">
+                    <div [hidden]="!tenlop.errors.required">
+                        Bạn chưa nhập tên lớp
+                    </div>
+                  </div>
+          </div>
+        <div class="button-group text-center " id="buttonthem">
+          <button class="btn btn-primary" type="submit" [disabled]="!f.form.valid" >Thêm mới</button>
+          <button class="btn btn-primary" type="button" (click)="navigate()">Hủy</button>
+        </div>
+    </form>
+</div>

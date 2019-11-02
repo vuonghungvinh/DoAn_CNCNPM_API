@@ -1,0 +1,72 @@
+
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="page-header text-center">
+          Xem Danh Sách Sinh Viên Đã Nghỉ Học
+      </h1>
+      <ol class="breadcrumb">
+          <li class="active">
+              <i class="fa fa-table "></i>Xem danh sách
+          </li>
+      </ol>
+  </div>
+</div>
+<!-- <div class="col-md-4">
+    <div class="form-group col-md-10 col-md-offset-2" id="btnall" >
+        <input type="button" class="btn btn-primary btn-md" (click)="ngOnInit()" value="Xem tất cả">
+    </div>
+</div> -->
+<div class="col-lg-12 " >
+  <form (ngSubmit)="change(f.value)" #f = "ngForm" >
+      <div class="col-lg-4 form-group" >
+            <label class="label-control">Từ ngày</label>
+            <input type="date" dateFormat="yyyy/mm/dd" required  class="form-control" [(ngModel)]="ngaybatdau" name="ngaybatdau" [max]="maxday" minlength="10" >
+            <div *ngIf="checkstartday" class="text text-danger text-left">
+                <p>Ngày lớn hơn hiện tại</p>
+            </div>
+      </div>
+      <div class="col-lg-4 form-group" >
+          <label class="label-control">Đến ngày </label>
+          <input type="date" required [(ngModel)]="ngayketthuc" class="form-control" name="ngayketthuc" [max]="maxday" minlength="10" >
+          <div *ngIf="checkendday" class="text text-danger text-left">
+              <p>Ngày lớn hơn hiện tại</p>
+          </div>
+        </div>
+      <div class="col-lg-4">
+          <button type="submit" class="btn btn-primary" [disabled]="!f.form.valid">Liệt kê</button>
+      </div>
+  </form>
+</div>
+<div class="row">
+<div class="col-lg-12">
+    <div class="">
+        <table class="table table-bordered table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>MSSV</th>
+                    <th>Tên</th>
+                    <th>Lớp</th>
+                    <th>Ngày sinh</th>
+                    <th>Giới tính</th>
+                    <th>Ngày nghỉ học</th>
+                    <!-- <th>#</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students | filter:search; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{student.mssv}}</td>
+                    <td>{{student.name}}</td>
+                    <td *ngIf="student.lop">{{student.lop.tenlop}}</td>
+                    <td>{{student.ngaysinh}}</td>
+                    <td *ngIf="student.gioitinh==1">Nam</td>
+                    <td *ngIf="student.gioitinh!=1">Nữ</td>
+                    <td>{{student.updated_at}}</td>
+                    <!-- <td><a href="javascript:void(0)" (click)="deleteSinhVien(student.mssv)">   <span class="glyphicon glyphicon-trash"></span></a></td> -->
+                  </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>
+</div>

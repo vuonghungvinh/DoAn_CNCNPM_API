@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-12">
+        <br/>
+        <div class="info">
+            <div class="row">
+                <div class="col-md-6">
+                    <table>
+                        <tbody *ngIf="data">
+                            <tr>
+                                <td>Họ tên:</td>
+                                <td>{{data.listketquathi.sinhvien.name}}</td>
+                            </tr>
+                            <tr>
+                                <td>MSSV:</td>
+                                <td>{{data.listketquathi.sinhvien.mssv}}</td>
+                            </tr>
+                            <tr>
+                                <td>Ngày Sinh:</td>
+                                <td>{{data.listketquathi.sinhvien.ngaysinh}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table>
+                        <tbody *ngIf="data">
+                            <tr>
+                                <td>Mã Đề Thi:</td>
+                                <td>{{data.listketquathi.madethi}}</td>
+                            </tr>
+                            <tr>
+                                <td>Thời gian làm:</td>
+                                <td>{{data.listketquathi.thoigianlam}}</td>
+                            </tr>
+                            <tr>
+                                <td>Điểm</td>
+                                <td>{{data.listketquathi.diem}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr/>
+            <h3 class="text-center">
+                Bài Làm
+            </h3>
+            <div class="row">
+                <div *ngIf="data" class="col-md-12">
+                    <div class="content-question" *ngFor="let ch of data.cauhoi_arr; let i=index;">
+                        <p>Câu {{(i+1)}}: {{ch.noidungcauhoi}}</p>
+                        <ul>
+                            <li *ngFor="let da of ch.listdapan" class="{{xuLyDapAn(ch.id, ch.dapan, data.listketquathi.dapan, da.id)}}">Câu {{da.tendapan}}: {{da.noidungdapan}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

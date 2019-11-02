@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="page-header text-center">
+        Thêm Từ File
+      </h1>
+      <ol class="breadcrumb">
+          <li >
+              <i class="fa fa-dashboard "></i><a [routerLink]="['/xemdanhsach']">Xem danh sách </a>
+          </li>
+          <li>
+              <i class="fa fa-table"></i><a [routerLink]="['/themsinhvien']"> Thêm sinh viên</a>
+          </li>
+          <li class="active">
+            <i class="fa fa-table"></i>Thêm Từ File
+        </li>
+      </ol>
+  </div>
+</div>
+
+<div class="col-lg-12">
+    <h2 class="text-center">Mẫu file excel</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ten</th>
+                    <th>mssv</th>
+                    <th>ngaysinh</th>
+                    <th>gioitinh</th>
+                    <th>diachi</th>
+                    <th>lop</th>
+                  </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span >Nguyen Van A</span></td>
+                    <td><span>102130055</span></td>
+                    <td>01-02-95</td>
+                    <td>1 (1=nam, 0=nu)</td>
+                    <td>Hue</td>
+                    <td>13T3</td>
+                  </tr>
+            </tbody>
+          </table>
+    </div>
+    <div *ngIf="load" class="text-center">
+        <h3>Đang import</h3>
+    </div>
+</div>
+<div>
+  <form role="form" (ngSubmit)="addstudents(f.value)" #f = "ngForm" enctype="multipart/form-data">
+    <div class="form-group">
+          <label for="uploadFile" >Upload</label>
+          <input type="file" name="uploadFile" id="uploadFile"  (change)="onChange($event)">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>

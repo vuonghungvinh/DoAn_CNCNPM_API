@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header text-center">
+            Thêm Mới Lớp Học Phần
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-table "></i><a [routerLink]="['/xemdanhsachmon']">Xem danh sách </a>
+            </li>
+            <li>
+                <i class="fa fa-dashboard"></i> <a [routerLink]="['/themmonhoc']">Thêm môn học </a>
+            </li>
+            <li class="active">
+              <i class="fa fa-dashboard"></i>Thêm lớp học phần
+          </li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <form role="form" id="themlophocphan" (ngSubmit)="themlophp(f.value)" #f = "ngForm" enctype="multipart/form-data" >
+              <div class="form-group has-success">
+                <label  class="control-label" for="inputSuccess" >Chọn Môn</label>
+                  <select required #idmon="ngModel" name="idmon" class="form-control" id="inputSuccess"  ngModel>
+                    <option disabled>Chọn Môn</option>
+                    <option *ngFor="let mon of mon;" [value]="mon.id"  >
+                      {{mon.tenmon}}
+                    </option>
+                  </select>
+              </div>
+              <div class="form-group has-success" id="formlophp">
+                  <label class="control-label">Nhập Mã Lớp HP</label>
+                    <input type="text" class="form-control" required #lophp="ngModel"  name="lophp" ngModel >
+                    <div *ngIf="lophp.errors && (lophp.dirty || lophp.touched)" class="text text-danger text-left">
+                      <div [hidden]="!lophp.errors.required">
+                          Bạn chưa nhập mã lớp
+                      </div>
+                    </div>
+              </div>
+              <div class="button-group text-center ">
+                  <button class="btn btn-primary"   type="submit" [disabled]="!f.form.valid" >Thêm</button>
+              </div>
+      </form>
+</div>
+</div>
+
+

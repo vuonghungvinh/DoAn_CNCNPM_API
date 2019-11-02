@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="text-center">Xem Lịch Thi</h1>
+        <ol class="breadcrumb">
+            <li class="active" >
+                <i class="fa fa-table "></i> Xem Danh Sách sinh viên
+            </li>
+            <li>
+                <i class="fa fa-table "></i><a [routerLink]="['/dangkilichthi']">Đăng kí lịch thi</a>
+            </li>
+        </ol>
+    </div>
+</div>
+<div  class="row" style="margin-top: 30px;">
+    <div class="col-lg-12">
+        <div class="">
+            <table class="table table-bordered table-hover table-responsive" >
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã lớp HP</th>
+                        <th>Môn Thi</th>
+                        <th>Ngày Thi</th>
+                        <th>Thời gian</th>
+                        <th>Tổng câu hỏi</th>
+                        <th>Phòng Thi</th>
+                        <th>DS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let lichthi of listlichthi; let i = index;" >
+                        <td>{{i+1}}</td>
+                        <td>{{lichthi.malophp}}</td>
+                        <td>{{lichthi.get_mon.tenmon}}</td>
+                        <td>{{lichthi.thoigianbatdauthi}}</td>
+                        <td>{{lichthi.thoigianthi}}</td>
+                        <td>{{lichthi.tongcauhoi}}</td>
+                        <td>{{lichthi.phong}}</td>
+                        <td><a [routerLink]="['/xemdanhsachlophocphan/danhsachsinhvien/'+lichthi.malophp]">DS</a> <a href="javascript:void(0)" id="hrefdelete" (click)="deleteLichthi(lichthi.id)">   <span class="glyphicon glyphicon-trash"></span></a></td>
+                      </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header text-center">
+            Danh Sách Câu Hỏi Bị Xóa
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-table "></i>Xem danh sách
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+  <form>
+      <div class="col-lg-6" >
+          <label class="label-control">Xem theo môn</label>
+          <select class="form-control"  name="xemtheomon" (change)="getCauHoiMon($event)">
+              <option disabled></option>
+              <option  *ngFor="let mon of mon" [value]="mon.id">{{mon.tenmon}}</option>
+          </select>
+      </div>
+      <div class="col-lg-6">
+          <label for="exampleInpuQuestion" class="label-control">Tìm kiếm </label>
+          <input type="text" class="form-control" id="exampleInputQuestion" name='search' [(ngModel)]="search" placeholder="...">
+      </div>
+  </form>
+</div>
+<div class="" style="margin-top: 50px">
+  <table class="table table-bordered table-hover table-responsive">
+      <thead>
+          <tr>
+              <th class="col-md-1 tcenter">STT</th>
+              <th class="col-md-7 tcenter" ><label>Nội Dung</label></th>
+              <th class="col-md-2 tcenter">Môn</th>
+              <th class="col-md-1 tcenter">Đáp Án</th>
+              <th class="col-md-1 tcenter">Phục hồi</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let cauhoi  of listcauhoi | filter: search; let i = index">
+              <td>{{i+1}}</td>
+              <td style="text-align: left">{{cauhoi.noidungcauhoi}}
+                  <p *ngFor="let listdapan of cauhoi.listdapan">{{listdapan.tendapan}}: {{listdapan.noidungdapan}}</p>
+              </td>
+              <td>
+                  {{cauhoi.mon.tenmon}}
+              </td>
+              <td>
+                <p>{{getDapan(cauhoi.listdapan, cauhoi.dapan)}}</p>
+              </td>
+              <td>
+                <a href="javascript:void(0)" (click)="phuchoicauhoi(cauhoi.id)" ><span class="glyphicon glyphicon-pencil"></span></a>
+                <!-- <a href="javascript:void(0)" (click)="deleteQuestion(cauhoi.id, i)">   <span class="glyphicon glyphicon-trash"></span></a> -->
+            </td>
+            </tr>
+      </tbody>
+  </table>
+</div>
+
